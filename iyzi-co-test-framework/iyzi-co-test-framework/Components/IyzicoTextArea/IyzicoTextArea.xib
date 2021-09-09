@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MarkPro-Medium.otf">
+            <string>MarkPro-Medium</string>
+        </array>
+        <array key="MarkPro.otf">
+            <string>MarkPro</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IyzicoTextArea" customModule="iyzi_co_test_framework" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="fQ4-vK-R88" id="ui8-rp-UG4"/>
+                <outlet property="countLabel" destination="eel-eY-36d" id="tXp-UP-UD3"/>
+                <outlet property="textView" destination="VKv-VO-eCg" id="ail-Uo-Tti"/>
+                <outlet property="titleLabel" destination="LEo-5E-FcJ" id="eCo-V5-sch"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="342"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQ4-vK-R88">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="342"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YUF-uu-JZu">
+                            <rect key="frame" x="16" y="16" width="390" height="310"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w7-F4-pts">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="15"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEo-5E-FcJ">
+                                            <rect key="frame" x="5" y="0.0" width="385" height="15"/>
+                                            <fontDescription key="fontDescription" name="MarkPro" family="Mark Pro" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="LEo-5E-FcJ" secondAttribute="bottom" id="7v0-F2-Vg3"/>
+                                        <constraint firstItem="LEo-5E-FcJ" firstAttribute="top" secondItem="9w7-F4-pts" secondAttribute="top" id="dwB-jD-mDB"/>
+                                        <constraint firstAttribute="trailing" secondItem="LEo-5E-FcJ" secondAttribute="trailing" id="hQg-tI-Wej"/>
+                                        <constraint firstAttribute="height" constant="15" id="tHH-cD-Ebg"/>
+                                        <constraint firstItem="LEo-5E-FcJ" firstAttribute="leading" secondItem="9w7-F4-pts" secondAttribute="leading" constant="5" id="ykP-BI-vaC"/>
+                                    </constraints>
+                                </view>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKv-VO-eCg">
+                                    <rect key="frame" x="0.0" y="15" width="390" height="282"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="textColor" systemColor="labelColor"/>
+                                    <fontDescription key="fontDescription" name="MarkPro-Medium" family="Mark Pro" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOC-ar-hyo">
+                                    <rect key="frame" x="0.0" y="297" width="390" height="13"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eel-eY-36d">
+                                            <rect key="frame" x="0.0" y="0.0" width="378" height="13"/>
+                                            <fontDescription key="fontDescription" name="MarkPro-Medium" family="Mark Pro" pointSize="10"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="eel-eY-36d" secondAttribute="trailing" constant="12" id="2GW-8h-GmF"/>
+                                        <constraint firstAttribute="bottom" secondItem="eel-eY-36d" secondAttribute="bottom" id="Mte-EI-QOm"/>
+                                        <constraint firstAttribute="height" constant="13" id="Xdu-Rg-G0l"/>
+                                        <constraint firstItem="eel-eY-36d" firstAttribute="leading" secondItem="IOC-ar-hyo" secondAttribute="leading" id="nLr-Xe-Kz3"/>
+                                        <constraint firstItem="eel-eY-36d" firstAttribute="top" secondItem="IOC-ar-hyo" secondAttribute="top" id="ufD-U4-gn9"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="YUF-uu-JZu" secondAttribute="bottom" constant="16" id="ADl-ft-JWL"/>
+                        <constraint firstItem="YUF-uu-JZu" firstAttribute="leading" secondItem="fQ4-vK-R88" secondAttribute="leading" constant="16" id="rso-XX-mzj"/>
+                        <constraint firstAttribute="trailing" secondItem="YUF-uu-JZu" secondAttribute="trailing" constant="8" id="vlz-cX-R1d"/>
+                        <constraint firstItem="YUF-uu-JZu" firstAttribute="top" secondItem="fQ4-vK-R88" secondAttribute="top" constant="16" id="wMQ-py-em2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fQ4-vK-R88" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="C7U-oq-54N"/>
+                <constraint firstAttribute="bottom" secondItem="fQ4-vK-R88" secondAttribute="bottom" id="Pbw-MM-DTV"/>
+                <constraint firstAttribute="trailing" secondItem="fQ4-vK-R88" secondAttribute="trailing" id="bPG-GG-jmh"/>
+                <constraint firstItem="fQ4-vK-R88" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k3V-Q5-FLy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-18.75"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,5 @@
+xcassets:
+  - inputs:  iyzi-co-test-framework/iyzi-co-test-framework/Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: iyzi-co-test-framework/iyzi-co-test-framework/Resources/Asset/Image.swift

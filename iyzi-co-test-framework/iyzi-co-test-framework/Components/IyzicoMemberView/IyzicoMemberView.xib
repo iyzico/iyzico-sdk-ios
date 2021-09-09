@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IyzicoMemberView" customModule="iyzi_co_test_framework" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="XYm-ne-atc"/>
+                <outlet property="descriptionLabel" destination="04G-Q9-dfU" id="kuu-fr-Wyb"/>
+                <outlet property="emailLabel" destination="OLd-EZ-97g" id="43I-gs-zao"/>
+                <outlet property="parentView" destination="j0N-E7-uDe" id="Z1p-e2-u0H"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="143"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0N-E7-uDe">
+                    <rect key="frame" x="0.0" y="0.0" width="409" height="143"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g7q-7q-meX">
+                            <rect key="frame" x="0.0" y="51" width="409" height="41"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLd-EZ-97g">
+                                    <rect key="frame" x="0.0" y="0.0" width="409" height="20.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04G-Q9-dfU">
+                                    <rect key="frame" x="0.0" y="20.5" width="409" height="20.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cU9-Wh-Hyd">
+                            <rect key="frame" x="0.0" y="0.0" width="409" height="143"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="memberButtonTapped:" destination="-1" eventType="touchUpInside" id="4xM-qj-Bzu"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="cU9-Wh-Hyd" firstAttribute="top" secondItem="j0N-E7-uDe" secondAttribute="top" id="6QG-yl-Izr"/>
+                        <constraint firstAttribute="bottom" secondItem="cU9-Wh-Hyd" secondAttribute="bottom" id="A4r-PE-mfi"/>
+                        <constraint firstItem="g7q-7q-meX" firstAttribute="leading" secondItem="j0N-E7-uDe" secondAttribute="leading" id="LRm-nf-OKB"/>
+                        <constraint firstAttribute="trailing" secondItem="g7q-7q-meX" secondAttribute="trailing" id="MRj-HF-AGA"/>
+                        <constraint firstItem="g7q-7q-meX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="j0N-E7-uDe" secondAttribute="top" id="THt-zR-yKU"/>
+                        <constraint firstAttribute="trailing" secondItem="cU9-Wh-Hyd" secondAttribute="trailing" id="Uow-Jz-Fjz"/>
+                        <constraint firstItem="g7q-7q-meX" firstAttribute="centerY" secondItem="j0N-E7-uDe" secondAttribute="centerY" id="bkP-on-nly"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g7q-7q-meX" secondAttribute="bottom" id="ccg-81-rp4"/>
+                        <constraint firstItem="cU9-Wh-Hyd" firstAttribute="leading" secondItem="j0N-E7-uDe" secondAttribute="leading" id="uKQ-X2-RTD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="j0N-E7-uDe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Iq-dS-kZs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="j0N-E7-uDe" secondAttribute="trailing" id="Njx-3i-aCB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="j0N-E7-uDe" secondAttribute="bottom" id="qSi-EI-9A7"/>
+                <constraint firstItem="j0N-E7-uDe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ynA-hb-bMF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-216.66666666666669" y="-111.49553571428571"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,311 @@
+"iyzico_input_car_name" = "Kart Sahibi";
+
+/*tamam*/
+"iyzico_input_car_name_example" = "Kart sahibinin ismini yaz.";
+
+/*tamam*/
+"iyzico_input_card_number" = "Kart Numarası";
+
+/*tamam*/
+"iyzico_input_card_number_example" = "Kart numarasını yaz.";
+
+/*tamam*/
+"iyzico_input_card_cvv" = "CVV";
+
+/*tamam*/
+"iyzico_input_card_date" = "Skt.";
+
+/*tamam*/
+"iyzico_input_card_date_example" = "AA/YY";
+
+/*tamam*/
+"iyzico_input_phone_number" = "Telefon Numaran";
+
+/*tamam*/
+"iyzico_turkey_phone_code" = "+90";
+
+/*tamam*/
+"iyzico_input_card_cvv_example" = "123";
+
+/*tamam
+ Email*/
+"iyzico_fragment_email_email" = "E-posta Adresin";
+
+/*tamam*/
+"iyzico_fragment_email_write_email" = "E-posta adresini yaz.";
+
+/*tamam*/
+"iyzico_fragment_email_term" = "Ödeme işlemine devam ederek KVKK Aydınlatma Metni’ni okuduğumu ve anladığımı beyan ediyorum.​";
+
+/*tamam*/
+"iyzico_fragment_login_title" = "iyzico Güvencesiyle Kolayca Öde!";
+
+/*tamam*/
+"iyzico_fragment_login_second_title" = "iyzico ile öde; alışverişlerini kartınla veya bakiyenle kolayca yapabildiğin ücretsiz ve güvenli bir ödeme yöntemidir.";
+
+/*tamam*/
+"iyzico_fragment_login_change_acount" = "Farklı Bir E-posta ile Devam Et";
+
+/*tamam*/
+"iyzico_custom_popup_close_page_button_text" = "İşlemi İptal Et";
+
+/*tamam*/
+"iyzico_custom_popup_close_continue_button" = "Ödemeye Devam Et";
+
+/*tamam*/
+"iyzico_custom_popup_close" = "Vazgeç";
+
+/*tamam*/
+"iyzico_custom_popup_try_again" = "Tekrar Dene";
+
+/*tamam*/
+"iyzico_close" = "Kapat";
+
+/*tamm
+ SMS*/
+"iyzico_fragment_sms_control" = "Mesajlarını kontrol et! 💬";
+
+/*tamam*/
+"iyzico_fragment_sms_verificate_phone" = "Onay Kodunu Gir";
+
+/*tamam
+ Common*/
+"iyzico_common_contunie" = "Devam Et";
+
+/*tamam*/
+"iyzico_send_again" = "Tekrar Gönder";
+
+/*tamam*/
+"iyzico_change" = "Değiştir";
+
+/*tamam*/
+"iyzico_transfer_money" = "Hesabıma Yükle";
+
+/*tamam*/
+"iyzico_common_your_balance" = "Bakiyen";
+
+/*tamam*/
+"iyzico_common_finish_order" = "Siparişi Tamamla";
+
+/*tamam*/
+"iyzico_common_share" = "Paylaş";
+
+/*tamam
+ Acccount*/
+"iyzico_account_fragment_wallet_description" = "iyzico hesabında bulunan bakiyenle ödemeni tek tıkla ve anında iade ayrıcalığıyla yapabilirsin.";
+"iyzico_my_current_balance" = "Güncel Bakiyem";
+
+/*tamam*/
+"iyzico_pay_with_new_card" = "Yeni kart ile öde";
+"iyzico_use_my_balance" = "Bakiye Kullan";
+
+/*tamam*/
+"iyzico_my_credit_cards" = "Kartlarım";
+
+/*tamam*/
+"iyzico_havale_eft" = "Havale / EFT";
+
+/*tamam*/
+"iyzico__pay_with_havale_eft" = "Havale / EFT ile Ödeme";
+"iyzico_my_account" = "Hesabım";
+
+/*tamam*/
+"iyzico_my_current_balance_description" = "Hesabına iyzico mobil uygulamasından\\npara yükleyebilirsin.";
+
+/*PayWithIyziCo*/
+"iyzico_sum_price" = "Toplam Tutar";
+
+/*tamam
+ Settlement*/
+"iyzico_transferred_balance" = "Aktarılacak Bakiye";
+
+/*tamam*/
+"iyzico_common_transfer_information_textView" = "Her zaman iyzico bakiyeme aktar.";
+
+/*tamam*/
+"iyzico_transfer_my_acount" = "iyzico Hesabıma Aktar";
+
+/*tamam
+ information*/
+"iyzico_fragment_info_transfer_success" = "Hesaba aktarma başarıyla gerçekleşti.";
+
+/*tamam*/
+"iyzico_fragment_settlement_setting_explanation" = "Bu ayarı daha sonra değiştirebilirsin.";
+
+/*tamam*/
+"iyzico_fragment_info_transfer_secondary_info" = "Talebin onaylandığı anda iyzico hesabına aktarılacak.";
+
+/*tamam*/
+"iyzico_fragment_infto_transfer_assurance_of_iyzico" = "iyzico güvencesiyle";
+
+/*tamam*/
+"iyzico_fragment_info_transfer_confirm_message" = "İşlemlerini iyzico uygulamasından kolayca takip edebilir, 7/24 destek alabilirsin.";
+
+/*tamam*/
+"iyzico_not_complate_payment" = "Ödemeni tamamlayamadık.";
+
+/*tamam*/
+"iyzico_fragment_info_three_d_payment_title" = "3D Secure\\n(Güvenli Ödeme)";
+
+/*tamam*/
+"iyzico_common_button_back_app" = "Uygulamaya Dön";
+
+/*tamam*/
+"iyzico_common_button_try_again" = "Tekrar Dene";
+
+/*tamam*/
+"iyzico_see_bank_Details" = "Banka Bilgilerini Gör";
+
+/*tamam*/
+"iyzico_fragment_info_transfer_details_second_title" = "Siparişin havale/EFT işleminin gerçekleşmesinden sonra onaylanacak.";
+
+/*tamam*/
+"iyzico_fragment_info_transfer_details_title" = "Ödeme talebin başarıyla alındı.";
+
+/*tamam*/
+"iyzico_directed_three_d_payment" = "Ödemeni tamamlamak için 3D Secure doğrulamasına yönlendiriliyorsun.";
+
+/*tamam*/
+"iyzico_saving_card_datas" = "Kart bilgilerin iyzico tarafından saklanır.";
+
+/*tamam*/
+"iyzico_protected_payment_methots" = "Korumalı Ödeme Yöntemleri";
+
+/*tamam*/
+"iyzico_redirected_to_application" = "Uygulamaya yönlendiriliyorsun.";
+
+/*tamam*/
+"iyzico_payment_successfully_achieved" = "Ödemen başarıyla alındı.";
+
+/*tamam*/
+"iyzico_cashout_login_information" = "Bakiyeni iyzico’ya aktarabilmek için iyzico uygulamasında da bu e-posta adresiyle hesap açman gerekiyor. Başka bir e-posta adresi kullanmak istiyorum.";
+
+/*tamam*/
+"iyzico_amount_transfer_null_price_warning" = "Lütfen bir fiyat girin.";
+"iyzico_refaund_received" = "İade talebin başarıyla alındı.";
+
+/*tamam*/
+"iyzico_added_your_account" = "Hesabına yüklendi.";
+
+/*tamam*/
+"iyzico_direct_lidyana" = "' a yönlendiriliyorsun.";
+"iyzico_trasfer_to_account" = "Hesaba Aktarılacak Tutar";
+
+/*tamam*/
+"iyzico_refaund_payment" = "İade Edilecek Tutar";
+
+/*tamam*/
+"iyzico_buying_time_is_finish_error" = "Satın alma süren doldu, lütfen tekrar dene.";
+
+/*tamam*/
+"iyzico_send_sms" = "SMS gönderildi.";
+
+/*tamam*/
+"iyzico_support_screen_title" = "Destek";
+
+/*tamam*/
+"iyzico_support_top_text" = "iyzico, 2012 yılında, farklı alanlarda hizmet veren çeşitli büyüklüklerdeki e-ticaret şirketlerine, kolay ve güvenli ödeme yönetim platformu sunma amacıyla Barbaros Özbuğutu ve Tahsin Isın tarafından İstanbul’da kuruldu.";
+"iyzico_soport_secondary_text" = "Avrupa’nın saygın şirketlerinde uzun yıllar önemli pozisyonlarında görev alan Özbuğutu ve Isın, bu alandaki tecrübelerini iyzico ile Türkiye pazarına taşıdılar ve tamamen bu pazara adapte olmuş inovatif bir platform oluşturdular.";
+"iyzico_get_support" = "Destek Al";
+
+/*tamam*/
+"iyzico_okey_text" = "Tamam";
+
+/*tamam
+ TransferScreen*/
+"iyzico_NotEmpty" = "Bu alan boş bırakılamaz.";
+"iyzico_init_amount_value" = "00,00";
+"iyzico_transfer_all" = "Tümünü Aktar";
+
+/*tamam*/
+"iyzico_can_transfer_all" = "Aktarılabilir Bakiyem";
+
+/*tamam*/
+"iyzico_explanation" = "Referans Numarası (Açıklama)";
+
+/*tamam*/
+"iyzico_amount_to_install" = "Yüklenecek Tutar";
+
+/*tamam*/
+"iyzico_bottom_sheet_remittence_phone_number_warning" = "Havale/EFT işlemi esnasında mobil bankacılık uygulamasındaki açıklama alanına yukarıdaki referans kodunu girin.";
+
+/*tamam*/
+"iyzico_continue_as" = "olarak devam et";
+
+/*tamam
+ Amounts*/
+"iyzico_20_tl" = "₺20";
+
+/*tamam*/
+"iyzico_50_tl" = "₺50";
+
+/*tamam*/
+"iyzico_100_tl" = "₺100";
+
+/*tamam*/
+"iyzico_200_tl" = "₺200";
+
+/*tamam*/
+"iyzico_wrong" = "Hatalı";
+
+/*tamam*/
+"iyzico_common_phone_error" = "Girdiğin telefon numarasını kontrol et.";
+"iyzico_common_invalid" = "Geçersiz";
+"iyzico_wrong_name" = "Hatalı İsim";
+"iyzico_bank_information_iban" = "IBAN:";
+"iyzico_bank_information_referance_no" = "Referans Numarası (Açıklama)";
+"iyzico_bank_information_account_holder" = "Hesap Sahibi:";
+"iyzico_kvkk_high_lighted_text" = "KVKK Aydınlatma Metni";
+"iyzico_bounds_high_lighted_text" = "Çerçeve Sözleşmesi";
+"iyzico_amount_have_to_transfer" = "Aktarman Gereken Tutar";
+"iyzico_amount_transfer_refrected_one_hour" = "Aktaracağın tutar 1 saat içinde hesabına yansıyacak.";
+"iyzico_transfer_my_account" = "Hesabıma Aktar";
+"iyzico_mobile_app" = "iyzico mobil uygulama";
+"iyzico_use_different_email" = "Başka bir e-posta adresi kullanmak istiyorum.";
+"iyzico_remaining_time" = "Kalan Süre:";
+"iyzico_compulsory" = "Zorunlu";
+
+/*TODO: Remove or change this placeholder text*/
+"iyzico_phone_number_text" = "+90 (262) 333 33 33";
+"iyzico_mail" = "destek@iyzico.com";
+"iyzico_get_support_title" = "İletişim";
+"iyzico_error_callback" = "Hatalı İşlem";
+"iyzico_topup_balance_loaded" = "Bakiyene yüklendi.";
+"iyzico_account_fragment_button" = "iyzico ile Öde";
+
+/*sayfa kapanma durumunda çıkacak textler"*/
+"iyzico_close_widget_pop_up_top_up" = "Sayfayı kapatırsan satın alma işlemi iptal edilecek.";
+"iyzico_close_widget_pop_up_settlement" = "Sayfayı kapatırsan satın alma işlemi iptal edilecek.";
+"iyzico_close_widget_pop_up_cashout" = "Sayfayı kapatırsan satın alma işlemi iptal edilecek.";
+"iyzico_close_widget_pop_up_refund" = "Sayfayı kapatırsan satın alma işlemi iptal edilecek.";
+"iyzico_close_widget_pop_up_pwi" = "Sayfayı kapatırsan satın alma işlemi iptal edilecek.";
+
+/*Butonların textleri*/
+"iyzico_close_widget_pop_up_top_up_button" = "Ödemeye Devam Et";
+"iyzico_close_widget_pop_up_settlement_button" = "Ödemeye Devam Et";
+"iyzico_close_widget_pop_up_refund_button" = "Ödemeye Devam Et";
+"iyzico_close_widget_pop_up_cashout_button" = "Ödemeye Devam Et";
+"iyzico_close_widget_pop_up_pwi_button" = "Ödemeye Devam Et";
+"iyzico_please_check_card_datas" = "Lütfen kart bilgilerinizi kontrol ediniz.";
+"iyzico_success_top_up_waiting_title" = "Hesaba yükleme talebin alındı.";
+"iyzico_success_cashout_waiting_title" = "Hesaba aktarma talebin alındı.";
+"iyzico_transcation_will_delivery_from_card" = "KARTINDAN XXX ÇEKİLECEK.";
+"iyzico_fragment_login_settlement_title" = "Bakiyeni iyzico hesabına aktar, hemen kullanmaya başla!";
+"iyzico_fragment_login_refund_title" = "İadeni iyzico hesabına aktar, hemen kullanmaya başla!";
+"iyzi_co_payment_options_shows_after_you_filled_area" = "Taksit seçenekleri kart numaranı girdikten sonra görünecek.";
+"iyzico_one_installment_one_shot" = "Tek Çekim";
+"iyzico_read_and_except" = "ni okudum, onaylıyorum.";
+"iyzico_user_aggrement" = "Kullanıcı Sözleşmesi";
+"iyzico_communication_permission" = "İletişim İzni";
+"iyzico_secondary_login_error_text" = "Ödemeye devam edebilmek için kullanıcı sözleşmesini okuyup, onaylamalısınız.";
+"iyzico_installment_chose" = "Taksit Seçenekleri";
+"iyzico_payment_options_shows_after_you_filled_a" = "Taksit seçenekleri kart numaranı girdikten sonra görünecek.";
+
+"iyzico_contact_permission_sentence" = "İletişim izni’ni okudum, onaylıyorum.";
+"iyzico_contact_permission" = "İletişim izni";
+"iyzico_kvkk_permission_sentence" = "KVKK Açık Rıza Metni’ni okudum, onaylıyorum.";
+"iyzico_kvkk_permission" = "KVKK Açık Rıza Metni";
+"iyzico_user_agreement_permission_sentence" = "Kullanıcı Sözleşmesi’ni okudum, onaylıyorum.";
+"iyzico_user_agreement_permission" = "Kullanıcı Sözleşmesi";
+"iyzico_user_agreement_error" = "Ödemeye devam edebilmek için kullanıcı sözleşmesini okuyup, onaylamalısınız.";
+

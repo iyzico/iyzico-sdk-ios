@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iyzi_co_testApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XV4-Bg-T7s">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-Lb-2Rx">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                        <state key="normal" title="TopUp Flow"/>
+                                        <connections>
+                                            <action selector="topUpFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mBj-Zg-3KZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-0k-fTc">
+                                        <rect key="frame" x="0.0" y="163.5" width="414" height="163.5"/>
+                                        <state key="normal" title="Settlement Flow"/>
+                                        <connections>
+                                            <action selector="settlementFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jw5-W7-R87"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fu9-W2-5qZ">
+                                        <rect key="frame" x="0.0" y="327" width="414" height="164"/>
+                                        <state key="normal" title="Refund Flow"/>
+                                        <connections>
+                                            <action selector="refundFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vxI-nf-KFN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvo-eN-JX4">
+                                        <rect key="frame" x="0.0" y="491" width="414" height="163.5"/>
+                                        <state key="normal" title="Cashout Flow"/>
+                                        <connections>
+                                            <action selector="cashoutFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5H7-vr-Lo3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2O-VD-53h">
+                                        <rect key="frame" x="0.0" y="654.5" width="414" height="163.5"/>
+                                        <state key="normal" title="Pay With Iyzico Flow"/>
+                                        <connections>
+                                            <action selector="payWithIyzicoFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QNp-x9-BG6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XV4-Bg-T7s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Luz-oh-uxi"/>
+                            <constraint firstItem="XV4-Bg-T7s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bTR-gJ-QIq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XV4-Bg-T7s" secondAttribute="bottom" id="rHY-Tz-pmf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XV4-Bg-T7s" secondAttribute="trailing" id="ulS-7A-nsJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134.78260869565219" y="89.732142857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
