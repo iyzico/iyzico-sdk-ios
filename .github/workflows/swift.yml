@@ -16,5 +16,5 @@ jobs:
     - name: Force Xcode 11
       run: sudo xcode-select -switch /Applications/Xcode_11.5.app
     - name: Build
-      run: xcodebuild clean build "./iyzi-co-testApp/iyzi-co-testApp.xcodeproj" -scheme "iyzi-co-testApp" -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      run: xcodebuild clean build -workspace "./iyzi-co-testApp/iyzi-co-testApp.xcworkspace" -scheme  "iyzi-co-test-framework" -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
 
