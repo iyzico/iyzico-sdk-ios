@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Force Xcode 11
-      run: sudo xcode-select -switch /Applications/Xcode_11.5.app
+    - name: Force Xcode 12.5.1
+      run: sudo xcode-select -switch /Applications/Xcode_12.5.1.app
     - name: One
       run: xcodebuild -list -project "./iyzi-co-testApp/iyzi-co-testApp.xcodeproj"
     - name: Build
