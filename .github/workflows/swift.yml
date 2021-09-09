@@ -17,6 +17,10 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_12.3.0.app
     - name: One
       run: xcodebuild -list -project "./iyzi-co-testApp/iyzi-co-testApp.xcodeproj"
+    - name: Install Dependencies
+      run: |
+        cd ./iyzi-co-test-framework
+        pod install --repo-update
     - name: Build
       run: xcodebuild clean build -project "./iyzi-co-testApp/iyzi-co-testApp.xcodeproj" -scheme  "iyzi-co-testApp" -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
 
