@@ -57,6 +57,9 @@ class SDKManager: Iyzico {
     
     static func checkSDKConfigurations(success: () -> Void,
                                        failure: (_ state: InternalMessageState) -> Void) {
+        
+        var flowError = false
+        
         var configModelArray = [SDKConfigurationModel(configValue: clientIp, errorValue: .clientIpError),
                                 SDKConfigurationModel(configValue: clientId, errorValue: .clientIdError),
                                 SDKConfigurationModel(configValue: clientSecretKey, errorValue: .clientSecretKeyError),
@@ -83,9 +86,13 @@ class SDKManager: Iyzico {
         
         checkFlowValues {}
         failure: { (state) in
+            flowError = true
             failure(state)
         }
-        success()
+        if !flowError {
+            success()
+        }
+        
     }
     
     private static func checkFlowValues(success: () -> Void,
@@ -97,28 +104,33 @@ class SDKManager: Iyzico {
                                 SDKConfigurationModel(configValue: walletPrice?.description, errorValue: .walletPriceError),
                                 SDKConfigurationModel(configValue: phone, errorValue: .phoneError),
                                 SDKConfigurationModel(configValue: name, errorValue: .buyerNameError),
-                                SDKConfigurationModel(configValue: surname, errorValue: .buyerSurnameError),
-                                SDKConfigurationModel(configValue: PWIrequest.paidPrice?.description, errorValue: .paidPriceError),
-                                SDKConfigurationModel(configValue: PWIrequest.basketID, errorValue: .basketIDError),
-                                SDKConfigurationModel(configValue: PWIrequest.callbackURL, errorValue: .urlCallbackError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.id, errorValue: .buyerIDError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.name, errorValue: .buyerNameError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.surname, errorValue: .buyerSurnameError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.identityNumber, errorValue: .buyerIdentityNumberError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.email, errorValue: .buyerEmailError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.gsmNumber, errorValue: .buyerPhoneError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.registrationAddress, errorValue: .buyerRegistrationAddressError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.city, errorValue: .buyerCityError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.country, errorValue: .buyerCountryError),
-                                SDKConfigurationModel(configValue: PWIrequest.buyer?.ip, errorValue: .buyerIPError),
-                                SDKConfigurationModel(configValue: PWIrequest.billingAddress?.address, errorValue: .billingAdressError),
-                                SDKConfigurationModel(configValue: PWIrequest.billingAddress?.contactName, errorValue: .billingContactNameError),
-                                SDKConfigurationModel(configValue: PWIrequest.billingAddress?.city, errorValue: .billingCityError),
-                                SDKConfigurationModel(configValue: PWIrequest.billingAddress?.country, errorValue: .billingCountryError),
-                                SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.address, errorValue: .shippingAddressError),
-                                SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.contactName, errorValue: .shippingContactNameError),
-                                SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.city, errorValue: .shippingCityError),
-                                SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.country, errorValue: .shippingCountryError)]
+                                SDKConfigurationModel(configValue: surname, errorValue: .buyerSurnameError)]
+        
+        let PWIModelArray = [
+            SDKConfigurationModel(configValue: brand, errorValue: .brandError),
+            SDKConfigurationModel(configValue: PWIrequest.price?.description, errorValue: .priceError),
+            SDKConfigurationModel(configValue: PWIrequest.paidPrice?.description, errorValue: .paidPriceError),
+            SDKConfigurationModel(configValue: PWIrequest.basketID, errorValue: .basketIDError),
+            SDKConfigurationModel(configValue: PWIrequest.callbackURL, errorValue: .urlCallbackError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.id, errorValue: .buyerIDError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.name, errorValue: .buyerNameError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.surname, errorValue: .buyerSurnameError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.identityNumber, errorValue: .buyerIdentityNumberError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.email, errorValue: .buyerEmailError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.gsmNumber, errorValue: .buyerPhoneError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.registrationAddress, errorValue: .buyerRegistrationAddressError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.city, errorValue: .buyerCityError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.country, errorValue: .buyerCountryError),
+            SDKConfigurationModel(configValue: PWIrequest.buyer?.ip, errorValue: .buyerIPError),
+            SDKConfigurationModel(configValue: PWIrequest.billingAddress?.address, errorValue: .billingAdressError),
+            SDKConfigurationModel(configValue: PWIrequest.billingAddress?.contactName, errorValue: .billingContactNameError),
+            SDKConfigurationModel(configValue: PWIrequest.billingAddress?.city, errorValue: .billingCityError),
+            SDKConfigurationModel(configValue: PWIrequest.billingAddress?.country, errorValue: .billingCountryError),
+            SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.address, errorValue: .shippingAddressError),
+            SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.contactName, errorValue: .shippingContactNameError),
+            SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.city, errorValue: .shippingCityError),
+            SDKConfigurationModel(configValue: PWIrequest.shippingAddress?.country, errorValue: .shippingCountryError)
+        ]
         var configModelArrayByFlow: [SDKConfigurationModel] = []
         switch flow {
         case .topUp:
@@ -146,34 +158,15 @@ class SDKManager: Iyzico {
                                       configModelArray[6],
                                       configModelArray[7]]
         case .payWithIyzico:
-            configModelArrayByFlow = [configModelArray[0],
-                                      configModelArray[1],
-                                      configModelArray[2],
-                                      configModelArray[3],
-                                      configModelArray[5],
-                                      configModelArray[6],
-                                      configModelArray[7],
-                                      configModelArray[8],
-                                      configModelArray[9],
-                                      configModelArray[10],
-                                      configModelArray[11],
-                                      configModelArray[12],
-                                      configModelArray[13],
-                                      configModelArray[14],
-                                      configModelArray[15],
-                                      configModelArray[16],
-                                      configModelArray[17],
-                                      configModelArray[18],
-                                      configModelArray[19],
-                                      configModelArray[20],
-                                      configModelArray[21],
-                                      configModelArray[22],
-                                      configModelArray[23],
-                                      configModelArray[24],
-                                      configModelArray[25],
-                                      configModelArray[26],
-                                      configModelArray[27],
-                                      configModelArray[28]]
+            configModelArrayByFlow = PWIModelArray
+            
+            PWIrequest.basketItems?.forEach({ (item) in
+                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.id, errorValue: .basketProductIdError))
+                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.price, errorValue: .basketProductPriceError))
+                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.name, errorValue: .basketProductNameError))
+                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.category1, errorValue: .basketProductCategoryError))
+                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.itemType, errorValue: .basketProductItemTypeError))
+            })
         }
         
         handleFlowValues(success: {
@@ -188,10 +181,9 @@ class SDKManager: Iyzico {
     private static func handleFlowValues(success: () -> Void,
                                          failure: (_ state: InternalMessageState) -> Void,
                                          configModels: [SDKConfigurationModel]) {
-        
         for i in configModels {
             if let validatedConfigValue = i.configValue,
-               !validatedConfigValue.isEmpty && !validatedConfigValue.containsWhiteSpaces {
+               !validatedConfigValue.isEmpty {
                 
             }
             else {
@@ -201,19 +193,15 @@ class SDKManager: Iyzico {
                 return
             }
         }
-//        configModels.forEach { configModel in
-//            ///TODO - Make rules for every property
-////            if let validatedConfigValue = configModel.configValue,
-////               !validatedConfigValue.isEmpty && !validatedConfigValue.containsWhiteSpaces {
-////
-////            }
-////            else {
-////                Iyzico.delegate?.didOperationFailed(state: configModel.errorValue,
-////                                                    message: configModel.errorValue.message)
-////                failure(configModel.errorValue)
-////                return
-////            }
+//        if flow == .payWithIyzico {
+//            if PWIrequest.enabledInstallments?.count == .zero {
+//                Iyzico.delegate?.didOperationFailed(state: InternalMessageState.enabledinstallmentError,
+//                                                    message: InternalMessageState.enabledinstallmentError.message)
+//                failure(InternalMessageState.enabledinstallmentError)
+//                return
+//            }
 //        }
+
         
         success()
     }
