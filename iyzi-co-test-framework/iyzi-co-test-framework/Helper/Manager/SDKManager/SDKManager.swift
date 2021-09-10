@@ -188,6 +188,19 @@ class SDKManager: Iyzico {
     private static func handleFlowValues(success: () -> Void,
                                          failure: (_ state: InternalMessageState) -> Void,
                                          configModels: [SDKConfigurationModel]) {
+        
+        for i in configModels {
+            if let validatedConfigValue = i.configValue,
+               !validatedConfigValue.isEmpty && !validatedConfigValue.containsWhiteSpaces {
+                
+            }
+            else {
+                Iyzico.delegate?.didOperationFailed(state: i.errorValue,
+                                                    message: i.errorValue.message)
+                failure(i.errorValue)
+                return
+            }
+        }
 //        configModels.forEach { configModel in
 //            ///TODO - Make rules for every property
 ////            if let validatedConfigValue = configModel.configValue,
