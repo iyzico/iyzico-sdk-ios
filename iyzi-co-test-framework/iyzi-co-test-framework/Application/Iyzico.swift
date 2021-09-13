@@ -17,7 +17,7 @@ public class Iyzico {
     lazy var presentedVC: UIViewController? = {
         return UIApplication.shared.keyWindow?.rootViewController
     }()
-
+    
     init() {
         //MARK: SDK Configuration Check
         
@@ -38,74 +38,96 @@ public class Iyzico {
 
 //MARK: - Flows
 extension Iyzico {
-    public func startPayWithIyziCo(brand: String,
-                                   price: Double,
-                                   paidPrice: Double,
-                                   currency: Currency = .TRY,
-                                   enabledInstallments: [Int]? = nil,
-                                   basketId: String,
-                                   paymentGroup: PaymentGroup = .none,
-                                   paymentSource: String,
-                                   callbackUrl: String,
-                                   buyer: Buyer,
-                                   billingAddress: PWIAddress,
-                                   shippingAddress: PWIAddress,
-                                   basketItems: [BasketItem],
-                                   productImage: UIImage? = nil,
-                                   addressType: String? = nil,
-                                   addressDescription: String? = nil) {
+    
+    public func startPayWithIyziCo(
+        brand: String,
+        price: Double,
+        paidPrice: Double,
+        currency: Currency,
+        enabledInstallments: [Int]? = nil,
+        basketId: String,
+        paymentGroup: PaymentGroup? = .PRODUCT,
+        paymentSource: String,
+        urlCallback: String,
+        buyerId: String,
+        buyerName: String,
+        buyerSurname: String,
+        buyerIdentityNumber: String,
+        buyerCity: String,
+        buyerCountry: String,
+        buyerEmail: String,
+        buyerPhone: String,
+        buyerIp: String,
+        buyerRegistrationAddress: String,
+        buyerZipCode: String,
+        buyerRegistrationDate: String,
+        buyerLastLoginDate: String,
+        billingContactName: String,
+        billingCity: String,
+        billingCountry: String,
+        billingAddress: String,
+        shippingContactName: String,
+        shippingCity: String,
+        shippingCountry: String,
+        shippingAddress: String,
+        itemType: String,
+        itemName: String,
+        itemCategory: String,
+        productId: String?,
+        addressDescription: String?,
+        basketItemList: [IyziCoBasketItem]
+    ) {
+
         SDKManager.flow = .payWithIyzico
         SDKManager.brand = brand
         SDKManager.price = paidPrice//price
-        SDKManager.email = buyer.email?.lowercased()
-        SDKManager.phone = buyer.gsmNumber?.addWhitespacesToPhone
-        SDKManager.productImage = productImage
-        SDKManager.addressType = addressType
+        SDKManager.email = buyerEmail.lowercased()
+        SDKManager.phone = buyerPhone.addWhitespacesToPhone
         SDKManager.addressDescription = addressDescription
-        SDKManager.name = buyer.name
-        SDKManager.surname = buyer.surname
+        SDKManager.name = buyerName
+        SDKManager.surname = buyerSurname
         
         SDKManager.PWIrequest.paidPrice = paidPrice.description
         SDKManager.PWIrequest.enabledInstallments = enabledInstallments
         SDKManager.PWIrequest.price = price.description
-        SDKManager.PWIrequest.paymentGroup = paymentGroup.rawValue
-        SDKManager.PWIrequest.callbackURL = callbackUrl
+        SDKManager.PWIrequest.paymentGroup = paymentGroup?.rawValue
+        SDKManager.PWIrequest.callbackURL = urlCallback
         SDKManager.PWIrequest.paymentSource = paymentSource
         SDKManager.PWIrequest.currency = currency.rawValue
         SDKManager.PWIrequest.basketID = basketId
         
         var buyerInfo = BuyerRequest()
-        buyerInfo.id = buyer.id
-        buyerInfo.name = buyer.name
-        buyerInfo.surname = buyer.surname
-        buyerInfo.identityNumber = buyer.identityNumber
-        buyerInfo.email = buyer.email?.lowercased()
-        buyerInfo.gsmNumber = buyer.gsmNumber
-        buyerInfo.registrationAddress = buyer.registrationAddress
-        buyerInfo.city = buyer.city
-        buyerInfo.country = buyer.country
-        buyerInfo.ip = buyer.ip
+        buyerInfo.id = buyerId
+        buyerInfo.name = buyerName
+        buyerInfo.surname = buyerSurname
+        buyerInfo.identityNumber = buyerIdentityNumber
+        buyerInfo.email = buyerEmail.lowercased()
+        buyerInfo.gsmNumber = buyerPhone
+        buyerInfo.registrationAddress = buyerRegistrationAddress
+        buyerInfo.city = buyerCity
+        buyerInfo.country = buyerCountry
+        buyerInfo.ip = buyerIp
         
         SDKManager.PWIrequest.buyer = buyerInfo
         
         var shippingInfo = PWIAddressRequest()
-        shippingInfo.address = shippingAddress.address
-        shippingInfo.city = shippingAddress.city
-        shippingInfo.contactName = shippingAddress.contactName
-        shippingInfo.country = shippingAddress.country
+        shippingInfo.address = shippingAddress
+        shippingInfo.city = shippingCity
+        shippingInfo.contactName = shippingContactName
+        shippingInfo.country = shippingCountry
         
         SDKManager.PWIrequest.shippingAddress = shippingInfo
-    
+        
         var billingInfo = PWIAddressRequest()
-        billingInfo.address = billingAddress.address
-        billingInfo.city = billingAddress.city
-        billingInfo.contactName = billingAddress.contactName
-        billingInfo.country = billingAddress.country
+        billingInfo.address = billingAddress
+        billingInfo.city = billingCity
+        billingInfo.contactName = billingContactName
+        billingInfo.country = billingCountry
         
         SDKManager.PWIrequest.billingAddress = billingInfo
         
         var basketItemsArray: [BasketItemRequest] = []
-        basketItems.forEach { (item) in
+        basketItemList.forEach { (item) in
             let basketItem = BasketItemRequest(id: item.id,
                                                price: item.price,
                                                name: item.name,
@@ -127,59 +149,57 @@ extension Iyzico {
         checkSDKConfigurations()
     }
     
-    public func startTopUp(email: String,
-                           phone: String,
-                           brand: String,
-                           name: String? = nil,
-                           surname: String? = nil) {
+    public func startTopUp(buyerEmail: String,
+                           buyerPhone: String,
+                           buyerName: String? = nil,
+                           buyerSurname: String? = nil) {
         SDKManager.flow = .topUp
-        SDKManager.email = email.lowercased()
-        SDKManager.phone = phone.addWhitespacesToPhone
-        SDKManager.brand = brand
-        SDKManager.name = name
-        SDKManager.surname = surname
+        SDKManager.email = buyerEmail.lowercased()
+        SDKManager.phone = buyerPhone.addWhitespacesToPhone
+        SDKManager.name = buyerName
+        SDKManager.surname = buyerSurname
         checkSDKConfigurations()
     }
     
-    public func startSettlement(email: String,
-                                phone: String,
+    public func startSettlement(buyerEmail: String,
+                                buyerPhone: String,
                                 walletPrice: Double,
-                                name: String? = nil,
-                                surname: String? = nil) {
+                                buyerName: String? = nil,
+                                buyerSurname: String? = nil) {
         SDKManager.flow = .settlement
-        SDKManager.email = email.lowercased()
-        SDKManager.phone = phone.addWhitespacesToPhone
+        SDKManager.email = buyerEmail.lowercased()
+        SDKManager.phone = buyerPhone.addWhitespacesToPhone
         SDKManager.walletPrice = walletPrice
-        SDKManager.name = name
-        SDKManager.surname = surname
+        SDKManager.name = buyerName
+        SDKManager.surname = buyerSurname
         checkSDKConfigurations()
     }
     
-    public func startRefund(email: String,
-                            phone: String,
+    public func startRefund(buyerEmail: String,
+                            buyerPhone: String,
                             productId: String,
-                            name: String? = nil,
-                            surname: String? = nil) {
+                            buyerName: String? = nil,
+                            buyerSurname: String? = nil) {
         SDKManager.flow = .refund
-        SDKManager.email = email.lowercased()
-        SDKManager.phone = phone.addWhitespacesToPhone
+        SDKManager.email = buyerEmail.lowercased()
+        SDKManager.phone = buyerPhone.addWhitespacesToPhone
         SDKManager.productId = productId
-        SDKManager.name = name
-        SDKManager.surname = surname
+        SDKManager.name = buyerName
+        SDKManager.surname = buyerSurname
         checkSDKConfigurations()
     }
     
-    public func startCashOut(email: String,
-                             phone: String,
+    public func startCashOut(buyerEmail: String,
+                             buyerPhone: String,
                              walletPrice: Double,
-                             name: String? = nil,
-                             surname: String? = nil) {
+                             buyerName: String? = nil,
+                             buyerSurname: String? = nil) {
         SDKManager.flow = .cashout
-        SDKManager.email = email.lowercased()
-        SDKManager.phone = phone.addWhitespacesToPhone
+        SDKManager.email = buyerEmail.lowercased()
+        SDKManager.phone = buyerPhone.addWhitespacesToPhone
         SDKManager.walletPrice = walletPrice
-        SDKManager.name = name
-        SDKManager.surname = surname
+        SDKManager.name = buyerName
+        SDKManager.surname = buyerSurname
         checkSDKConfigurations()
     }
 }
@@ -187,12 +207,12 @@ extension Iyzico {
 //MARK: - Helper Methods
 extension Iyzico {
     open func initialize(clientIp: String,
-                               clientId: String,
-                               clientSecret: String,
-                               baseUrl: String,
-                               merchantApiKey: String? = nil,
-                               merchantSecretKey: String? = nil,
-                               language: Language) {
+                         clientId: String,
+                         clientSecret: String,
+                         baseUrl: String,
+                         merchantApiKey: String? = nil,
+                         merchantSecretKey: String? = nil,
+                         language: Language) {
         SDKManager.clientIp = clientIp
         SDKManager.clientId = clientId
         SDKManager.clientSecretKey = clientSecret
@@ -207,12 +227,12 @@ extension Iyzico {
     private func checkSDKConfigurations() {
         SDKManager.checkSDKConfigurations { [weak self] in
             self?.chooseInitializeService()
-        } failure: { (state: InternalMessageState) in
+        } failure: { (state: ResultCode) in
             SDKManager.closeSDK()
             LogManager.printLogForIyzicoInternalMessage(state: state)
         }
     }
-
+    
     fileprivate func enableIQKeyboardManager() {
         let keyboardManager = IQKeyboardManager.shared
         keyboardManager.enable = true
@@ -265,12 +285,12 @@ extension Iyzico {
     
     private func chooseInitializeService() {
         switch SDKManager.flow {
-            case .topUp:
-                getTopUpInitialize()
-            case .payWithIyzico:
-                getPWIInitialize()
-            default:
-                getCashoutInitialize()
+        case .topUp:
+            getTopUpInitialize()
+        case .payWithIyzico:
+            getPWIInitialize()
+        default:
+            getCashoutInitialize()
         }
     }
 }
@@ -282,33 +302,33 @@ extension Iyzico {
         newMemberVM.getCashoutInitialize(email: SDKManager.email,
                                          amount: "₺50000,00".serviceAmountFormatAsString,
                                          currencyType: "TRY",
-        onSuccess: { [weak self] (response: InitResponseModel?) in
-            self?.chooseInitializeVC(initResponseModel: response)
-        },
-        onFailure: { [weak self] errorDescription in
-            self?.showError(errorDescription: errorDescription)
-        })
+                                         onSuccess: { [weak self] (response: InitResponseModel?) in
+                                            self?.chooseInitializeVC(initResponseModel: response)
+                                         },
+                                         onFailure: { [weak self] errorDescription in
+                                            self?.showError(errorDescription: errorDescription)
+                                         })
     }
     
     private func getTopUpInitialize() {
         newMemberVM.getTopUpInitialize(email: SDKManager.email,
                                        transactionType: .DEPOSIT,
-        onSuccess: { [weak self] (response: InitResponseModel?) in
-            self?.chooseInitializeVC(initResponseModel: response)
-        },
-        onFailure: { [weak self] errorDescription in
-            self?.showError(errorDescription: errorDescription)
-        })
-    }
-    
-    private func getPWIInitialize() {
-     //   guard let request =  SDKManager.PWIrequest else { return }
-        newMemberVM.getPWIInitialize(request: SDKManager.PWIrequest,
                                        onSuccess: { [weak self] (response: InitResponseModel?) in
                                         self?.chooseInitializeVC(initResponseModel: response)
                                        },
                                        onFailure: { [weak self] errorDescription in
                                         self?.showError(errorDescription: errorDescription)
                                        })
+    }
+    
+    private func getPWIInitialize() {
+        //   guard let request =  SDKManager.PWIrequest else { return }
+        newMemberVM.getPWIInitialize(request: SDKManager.PWIrequest,
+                                     onSuccess: { [weak self] (response: InitResponseModel?) in
+                                        self?.chooseInitializeVC(initResponseModel: response)
+                                     },
+                                     onFailure: { [weak self] errorDescription in
+                                        self?.showError(errorDescription: errorDescription)
+                                     })
     }
 }

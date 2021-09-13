@@ -148,9 +148,9 @@ class ResultVC: BaseVC, ResultCellDelegate {
              .transferDetailSuccess,
              .threeDSecure,
              .success:
-            Iyzico.delegate?.didOperationSuccess(state: .success, message: InternalMessageState.success.message)
+            Iyzico.delegate?.didOperationSuccess(message: ResultCode.success.message)
         case .error:
-            Iyzico.delegate?.didOperationFailed(state: .error, message: InternalMessageState.error.message)
+            Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
         default:
             break
         }
