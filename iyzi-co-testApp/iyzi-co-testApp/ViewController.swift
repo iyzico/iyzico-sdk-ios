@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import iyzi_co_test_framework
+import iyzicoSDK
 
 class ViewController: UIViewController {
 
@@ -28,8 +28,8 @@ class ViewController: UIViewController {
         Iyzico.shared.startTopUp(email: "iyzicotest10000@email.com", //msahincakir34+02042021@gmail.com
                                  phone: "+90 555 555 55 55",
                                  brand: "Lidyana.com",
-                                 name: nil,
-                                 surname: nil)
+                                 name: "tolga",
+                                 surname: "iskender")
 //        Iyzico.shared.startTopUp(email: "msahincakir34+23032021@gmail.com",
 //                                 phone: "+90 531 860 52 05",
 //                                 brand: "Lidyana.com",
@@ -47,8 +47,8 @@ class ViewController: UIViewController {
         Iyzico.shared.startSettlement(email: "iyzicotest100001@gmail.com",
                                       phone: "+90 555 555 55 55",
                                       walletPrice: 21.00,
-                                      name: nil,
-                                      surname: nil)
+                                      name: "tolga",
+                                      surname: "iskender")
 //        Iyzico.shared.startSettlement(email: "msahincakir34+23032021@gmail.com",
 //                                      phone: "+90 555 555 55 55",
 //                                      walletPrice: "21.00",
@@ -66,8 +66,8 @@ class ViewController: UIViewController {
         Iyzico.shared.startRefund(email: "iyzicotest100002@gmail.com",
                                   phone: "+90 555 555 55 55",
                                   productId: "123456",
-                                  name: nil,
-                                  surname: nil)
+                                  name: "tolga",
+                                  surname: "iskender")
 //        Iyzico.shared.startRefund(email: "msahincakir34+23032021@gmail.com",
 //                                  phone: "+90 555 555 55 55",
 //                                  productId: "123456",
@@ -85,8 +85,8 @@ class ViewController: UIViewController {
         Iyzico.shared.startCashOut(email: "iyzicotest100003@email.com", //newuser1234@gmail.com
                                    phone: "+90 555 555 55 55",
                                    walletPrice: 800.00,
-                                   name: nil,
-                                   surname: nil)
+                                   name: "tolga",
+                                   surname: "iskender")
 //        Iyzico.shared.startCashOut(email: "msahincakir34+23032021@gmail.com", //newuser1234@gmail.com
 //                                   phone: "+90 555 555 55 55",
 //                                   walletPrice: "21.00",

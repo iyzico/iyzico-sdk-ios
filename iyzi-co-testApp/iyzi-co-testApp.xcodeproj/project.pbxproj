@@ -13,18 +13,16 @@
 		8352F73B26BD085300B2D965 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73926BD084F00B2D965 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8352F75026BD09CE00B2D965 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73726BD084F00B2D965 /* CocoaLumberjack.framework */; };
 		8352F75126BD09CE00B2D965 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73726BD084F00B2D965 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8356C3AC25C7EA90001B5DD5 /* iyzi-co-test-framework.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2B525C7EA90001B5DD5 /* iyzi-co-test-framework.xcworkspace */; };
-		8356C3C425C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2D925C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.plist */; };
-		8356C3C525C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DA25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-Info.plist */; };
-		8356C3C625C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8356C2DB25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-dummy.m */; };
-		8356C3C725C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DD25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.markdown */; };
-		8356C3C825C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DE25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.release.xcconfig */; };
-		8356C3C925C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DF25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.debug.xcconfig */; };
+		8356C3AC25C7EA90001B5DD5 /* iyzicoSDK.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2B525C7EA90001B5DD5 /* iyzicoSDK.xcworkspace */; };
+		8356C3C425C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2D925C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist */; };
+		8356C3C525C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DA25C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist */; };
+		8356C3C625C7EA90001B5DD5 /* Pods-iyzicoSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8356C2DB25C7EA90001B5DD5 /* Pods-iyzicoSDK-dummy.m */; };
+		8356C3C725C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DD25C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.markdown */; };
+		8356C3C825C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DE25C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig */; };
+		8356C3C925C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DF25C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig */; };
 		8356C3CA25C7EA90001B5DD5 /* Manifest.lock in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2E125C7EA90001B5DD5 /* Manifest.lock */; };
 		8356C44025C7EA91001B5DD5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8356C3A125C7EA90001B5DD5 /* Podfile */; };
 		8356C44125C7EA91001B5DD5 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 8356C3A225C7EA90001B5DD5 /* Podfile.lock */; };
-		8356C44625C7EAB9001B5DD5 /* iyzi_co_test_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C3A525C7EA90001B5DD5 /* iyzi_co_test_framework.framework */; };
-		8356C44725C7EAB9001B5DD5 /* iyzi_co_test_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C3A525C7EA90001B5DD5 /* iyzi_co_test_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8356C46425C7EC3F001B5DD5 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46325C7EC3F001B5DD5 /* Lottie.framework */; };
 		8356C46525C7EC3F001B5DD5 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46325C7EC3F001B5DD5 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8356C46625C7EC42001B5DD5 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift.framework */; };
@@ -36,6 +34,8 @@
 		83C57D35257E333100209750 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83C57D33257E333100209750 /* LaunchScreen.storyboard */; };
 		83C57D40257E333200209750 /* iyzi_co_testAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C57D3F257E333200209750 /* iyzi_co_testAppTests.swift */; };
 		83C57D4B257E333200209750 /* iyzi_co_testAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C57D4A257E333200209750 /* iyzi_co_testAppUITests.swift */; };
+		83F34C7626EF8B8400ABAE5A /* iyzicoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F34C6626EF8AC600ABAE5A /* iyzicoSDK.framework */; };
+		83F34C7726EF8B8400ABAE5A /* iyzicoSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83F34C6626EF8AC600ABAE5A /* iyzicoSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,19 +60,12 @@
 			remoteGlobalIDString = F8437BE58881E63196CF1F80191B3E2F;
 			remoteInfo = SVGKit;
 		};
-		8356C3A425C7EA90001B5DD5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8356C2E425C7EA90001B5DD5 /* iyzi-co-test-framework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 83C57D10257E32E400209750;
-			remoteInfo = "iyzi-co-test-framework";
-		};
 		8356C3AA25C7EA90001B5DD5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8356C2B725C7EA90001B5DD5 /* Pods.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 7D5D743800FFB090AAD712282538E53D;
-			remoteInfo = "Pods-iyzi-co-test-framework";
+			remoteInfo = "Pods-iyzicoSDK";
 		};
 		8356C46025C7EC3F001B5DD5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -102,6 +95,13 @@
 			remoteGlobalIDString = 83C57D24257E332D00209750;
 			remoteInfo = "iyzi-co-testApp";
 		};
+		83F34C6526EF8AC600ABAE5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8356C2E425C7EA90001B5DD5 /* iyzicoSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83C57D10257E32E400209750;
+			remoteInfo = iyzicoSDK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -111,7 +111,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8356C44725C7EAB9001B5DD5 /* iyzi_co_test_framework.framework in Embed Frameworks */,
+				83F34C7726EF8B8400ABAE5A /* iyzicoSDK.framework in Embed Frameworks */,
 				8356C46725C7EC42001B5DD5 /* IQKeyboardManagerSwift.framework in Embed Frameworks */,
 				8352F73B26BD085300B2D965 /* SVGKit.framework in Embed Frameworks */,
 				8356C46525C7EC3F001B5DD5 /* Lottie.framework in Embed Frameworks */,
@@ -124,7 +124,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8356C2B525C7EA90001B5DD5 /* iyzi-co-test-framework.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = "iyzi-co-test-framework.xcworkspace"; sourceTree = "<group>"; };
+		8356C2B525C7EA90001B5DD5 /* iyzicoSDK.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = iyzicoSDK.xcworkspace; sourceTree = "<group>"; };
 		8356C2B725C7EA90001B5DD5 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pods.xcodeproj; sourceTree = "<group>"; };
 		8356C2D125C7EA90001B5DD5 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
 		8356C2D225C7EA90001B5DD5 /* Alamofire-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
@@ -133,16 +133,16 @@
 		8356C2D525C7EA90001B5DD5 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		8356C2D625C7EA90001B5DD5 /* Alamofire.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		8356C2D725C7EA90001B5DD5 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		8356C2D925C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-iyzi-co-test-framework-acknowledgements.plist"; sourceTree = "<group>"; };
-		8356C2DA25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-iyzi-co-test-framework-Info.plist"; sourceTree = "<group>"; };
-		8356C2DB25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Pods-iyzi-co-test-framework-dummy.m"; sourceTree = "<group>"; };
-		8356C2DC25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pods-iyzi-co-test-framework-umbrella.h"; sourceTree = "<group>"; };
-		8356C2DD25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Pods-iyzi-co-test-framework-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8356C2DE25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-iyzi-co-test-framework.release.xcconfig"; sourceTree = "<group>"; };
-		8356C2DF25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-iyzi-co-test-framework.debug.xcconfig"; sourceTree = "<group>"; };
-		8356C2E025C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "Pods-iyzi-co-test-framework.modulemap"; sourceTree = "<group>"; };
+		8356C2D925C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-iyzicoSDK-acknowledgements.plist"; sourceTree = "<group>"; };
+		8356C2DA25C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-iyzicoSDK-Info.plist"; sourceTree = "<group>"; };
+		8356C2DB25C7EA90001B5DD5 /* Pods-iyzicoSDK-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Pods-iyzicoSDK-dummy.m"; sourceTree = "<group>"; };
+		8356C2DC25C7EA90001B5DD5 /* Pods-iyzicoSDK-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pods-iyzicoSDK-umbrella.h"; sourceTree = "<group>"; };
+		8356C2DD25C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Pods-iyzicoSDK-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8356C2DE25C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-iyzicoSDK.release.xcconfig"; sourceTree = "<group>"; };
+		8356C2DF25C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-iyzicoSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		8356C2E025C7EA90001B5DD5 /* Pods-iyzicoSDK.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "Pods-iyzicoSDK.modulemap"; sourceTree = "<group>"; };
 		8356C2E125C7EA90001B5DD5 /* Manifest.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Manifest.lock; sourceTree = "<group>"; };
-		8356C2E425C7EA90001B5DD5 /* iyzi-co-test-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "iyzi-co-test-framework.xcodeproj"; sourceTree = "<group>"; };
+		8356C2E425C7EA90001B5DD5 /* iyzicoSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iyzicoSDK.xcodeproj; sourceTree = "<group>"; };
 		8356C3A125C7EA90001B5DD5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8356C3A225C7EA90001B5DD5 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		83C57D25257E332D00209750 /* iyzi-co-testApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iyzi-co-testApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8356C44625C7EAB9001B5DD5 /* iyzi_co_test_framework.framework in Frameworks */,
+				83F34C7626EF8B8400ABAE5A /* iyzicoSDK.framework in Frameworks */,
 				8356C46625C7EC42001B5DD5 /* IQKeyboardManagerSwift.framework in Frameworks */,
 				8352F73A26BD085300B2D965 /* SVGKit.framework in Frameworks */,
 				8356C46425C7EC3F001B5DD5 /* Lottie.framework in Frameworks */,
@@ -191,17 +191,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8356C2B425C7EA90001B5DD5 /* iyzi-co-test-framework */ = {
+		8356C2B425C7EA90001B5DD5 /* iyzicoSDK */ = {
 			isa = PBXGroup;
 			children = (
-				8356C2B525C7EA90001B5DD5 /* iyzi-co-test-framework.xcworkspace */,
-				8356C2E425C7EA90001B5DD5 /* iyzi-co-test-framework.xcodeproj */,
+				8356C2B525C7EA90001B5DD5 /* iyzicoSDK.xcworkspace */,
+				8356C2E425C7EA90001B5DD5 /* iyzicoSDK.xcodeproj */,
 				8356C3A125C7EA90001B5DD5 /* Podfile */,
 				8356C3A225C7EA90001B5DD5 /* Podfile.lock */,
 				8356C2B625C7EA90001B5DD5 /* Pods */,
 			);
-			name = "iyzi-co-test-framework";
-			path = "../iyzi-co-test-framework";
+			name = iyzicoSDK;
+			path = ../iyzicoSDK;
 			sourceTree = "<group>";
 		};
 		8356C2B625C7EA90001B5DD5 /* Pods */ = {
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				8356C2D025C7EA90001B5DD5 /* Alamofire */,
-				8356C2D825C7EA90001B5DD5 /* Pods-iyzi-co-test-framework */,
+				8356C2D825C7EA90001B5DD5 /* Pods-iyzicoSDK */,
 			);
 			path = "Target Support Files";
 			sourceTree = "<group>";
@@ -252,19 +252,19 @@
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
-		8356C2D825C7EA90001B5DD5 /* Pods-iyzi-co-test-framework */ = {
+		8356C2D825C7EA90001B5DD5 /* Pods-iyzicoSDK */ = {
 			isa = PBXGroup;
 			children = (
-				8356C2D925C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.plist */,
-				8356C2DA25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-Info.plist */,
-				8356C2DB25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-dummy.m */,
-				8356C2DC25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-umbrella.h */,
-				8356C2DD25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.markdown */,
-				8356C2DE25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.release.xcconfig */,
-				8356C2DF25C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.debug.xcconfig */,
-				8356C2E025C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.modulemap */,
+				8356C2D925C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist */,
+				8356C2DA25C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist */,
+				8356C2DB25C7EA90001B5DD5 /* Pods-iyzicoSDK-dummy.m */,
+				8356C2DC25C7EA90001B5DD5 /* Pods-iyzicoSDK-umbrella.h */,
+				8356C2DD25C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.markdown */,
+				8356C2DE25C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig */,
+				8356C2DF25C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig */,
+				8356C2E025C7EA90001B5DD5 /* Pods-iyzicoSDK.modulemap */,
 			);
-			path = "Pods-iyzi-co-test-framework";
+			path = "Pods-iyzicoSDK";
 			sourceTree = "<group>";
 		};
 		8356C2E225C7EA90001B5DD5 /* Local Podspecs */ = {
@@ -281,18 +281,10 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
-		8356C2E525C7EA90001B5DD5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8356C3A525C7EA90001B5DD5 /* iyzi_co_test_framework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		83C57D1C257E332D00209750 = {
 			isa = PBXGroup;
 			children = (
-				8356C2B425C7EA90001B5DD5 /* iyzi-co-test-framework */,
+				8356C2B425C7EA90001B5DD5 /* iyzicoSDK */,
 				83C57D27257E332D00209750 /* iyzi-co-testApp */,
 				83C57D3E257E333200209750 /* iyzi-co-testAppTests */,
 				83C57D49257E333200209750 /* iyzi-co-testAppUITests */,
@@ -347,6 +339,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83F34C6226EF8AC600ABAE5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83F34C6626EF8AC600ABAE5A /* iyzicoSDK.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,8 +441,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8356C2E525C7EA90001B5DD5 /* Products */;
-					ProjectRef = 8356C2E425C7EA90001B5DD5 /* iyzi-co-test-framework.xcodeproj */;
+					ProductGroup = 83F34C6226EF8AC600ABAE5A /* Products */;
+					ProjectRef = 8356C2E425C7EA90001B5DD5 /* iyzicoSDK.xcodeproj */;
 				},
 				{
 					ProductGroup = 8356C2B825C7EA90001B5DD5 /* Products */;
@@ -480,13 +480,6 @@
 			remoteRef = 8352F73826BD084F00B2D965 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8356C3A525C7EA90001B5DD5 /* iyzi_co_test_framework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = iyzi_co_test_framework.framework;
-			remoteRef = 8356C3A425C7EA90001B5DD5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		8356C3AB25C7EA90001B5DD5 /* Pods_iyzi_co_test_framework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -508,6 +501,13 @@
 			remoteRef = 8356C46225C7EC3F001B5DD5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		83F34C6626EF8AC600ABAE5A /* iyzicoSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = iyzicoSDK.framework;
+			remoteRef = 83F34C6526EF8AC600ABAE5A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -516,17 +516,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8356C3CA25C7EA90001B5DD5 /* Manifest.lock in Resources */,
-				8356C3C725C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.markdown in Resources */,
+				8356C3C725C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.markdown in Resources */,
 				83C57D35257E333100209750 /* LaunchScreen.storyboard in Resources */,
 				83C57D32257E333100209750 /* Assets.xcassets in Resources */,
 				8356C44125C7EA91001B5DD5 /* Podfile.lock in Resources */,
-				8356C3C825C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.release.xcconfig in Resources */,
-				8356C3AC25C7EA90001B5DD5 /* iyzi-co-test-framework.xcworkspace in Resources */,
-				8356C3C925C7EA90001B5DD5 /* Pods-iyzi-co-test-framework.debug.xcconfig in Resources */,
+				8356C3C825C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig in Resources */,
+				8356C3AC25C7EA90001B5DD5 /* iyzicoSDK.xcworkspace in Resources */,
+				8356C3C925C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig in Resources */,
 				83C57D30257E332D00209750 /* Main.storyboard in Resources */,
 				8356C44025C7EA91001B5DD5 /* Podfile in Resources */,
-				8356C3C425C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-acknowledgements.plist in Resources */,
-				8356C3C525C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-Info.plist in Resources */,
+				8356C3C425C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist in Resources */,
+				8356C3C525C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +553,7 @@
 			files = (
 				83C57D2D257E332D00209750 /* ViewController.swift in Sources */,
 				83C57D29257E332D00209750 /* AppDelegate.swift in Sources */,
-				8356C3C625C7EA90001B5DD5 /* Pods-iyzi-co-test-framework-dummy.m in Sources */,
+				8356C3C625C7EA90001B5DD5 /* Pods-iyzicoSDK-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
