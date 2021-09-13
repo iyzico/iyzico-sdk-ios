@@ -203,7 +203,7 @@ extension MainVC {
     //            self?.iyzicoNavBar.iyzicoBalanceAmountLabel.text = response?.amount?.addTL
                 self?.iyzicoNavBar.iyzicoBalanceAmountLabel.text = response?.amount?.addTLWithNoDots
             }, onFailure: { errorDescription in
-                Iyzico.delegate?.didOperationFailed(state: .error, message: InternalMessageState.error.message)
+                Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
             })
         default:
             break

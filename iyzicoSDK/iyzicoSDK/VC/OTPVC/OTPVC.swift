@@ -501,7 +501,7 @@ extension OTPVC {
         onFailure: { [weak self] errorDescription in
             self?.showError(errorDescription: errorDescription)
             self?.removeTextFieldInputs()
-            Iyzico.delegate?.didOperationFailed(state: .error, message: InternalMessageState.error.message)
+            Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
         })
     }
     
@@ -515,7 +515,7 @@ extension OTPVC {
                 self?.configureSmsSendedView()
             }, onFailure: { [weak self] errorDescription in
                 self?.showError(errorDescription: errorDescription)
-                Iyzico.delegate?.didOperationFailed(state: .error, message: InternalMessageState.error.message)
+                Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
             })
         default:
             break

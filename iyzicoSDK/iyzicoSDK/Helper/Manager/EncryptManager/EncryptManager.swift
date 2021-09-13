@@ -35,12 +35,12 @@ class EncryptManager {
         let dataToEncrypt = salt + payload
         guard let validatedClientId = SDKManager.clientId else {
             Iyzico.delegate?.didOperationFailed(state: .clientIdError,
-                                                message: InternalMessageState.clientIdError.message)
+                                                message: ResultCode.clientIdError.message)
             return ""
         }
         guard let validatedClientSecret = SDKManager.clientSecretKey else {
             Iyzico.delegate?.didOperationFailed(state: .clientSecretKeyError,
-                                                message: InternalMessageState.clientSecretKeyError.message)
+                                                message: ResultCode.clientSecretKeyError.message)
             return ""
         }
         
@@ -48,13 +48,13 @@ class EncryptManager {
             
             guard let validatedMerchantApiKey = SDKManager.merchantApiKey else {
                 Iyzico.delegate?.didOperationFailed(state: .merchantApiKeyError,
-                                                    message: InternalMessageState.merchantApiKeyError.message)
+                                                    message: ResultCode.merchantApiKeyError.message)
                 return ""
             }
             
             guard let validatedMerchantSecretKey = SDKManager.merchantSecretKey else {
                 Iyzico.delegate?.didOperationFailed(state: .merchantSecretKeyError,
-                                                    message: InternalMessageState.merchantSecretKeyError.message)
+                                                    message: ResultCode.merchantSecretKeyError.message)
                 return ""
             }
             

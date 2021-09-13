@@ -179,7 +179,7 @@ enum EftDetailVCTypeEnum: Int {
     case transfer
 }
 //MARK: - INTERNAL MESSAGE
-public enum InternalMessageState: Int, CaseIterable {
+public enum ResultCode: Int, CaseIterable {
     case success = 1
     case error = 2
     case timeOut = 3
@@ -459,8 +459,8 @@ enum CardNameTypes: String, CaseIterable, Codable {
 }
 
 public enum Language: String, CaseIterable {
-    case tr = "tr"
-    case en = "en"
+    case TURKISH = "tr"
+    case ENGLISH = "en"
 }
 
 public enum Currency: String, CaseIterable {

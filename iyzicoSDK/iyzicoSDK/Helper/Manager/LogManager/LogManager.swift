@@ -16,7 +16,7 @@ class LogManager {
         print("💡[\(dateString)]-[Iyzico]: \(log)")
     }
     
-    static func printLogForIyzicoInternalMessage(state: InternalMessageState) {
+    static func printLogForIyzicoInternalMessage(state: ResultCode) {
         switch state {
         case .success:
             print("✅")

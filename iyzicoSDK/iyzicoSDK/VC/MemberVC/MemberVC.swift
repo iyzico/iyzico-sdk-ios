@@ -131,7 +131,7 @@ class MemberVC: BaseVC {
         },
         onFailure: { [weak self] errorDescription in
             self?.showError(errorDescription: errorDescription)
-            Iyzico.delegate?.didOperationFailed(state: .error, message: InternalMessageState.error.message)
+            Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
         })
     }
     

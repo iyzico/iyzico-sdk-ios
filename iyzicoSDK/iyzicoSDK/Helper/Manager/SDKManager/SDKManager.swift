@@ -9,10 +9,10 @@ import UIKit
 
 fileprivate struct SDKConfigurationModel {
     let configValue: String?
-    let errorValue: InternalMessageState
+    let errorValue: ResultCode
     
     init(configValue: String?,
-         errorValue: InternalMessageState) {
+         errorValue: ResultCode) {
         self.configValue = configValue
         self.errorValue = errorValue
     }
@@ -28,9 +28,7 @@ class SDKManager: Iyzico {
     static var productId: String?
     static var walletPrice: Double?
     static var phone: String?
-    static var addressType: String?
     static var addressDescription: String?
-    static var productImage: UIImage?
     static var name: String?
     static var surname: String?
     static var PWIrequest = PWIinitRequestModel()
@@ -56,7 +54,7 @@ class SDKManager: Iyzico {
     }
     
     static func checkSDKConfigurations(success: () -> Void,
-                                       failure: (_ state: InternalMessageState) -> Void) {
+                                       failure: (_ state: ResultCode) -> Void) {
         
         var flowError = false
         
@@ -96,7 +94,7 @@ class SDKManager: Iyzico {
     }
     
     private static func checkFlowValues(success: () -> Void,
-                                        failure: (_ state: InternalMessageState) -> Void) {
+                                        failure: (_ state: ResultCode) -> Void) {
         let configModelArray = [SDKConfigurationModel(configValue: brand, errorValue: .brandError),
                                 SDKConfigurationModel(configValue: price?.description, errorValue: .priceError),
                                 SDKConfigurationModel(configValue: email, errorValue: .emailError),
@@ -179,7 +177,7 @@ class SDKManager: Iyzico {
     }
     
     private static func handleFlowValues(success: () -> Void,
-                                         failure: (_ state: InternalMessageState) -> Void,
+                                         failure: (_ state: ResultCode) -> Void,
                                          configModels: [SDKConfigurationModel]) {
         for i in configModels {
             if let validatedConfigValue = i.configValue,

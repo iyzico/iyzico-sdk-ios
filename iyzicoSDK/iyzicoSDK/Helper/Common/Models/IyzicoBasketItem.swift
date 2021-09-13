@@ -7,16 +7,16 @@
 
 import Foundation
 
-public struct BasketItem {
+public struct IyzicoBasketItem {
     
     public let id, price, name, category1: String?
     public let itemType: String?
     
-    public init(id: String?, price: String?, name: String?, category1: String?, itemType: String?) {
-        self.id = id
+    public init(itemCategory: String, productId: String?, itemType: String, itemName: String, price: String?) {
+        self.id = productId
         self.price = price
-        self.name = name
-        self.category1 = category1
+        self.name = itemType
+        self.category1 = itemCategory
         self.itemType = itemType
     }
     

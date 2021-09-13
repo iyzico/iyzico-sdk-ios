@@ -134,7 +134,7 @@ class IyzicoHomeVM: BaseVM {
     func getRetrievePWI(onSuccess: @escaping (PWIRetieveResponseModel?) -> Void,
                   onFailure: @escaping (String?) -> Void) {
         
-        let requestModel = PWIRetrieveRequestModel(checkoutToken: navigatedInitializeResponse?.checkoutToken, locale: Language.tr.rawValue)
+        let requestModel = PWIRetrieveRequestModel(checkoutToken: navigatedInitializeResponse?.checkoutToken, locale: Language.TURKISH.rawValue)
         
         Networking.request(router: PWIRouter.retrievePWI(requestModel: requestModel))
         { [weak self] (response: BaseResponse<PWIRetieveResponseModel>?) in
@@ -150,7 +150,7 @@ class IyzicoHomeVM: BaseVM {
         onSuccess: @escaping (InstallmentResponseModel?) -> Void,
                         onFailure: @escaping (String?) -> Void) {
   
-        let requestModel = InstallmentRequestModel(locale: Language.tr.rawValue, price: price, binNumber: binNumber)
+        let requestModel = InstallmentRequestModel(locale: Language.TURKISH.rawValue, price: price, binNumber: binNumber)
         Networking.request(router: PWIRouter.retrieveInstallments(requestModel: requestModel),shouldShowLoading: shouldShowLoading)
         { [weak self] (response: InstallmentResponseModel) in
             

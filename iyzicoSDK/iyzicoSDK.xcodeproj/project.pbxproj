@@ -140,7 +140,6 @@
 		77F6242B2624661F0054DF95 /* GsmUpdateResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6242A2624661F0054DF95 /* GsmUpdateResponseModel.swift */; };
 		830A224526B7FF8A00444DCD /* PWIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A224426B7FF8A00444DCD /* PWIRouter.swift */; };
 		830A224926B7FFE800444DCD /* PWIinitRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A224826B7FFE800444DCD /* PWIinitRequestModel.swift */; };
-		830A224F26B81C5F00444DCD /* BasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A224E26B81C5F00444DCD /* BasketItem.swift */; };
 		830A225226B81C8100444DCD /* PWIAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A225126B81C8100444DCD /* PWIAddress.swift */; };
 		830A225526B81CA200444DCD /* Buyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A225426B81CA200444DCD /* Buyer.swift */; };
 		830A225826B8288900444DCD /* PWIinitResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A225726B8288900444DCD /* PWIinitResponseModel.swift */; };
@@ -153,9 +152,9 @@
 		83490DDF258E14EA0028BA90 /* IyzicoNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83490DDE258E14EA0028BA90 /* IyzicoNavBar.swift */; };
 		83490DE3258E14F80028BA90 /* IyzicoNavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83490DE2258E14F80028BA90 /* IyzicoNavBar.xib */; };
 		83490DE7258E73DA0028BA90 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83490DE6258E73DA0028BA90 /* Timer.swift */; };
-		834CBAB0257F831B006A1F4B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		834CBABB257F8DAD006A1F4B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		834CBAC3257F95E7006A1F4B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		834CBAB0257F831B006A1F4B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		834CBABB257F8DAD006A1F4B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		834CBAC3257F95E7006A1F4B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		834DCAAE25C01B0A0024CFC6 /* CreditCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DCAAC25C01B0A0024CFC6 /* CreditCardCell.swift */; };
 		834DCAAF25C01B0A0024CFC6 /* CreditCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834DCAAD25C01B0A0024CFC6 /* CreditCardCell.xib */; };
 		834DCAB425C02E250024CFC6 /* NewCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DCAB225C02E250024CFC6 /* NewCardCell.swift */; };
@@ -211,7 +210,7 @@
 		8354525D25C3672D0090E506 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354525C25C3672D0090E506 /* Protocol.swift */; };
 		8354727D26CBEED3007482A1 /* InstallmentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354727B26CBEED3007482A1 /* InstallmentTableCell.swift */; };
 		8354727E26CBEED3007482A1 /* InstallmentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8354727C26CBEED3007482A1 /* InstallmentTableCell.xib */; };
-		83547CC62580B5C00027E596 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		83547CC62580B5C00027E596 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		83547CF22580C0210027E596 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83547CF12580C0210027E596 /* UIViewExtension.swift */; };
 		83547CFA2580C0300027E596 /* IyzicoTextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83547CF52580C0300027E596 /* IyzicoTextArea.swift */; };
 		83547CFB2580C0300027E596 /* IyzicoTextArea.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83547CF62580C0300027E596 /* IyzicoTextArea.xib */; };
@@ -252,6 +251,7 @@
 		83D4D386258CD13700EBC93F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4D385258CD13700EBC93F /* BaseVC.swift */; };
 		83D4D3A1258CFE5C00EBC93F /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4D3A0258CFE5C00EBC93F /* Enum.swift */; };
 		83D4D3A5258D330C00EBC93F /* String-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4D3A4258D330C00EBC93F /* String-Extension.swift */; };
+		90D7B83826EF9B36006BB8C8 /* IyzicoBasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7B83726EF9B36006BB8C8 /* IyzicoBasketItem.swift */; };
 		FE406681A80B76532DD40FA8 /* Pods_iyzicoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F24765FD1AEE7834C5D3BA /* Pods_iyzicoSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -392,7 +392,6 @@
 		7D7CABA3472368EB1DD2779B /* Pods-iyzicoSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iyzicoSDK.release.xcconfig"; path = "Target Support Files/Pods-iyzicoSDK/Pods-iyzicoSDK.release.xcconfig"; sourceTree = "<group>"; };
 		830A224426B7FF8A00444DCD /* PWIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWIRouter.swift; sourceTree = "<group>"; };
 		830A224826B7FFE800444DCD /* PWIinitRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWIinitRequestModel.swift; sourceTree = "<group>"; };
-		830A224E26B81C5F00444DCD /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
 		830A225126B81C8100444DCD /* PWIAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWIAddress.swift; sourceTree = "<group>"; };
 		830A225426B81CA200444DCD /* Buyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buyer.swift; sourceTree = "<group>"; };
 		830A225726B8288900444DCD /* PWIinitResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWIinitResponseModel.swift; sourceTree = "<group>"; };
@@ -502,6 +501,7 @@
 		83D4D385258CD13700EBC93F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		83D4D3A0258CFE5C00EBC93F /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		83D4D3A4258D330C00EBC93F /* String-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Extension.swift"; sourceTree = "<group>"; };
+		90D7B83726EF9B36006BB8C8 /* IyzicoBasketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IyzicoBasketItem.swift; sourceTree = "<group>"; };
 		DE08948C6670CDD1A5E6B40D /* Pods-iyzicoSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iyzicoSDK.debug.xcconfig"; path = "Target Support Files/Pods-iyzicoSDK/Pods-iyzicoSDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -925,8 +925,8 @@
 		77A7D65E2604A6620020CC70 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				90D7B83726EF9B36006BB8C8 /* IyzicoBasketItem.swift */,
 				77A7D65F2604A66C0020CC70 /* AttributedStringModel.swift */,
-				830A224E26B81C5F00444DCD /* BasketItem.swift */,
 				830A225126B81C8100444DCD /* PWIAddress.swift */,
 				830A225426B81CA200444DCD /* Buyer.swift */,
 			);
@@ -1897,7 +1897,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		8E470F461A7DB68A4EC29D1F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1929,7 +1930,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77EC402325D3CD0500F6CB89 /* LogManager.swift in Sources */,
-				834CBAC3257F95E7006A1F4B /* BuildFile in Sources */,
+				834CBAC3257F95E7006A1F4B /* (null) in Sources */,
 				77EC404D25D5147500F6CB89 /* ParametersEncoding.swift in Sources */,
 				77C6F96F261AF83000CCFB8C /* DepositsRouter.swift in Sources */,
 				8328FDB22587735B003EB812 /* Image.swift in Sources */,
@@ -1944,7 +1945,7 @@
 				7753EEBF25F0C0B000B010D8 /* CashoutCompleteResponseModel.swift in Sources */,
 				778C5F4925F0FB9900051FCE /* RegisterRouter.swift in Sources */,
 				7753EEB225F0BBF600B010D8 /* TransferVM.swift in Sources */,
-				834CBABB257F8DAD006A1F4B /* BuildFile in Sources */,
+				834CBABB257F8DAD006A1F4B /* (null) in Sources */,
 				77968D5025EF7A34001DB14B /* BaseRequest.swift in Sources */,
 				777F16C625C2A3AA00729055 /* IyzicoProductInfoView.swift in Sources */,
 				775EB1BB25F7497700412A8A /* SmsResendRequestModel.swift in Sources */,
@@ -1977,7 +1978,7 @@
 				8351E02025821FBF0097ACAA /* IyzicoTermAndCond.swift in Sources */,
 				48ACF9D32590B88D0087351A /* OTPVC.swift in Sources */,
 				77BFE2F226390F9E007652A6 /* ProtectedBankAccountsQueryRequestModel.swift in Sources */,
-				83547CC62580B5C00027E596 /* BuildFile in Sources */,
+				83547CC62580B5C00027E596 /* (null) in Sources */,
 				835240C125C3ED8D00A420EE /* UserManager.swift in Sources */,
 				834DCAAE25C01B0A0024CFC6 /* CreditCardCell.swift in Sources */,
 				835319A226BA7B590006C971 /* PayWithBalanceRequestModel.swift in Sources */,
@@ -2038,11 +2039,12 @@
 				778C5F4C25F0FB9E00051FCE /* CashoutRouter.swift in Sources */,
 				775EB1C225F7505700412A8A /* BalancesQueryRequestModel.swift in Sources */,
 				77968D4D25EF7A2D001DB14B /* BaseResponse.swift in Sources */,
-				834CBAB0257F831B006A1F4B /* BuildFile in Sources */,
+				834CBAB0257F831B006A1F4B /* (null) in Sources */,
 				77A85EA82614B2E800336CDC /* ResultVM.swift in Sources */,
 				83490DE7258E73DA0028BA90 /* Timer.swift in Sources */,
 				835319AE26BA8CEF0006C971 /* MixedPaymentWithSavedCardResponseModel.swift in Sources */,
 				8350481C26B93410002BB779 /* PWIRetieveResponseModel.swift in Sources */,
+				90D7B83826EF9B36006BB8C8 /* IyzicoBasketItem.swift in Sources */,
 				778C5F4625F0FB5B00051FCE /* LoginRouter.swift in Sources */,
 				77C9367C25C06ADD003532E2 /* UITableView+Extension.swift in Sources */,
 				8354525D25C3672D0090E506 /* Protocol.swift in Sources */,
@@ -2084,7 +2086,6 @@
 				83D4D386258CD13700EBC93F /* BaseVC.swift in Sources */,
 				77968D4825EF799D001DB14B /* SMSModel.swift in Sources */,
 				77BFE2FB2639155A007652A6 /* IyzicoEFTDetailVM.swift in Sources */,
-				830A224F26B81C5F00444DCD /* BasketItem.swift in Sources */,
 				835492A325927C55004FEFDD /* NotificationName-Extension.swift in Sources */,
 				83547D042580C89B0027E596 /* LabelExtension.swift in Sources */,
 				830A224926B7FFE800444DCD /* PWIinitRequestModel.swift in Sources */,

@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol IyzicoDelegate: class {
-    func didOperationSuccess(state: InternalMessageState, message: String)
-    func didOperationFailed(state: InternalMessageState, message: String)
+    func didOperationSuccess(message: String)
+    func didOperationFailed(state: ResultCode, message: String)
 }
