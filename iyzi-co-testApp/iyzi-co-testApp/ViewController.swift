@@ -27,8 +27,8 @@ class ViewController: UIViewController {
                                  language: .TURKISH)
         Iyzico.shared.startTopUp(buyerEmail: "iyzicotest10000@email.com", //msahincakir34+02042021@gmail.com
                                  buyerPhone: "+90 555 555 55 55",
-                                 buyerName: nil,
-                                 buyerSurname: nil)
+                                 buyerName: "nil",
+                                 buyerSurname: "nil")
         //        Iyzico.shared.startTopUp(email: "msahincakir34+23032021@gmail.com",
         //                                 phone: "+90 531 860 52 05",
         //                                 brand: "Lidyana.com",
@@ -46,8 +46,8 @@ class ViewController: UIViewController {
         Iyzico.shared.startSettlement(buyerEmail: "iyzicotest100001@gmail.com",
                                       buyerPhone: "+90 555 555 55 55",
                                       walletPrice: 21.00,
-                                      buyerName: nil,
-                                      buyerSurname: nil)
+                                      buyerName: "nil",
+                                      buyerSurname: "nil")
         //        Iyzico.shared.startSettlement(email: "msahincakir34+23032021@gmail.com",
         //                                      phone: "+90 555 555 55 55",
         //                                      walletPrice: "21.00",
@@ -65,8 +65,8 @@ class ViewController: UIViewController {
         Iyzico.shared.startRefund(buyerEmail: "iyzicotest100002@gmail.com",
                                   buyerPhone: "+90 555 555 55 55",
                                   productId: "123456",
-                                  buyerName: nil,
-                                  buyerSurname: nil)
+                                  buyerName: "nil",
+                                  buyerSurname: "nil")
         //        Iyzico.shared.startRefund(email: "msahincakir34+23032021@gmail.com",
         //                                  phone: "+90 555 555 55 55",
         //                                  productId: "123456",
@@ -86,8 +86,8 @@ class ViewController: UIViewController {
             buyerEmail: "iyzicotest100003@email.com", //newuser1234@gmail.com
             buyerPhone: "+90 555 555 55 55",
             walletPrice: 800.00,
-            buyerName: nil,
-            buyerSurname: nil
+            buyerName: "nil",
+            buyerSurname: "nil"
         )
     }
     
@@ -107,10 +107,10 @@ class ViewController: UIViewController {
             brand: "Lidyana.com",
             price: 50.0,
             paidPrice: 51.0,
-            currency: Currency.EUR,
+            currency: Currency.TRY,
             enabledInstallments: [1],
             basketId: "B67832",
-            paymentGroup: .PRODUCT,
+            paymentGroup: nil,
             paymentSource: "MOBILE_SDK",
             urlCallback: "https://www.merchant.com/callback",
             buyerId: "BY789",

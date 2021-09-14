@@ -133,7 +133,6 @@ class SDKManager: Iyzico {
         case .topUp:
             configModelArrayByFlow = [configModelArray[2],
                                       configModelArray[5],
-                                      configModelArray[0],
                                       configModelArray[6],
                                       configModelArray[7]]
         case .settlement:

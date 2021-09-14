@@ -478,6 +478,7 @@ extension OTPVC {
             vc.viewModel.isUserNavigatedFromOTP = true
             vc.viewModel.initializeResponse = viewModel.navigatedInitializeResponse
             vc.viewModel.registerInitializeResponse = viewModel.navigatedRegisterInitializeResponse
+            vc.viewModel.loginInitializeResponse = viewModel.navigatedLoginInitializeResponse
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = NewMemberVC(vcType: SDKManager.flow)
