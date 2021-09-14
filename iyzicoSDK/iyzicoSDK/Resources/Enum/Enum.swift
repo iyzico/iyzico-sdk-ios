@@ -180,7 +180,7 @@ enum EftDetailVCTypeEnum: Int {
 }
 //MARK: - INTERNAL MESSAGE
 public enum ResultCode: Int, CaseIterable {
-    case success = 1
+    case languageError = 1
     case error = 2
     case timeOut = 3
     case phoneError = 4
@@ -209,9 +209,9 @@ public enum ResultCode: Int, CaseIterable {
     case buyerPhoneError = 27
     case buyerIPError = 28
     case buyerRegistrationAddressError = 29
-    case buyerZipCodeError = 30
-    case buyerRegistrationDateError = 31
-    case buyerLastLoginDateError = 32
+    case closedTransactionError = 30
+    case basketProductPriceError = 31
+    case basketProductItemTypeError = 32
     case billingContactNameError = 33
     case billingCityError = 34
     case shippingCountryError = 35
@@ -225,10 +225,7 @@ public enum ResultCode: Int, CaseIterable {
     case shippingContactNameError = 43
     case shippingCityError = 44
     case billingCountryError = 45
-    case languageError = 46
-    case closedTransactionError = 47
-    case basketProductPriceError = 48
-    case basketProductItemTypeError = 49
+    case success = 99
     
     
     
@@ -292,12 +289,6 @@ public enum ResultCode: Int, CaseIterable {
                 return StringConstant.shared.buyerIPError
             case .buyerRegistrationAddressError:
                 return StringConstant.shared.buyerRegistrationAddressError
-            case .buyerZipCodeError:
-                return StringConstant.shared.buyerZipCodeError
-            case .buyerRegistrationDateError:
-                return StringConstant.shared.buyerRegistrationDateError
-            case .buyerLastLoginDateError:
-                return StringConstant.shared.buyerLastLoginDateError
             case .billingContactNameError:
                 return StringConstant.shared.billingContactNameError
             case .billingCityError:

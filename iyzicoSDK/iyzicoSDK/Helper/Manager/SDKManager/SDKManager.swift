@@ -28,7 +28,6 @@ class SDKManager: Iyzico {
     static var productId: String?
     static var walletPrice: Double?
     static var phone: String?
-    static var addressDescription: String?
     static var name: String?
     static var surname: String?
     static var PWIrequest = PWIinitRequestModel()
@@ -191,14 +190,14 @@ class SDKManager: Iyzico {
                 return
             }
         }
-//        if flow == .payWithIyzico {
-//            if PWIrequest.enabledInstallments?.count == .zero {
-//                Iyzico.delegate?.didOperationFailed(state: InternalMessageState.enabledinstallmentError,
-//                                                    message: InternalMessageState.enabledinstallmentError.message)
-//                failure(InternalMessageState.enabledinstallmentError)
-//                return
-//            }
-//        }
+        if flow == .payWithIyzico {
+            if PWIrequest.enabledInstallments?.count == .zero {
+                Iyzico.delegate?.didOperationFailed(state: ResultCode.enabledinstallmentError,
+                                                    message: ResultCode.enabledinstallmentError.message)
+                failure(ResultCode.enabledinstallmentError)
+                return
+            }
+        }
 
         
         success()

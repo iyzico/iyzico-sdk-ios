@@ -43,10 +43,10 @@ extension Iyzico {
         brand: String,
         price: Double,
         paidPrice: Double,
-        currency: Currency,
-        enabledInstallments: [Int]? = nil,
+        currency: Currency = Currency.TRY,
+        enabledInstallments: [Int],
         basketId: String,
-        paymentGroup: PaymentGroup? = .PRODUCT,
+        paymentGroup: PaymentGroup? = .PRODUCT, //null olabilir
         paymentSource: String,
         urlCallback: String,
         buyerId: String,
@@ -59,7 +59,7 @@ extension Iyzico {
         buyerPhone: String,
         buyerIp: String,
         buyerRegistrationAddress: String,
-        buyerZipCode: String,
+        //buyerZipCode: String,
         buyerRegistrationDate: String,
         buyerLastLoginDate: String,
         billingContactName: String,
@@ -70,11 +70,11 @@ extension Iyzico {
         shippingCity: String,
         shippingCountry: String,
         shippingAddress: String,
-        itemType: String,
-        itemName: String,
-        itemCategory: String,
-        productId: String?,
-        addressDescription: String?,
+        //itemType: String,
+        //itemName: String,
+        //itemCategory: String,
+        //productId: String?,
+        //addressDescription: String?,
         basketItemList: [IyzicoBasketItem]
     ) {
 
@@ -83,7 +83,6 @@ extension Iyzico {
         SDKManager.price = paidPrice//price
         SDKManager.email = buyerEmail.lowercased()
         SDKManager.phone = buyerPhone.addWhitespacesToPhone
-        SDKManager.addressDescription = addressDescription
         SDKManager.name = buyerName
         SDKManager.surname = buyerSurname
         
