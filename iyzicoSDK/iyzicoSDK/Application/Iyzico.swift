@@ -39,7 +39,7 @@ public class Iyzico {
 //MARK: - Flows
 extension Iyzico {
     
-    public func startPayWithIyziCo(
+    public func startPayWithIyzico(
         brand: String,
         price: Double,
         paidPrice: Double,

@@ -103,7 +103,7 @@ class ViewController: UIViewController {
             merchantSecretKey: "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
             language: .TURKISH)
    
-        Iyzico.shared.startPayWithIyziCo(
+        Iyzico.shared.startPayWithIyzico(
             brand: "Lidyana.com",
             price: 50.0,
             paidPrice: 51.0,
