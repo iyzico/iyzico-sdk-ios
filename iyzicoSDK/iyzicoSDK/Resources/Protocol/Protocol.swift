@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol IyzicoDelegate: class {
+public protocol IyzicoDelegate: AnyObject {
     func didOperationSuccess(message: String)
     func didOperationFailed(state: ResultCode, message: String)
 }

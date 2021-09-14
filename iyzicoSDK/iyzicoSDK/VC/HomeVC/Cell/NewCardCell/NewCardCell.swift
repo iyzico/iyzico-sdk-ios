@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol NewCardCellDelegate: class {
+protocol NewCardCellDelegate: AnyObject {
     func expandAddCard(cell: NewCardCell)
    // func didTappedAmountButton(priceCheckBox: IyzicoCheckBox)
     func didGetAllInputs(inputModels: [IyzicoTextInputModel])

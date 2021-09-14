@@ -14,7 +14,7 @@ enum CheckBoxType: Int {
     case check
 }
 
-protocol IyzicoCheckBoxDelegate: class {
+protocol IyzicoCheckBoxDelegate: AnyObject {
     func didTappedCheckBox(_ selected: Bool)
 }
 

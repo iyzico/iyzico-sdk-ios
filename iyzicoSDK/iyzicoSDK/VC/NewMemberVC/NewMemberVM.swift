@@ -30,7 +30,7 @@ class NewMemberVM: BaseVM {
         let model = loginInitializeResponse
         var userUuid: String?
         var referenceCode: String?
-        #warning("change in prod gms number")
+        #warning("change in prod gsm number")
         if model == nil {
             userUuid = registerInitializeResponse?.userUuid
             referenceCode = registerInitializeResponse?.referenceCode

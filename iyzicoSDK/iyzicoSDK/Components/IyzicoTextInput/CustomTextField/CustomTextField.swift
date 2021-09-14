@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-@objc protocol CustomTextFieldDelegate: class {
+@objc protocol CustomTextFieldDelegate: AnyObject {
     @objc optional func customDeleteBackward()
     @objc optional func didPastedText()
     @objc optional func shouldPasteText() -> Bool

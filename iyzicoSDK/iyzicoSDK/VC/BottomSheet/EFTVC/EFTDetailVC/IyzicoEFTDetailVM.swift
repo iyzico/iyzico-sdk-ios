@@ -25,7 +25,7 @@ extension IyzicoEFTDetailVM {
         let requestModel = PaymentBankTransferNotifyRequestModel(bankTransferPaymentID: bankTransferPaymentID)
         
         Networking.request(router: PWIRouter.paymentWithBankTransferNotify(requestModel: requestModel))
-        { [weak self] (response: PaymentBankTransferResponseModel) in
+        { (response: PaymentBankTransferResponseModel) in
             onSuccess(response)
         } failure: { (error, _) in
             onFailure(error)

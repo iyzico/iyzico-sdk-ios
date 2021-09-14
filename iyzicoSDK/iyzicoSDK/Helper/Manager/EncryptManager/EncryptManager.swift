@@ -88,23 +88,9 @@ class EncryptManager {
         return "IYZ-TP-v1 " + base64EncodedAuthorization
     }
     
-    private func getJsonString(httpBody: Data?) -> String {
-        do {
-//            let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: .sortedKeys)
-            return (String(data: httpBody!, encoding: .utf8) ?? "")
-        } catch {
-            print(error)
-        }
-    }
+    private func getJsonString(httpBody: Data?) -> String { String(data: httpBody!, encoding: .utf8) ?? "" }
     
-    private func encryptToHmacSHA256(clientSecret: String, message: String) -> String {
-        do {
-            let string = message.hmac(algorithm: .SHA256, key: clientSecret)
-            return string
-        } catch {
-            print(error)
-        }
-    }
+    private func encryptToHmacSHA256(clientSecret: String, message: String) -> String { message.hmac(algorithm: .SHA256, key: clientSecret) }
 }
 
 enum CryptoAlgorithm {

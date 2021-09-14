@@ -452,8 +452,6 @@ extension IyzicoTextInput: UITextFieldDelegate, CustomTextFieldDelegate {
             case .cardOwnerName:
                 shouldChangeCharactersIn?(updatedText)
                 return !ValidationManager.validate(text: updatedText.last?.description, regexType: .cardOwnerName)
-            default:
-                return true
             }
         }
     }

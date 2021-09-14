@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ResultCellDelegate: class {
+protocol ResultCellDelegate: AnyObject {
     func configureButtonsVisibility(_ seeBankInformationButtonVisibility: Bool,
                                     _ returnToAppButtonVisibility: Bool)
     func appStoreButtonTapped()

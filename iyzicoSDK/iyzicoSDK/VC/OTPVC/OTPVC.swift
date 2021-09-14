@@ -273,7 +273,6 @@ extension OTPVC {
            let vc = IyzicoHomeVC(vcType: .payWithIyzico)
             vc.iyzicoHomeVM.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
             navigationController?.pushViewController(vc, animated: true)
-        default: break
         }
     }
     func customizeForPayWithIyzico() {

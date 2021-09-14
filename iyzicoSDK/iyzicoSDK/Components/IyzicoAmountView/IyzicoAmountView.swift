@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IyzicoAmountViewDelegate: class {
+protocol IyzicoAmountViewDelegate: AnyObject {
     func textFieldDidEndEditing(_ textField: UITextField)
     func textFieldDidBeginEditing(_ textField: UITextField)
     func shouldChangeCharactersIn(_ textField: UITextField)
@@ -285,7 +285,7 @@ class IyzicoAmountView: BaseView, UITextFieldDelegate, CustomTextFieldDelegate {
     //This character variations can be changed on what user language is. Don't forget to change supported characters if app has more than that languages.
     private func checkForUserTryingToTapDecimalCharacters(textField: UITextField, replacementString: String) -> Bool {
         if replacementString == "," || replacementString == "." {
-            let endIndex = naturalNumberTextField.text?.count
+            //let endIndex = naturalNumberTextField.text?.count
 //            setCursorPosition(position: endIndex ?? getCommaLocation() + 1)
             setCursorPosition(position: getCommaLocation() + 1)
             return false

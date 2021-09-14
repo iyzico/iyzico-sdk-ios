@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol BaseVCDelegate: class {
+protocol BaseVCDelegate: AnyObject {
     func didTappedButtonOnKeyboard()
 }
 
