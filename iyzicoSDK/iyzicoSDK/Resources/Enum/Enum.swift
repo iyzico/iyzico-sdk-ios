@@ -457,7 +457,7 @@ public enum Language: String, CaseIterable {
 public enum Currency: String, CaseIterable {
     case TRY = "TRY"
     case USD = "USD"
-    case EURO = "EURO"
+    case EUR = "EUR"
     case GBP = "GBP"
     case IRR = "IRR"
 }

@@ -107,7 +107,7 @@ class ViewController: UIViewController {
             brand: "Lidyana.com",
             price: 50.0,
             paidPrice: 51.0,
-            currency: Currency.EURO,
+            currency: Currency.EUR,
             enabledInstallments: [1],
             basketId: "B67832",
             paymentGroup: .PRODUCT,
