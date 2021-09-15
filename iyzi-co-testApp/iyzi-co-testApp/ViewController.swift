@@ -9,14 +9,14 @@ import UIKit
 import iyzicoSDK
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Iyzico.delegate = self
         #warning("change in prod")
-       
+        
     }
-
+    
     //askdfjkfd90s0sd9@gmail.com gsm verified false at member vc
     @IBAction func topUpFlow(_ sender: Any) {
         #warning("change in prod")
@@ -36,43 +36,43 @@ class ViewController: UIViewController {
         //                                 surname: "Celik")
     }
     
-    @IBAction func settlementFlow(_ sender: Any) {
-        #warning("change in prod")
-        Iyzico.shared.initialize(clientIp: "127.0.0.1",
-                                 clientId: "qumpara",
-                                 clientSecret: "qumparaSecret",
-                                 baseUrl: "https://sandbox-consumerapigw.iyzipay.com",
-                                 language: .TURKISH)
-        Iyzico.shared.startSettlement(buyerEmail: "iyzicotest100001@gmail.com",
-                                      buyerPhone: "+90 555 555 55 55",
-                                      walletPrice: 21.00,
-                                      buyerName: "nil",
-                                      buyerSurname: "nil")
-        //        Iyzico.shared.startSettlement(email: "msahincakir34+23032021@gmail.com",
-        //                                      phone: "+90 555 555 55 55",
-        //                                      walletPrice: "21.00",
-        //                                      name: "Vural",
-        //                                      surname: "Celik")
-    }
+    //@IBAction func settlementFlow(_ sender: Any) {
+    //    #warning("change in prod")
+    //    Iyzico.shared.initialize(clientIp: "127.0.0.1",
+    //                             clientId: "qumpara",
+    //                             clientSecret: "qumparaSecret",
+    //                             baseUrl: "https://sandbox-consumerapigw.iyzipay.com",
+    //                             language: .TURKISH)
+    //    Iyzico.shared.startSettlement(buyerEmail: "iyzicotest100001@gmail.com",
+    //                                  buyerPhone: "+90 555 555 55 55",
+    //                                  walletPrice: 21.00,
+    //                                  buyerName: "nil",
+    //                                  buyerSurname: "nil")
+    //        Iyzico.shared.startSettlement(email: "msahincakir34+23032021@gmail.com",
+    //                                      phone: "+90 555 555 55 55",
+    //                                      walletPrice: "21.00",
+    //                                      name: "Vural",
+    //                                      surname: "Celik")
+    // }
     
-    @IBAction func refundFlow(_ sender: Any) {
-        #warning("change in prod")
-        Iyzico.shared.initialize(clientIp: "127.0.0.1",
-                                 clientId: "qumpara",
-                                 clientSecret: "qumparaSecret",
-                                 baseUrl: "https://sandbox-consumerapigw.iyzipay.com",
-                                 language: .TURKISH)
-        Iyzico.shared.startRefund(buyerEmail: "iyzicotest100002@gmail.com",
-                                  buyerPhone: "+90 555 555 55 55",
-                                  productId: "123456",
-                                  buyerName: "nil",
-                                  buyerSurname: "nil")
-        //        Iyzico.shared.startRefund(email: "msahincakir34+23032021@gmail.com",
-        //                                  phone: "+90 555 555 55 55",
-        //                                  productId: "123456",
-        //                                  name: "Vural",
-        //                                  surname: "Celik")
-    }
+    //@IBAction func refundFlow(_ sender: Any) {
+    //    #warning("change in prod")
+    //    Iyzico.shared.initialize(clientIp: "127.0.0.1",
+    //                             clientId: "qumpara",
+    //                             clientSecret: "qumparaSecret",
+    //                             baseUrl: "https://sandbox-consumerapigw.iyzipay.com",
+    //                             language: .TURKISH)
+    //    Iyzico.shared.startRefund(buyerEmail: "iyzicotest100002@gmail.com",
+    //                              buyerPhone: "+90 555 555 55 55",
+    //                              productId: "123456",
+    //                              buyerName: "nil",
+    //                              buyerSurname: "nil")
+    //        Iyzico.shared.startRefund(email: "msahincakir34+23032021@gmail.com",
+    //                                  phone: "+90 555 555 55 55",
+    //                                  productId: "123456",
+    //                                  name: "Vural",
+    //                                  surname: "Celik")
+    // }
     
     @IBAction func cashoutFlow(_ sender: Any) {
         #warning("change in prod")
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
             merchantApiKey: "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl",
             merchantSecretKey: "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
             language: .TURKISH)
-   
+        
         Iyzico.shared.startPayWithIyzico(
             brand: "Lidyana.com",
             price: 50.0,
