@@ -19,6 +19,14 @@ class BaseView: UIView {
     }
     
     func commonInit() {
-        
+        disableDarkMode()
+    }
+    
+    func disableDarkMode() {
+        if #available(iOS 13.0, *) {
+            self.overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }

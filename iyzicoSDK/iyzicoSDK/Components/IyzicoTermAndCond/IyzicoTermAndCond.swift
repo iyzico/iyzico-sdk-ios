@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class IyzicoTermAndCond: UIView {
+class IyzicoTermAndCond: BaseView {
     
     @IBOutlet weak var stackViewLeadingConst: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!

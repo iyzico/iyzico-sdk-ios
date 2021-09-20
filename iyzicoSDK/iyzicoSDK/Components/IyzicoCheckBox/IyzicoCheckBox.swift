@@ -18,7 +18,7 @@ protocol IyzicoCheckBoxDelegate: AnyObject {
     func didTappedCheckBox(_ selected: Bool)
 }
 
-class IyzicoCheckBox: UIView {
+class IyzicoCheckBox: BaseView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var frontImageView: UIImageView!

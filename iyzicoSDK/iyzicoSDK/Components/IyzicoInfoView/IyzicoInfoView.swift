@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class IyzicoInfoView: UIView {
+class IyzicoInfoView: BaseView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imageContentView: UIView!

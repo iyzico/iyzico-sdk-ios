@@ -29,9 +29,7 @@ class AlertManager: UIViewController {
         addBlur()
         setUpLoadingView()
         setupLottieView()
-        
-
-        
+        disableDarkMode()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +40,14 @@ class AlertManager: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeBlur()
+    }
+    
+    func disableDarkMode() {
+        if #available(iOS 13.0, *) {
+            self.overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
 }

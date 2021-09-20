@@ -33,6 +33,11 @@ public class Iyzico {
         
         //MARK: - Disable constraint error messages from console
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+        if #available(iOS 13.0, *) {
+            presentedVC?.overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 

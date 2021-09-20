@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IyzicoTextInput: UIView {
+class IyzicoTextInput: BaseView {
     @IBOutlet weak var titleContainerStackView: UIStackView!
     @IBOutlet weak var stackViewLeftConst: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!

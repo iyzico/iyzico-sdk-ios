@@ -29,6 +29,7 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
         hideNavigationBar()
         addAllObservers()
+        disableDarkMode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -186,6 +187,14 @@ class BaseVC: UIViewController {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func disableDarkMode() {
+        if #available(iOS 13.0, *) {
+            self.overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IyzicoSeperatorView: UIView {
+class IyzicoSeperatorView: BaseView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,7 +19,8 @@ class IyzicoSeperatorView: UIView {
         commonInit()
     }
     
-    func commonInit() {
+    override func commonInit() {
+        super.commonInit()
         setupUI()
     }
     

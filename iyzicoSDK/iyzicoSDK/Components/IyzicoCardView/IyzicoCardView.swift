@@ -13,7 +13,7 @@ enum CardType: Int {
     case account
 }
 
-class IyzicoCardView: UIView {
+class IyzicoCardView: BaseView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var leftImageView: UIImageView!

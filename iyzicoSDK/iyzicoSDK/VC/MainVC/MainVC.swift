@@ -22,6 +22,7 @@ class MainVC: UIViewController {
         addRootViewController()
         addObservers()
         initializeEvents()
+        disableDarkMode()
         self.presentationController?.delegate = self
     }
     
@@ -36,6 +37,13 @@ class MainVC: UIViewController {
         
     }
     
+   private func disableDarkMode() {
+        if #available(iOS 13.0, *) {
+            self.overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
 }
 

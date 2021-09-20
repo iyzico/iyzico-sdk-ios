@@ -31,7 +31,7 @@ enum IyzicoButtonType {
 }
 
 //@IBDesignable
-public class IyzicoButton: UIView {
+ class IyzicoButton: BaseView {
     
     @IBOutlet weak var labelView: UIView!
     @IBOutlet weak var image: UIView!

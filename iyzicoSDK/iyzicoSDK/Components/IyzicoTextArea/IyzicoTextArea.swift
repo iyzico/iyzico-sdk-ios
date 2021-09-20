@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class IyzicoTextArea: UIView {
+class IyzicoTextArea: BaseView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!

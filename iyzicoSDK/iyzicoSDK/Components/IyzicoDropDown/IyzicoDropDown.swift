@@ -14,7 +14,7 @@ enum DropdownType: Int {
     case card
 }
 
-class IyzicoDropDown: UIView {
+class IyzicoDropDown: BaseView {
     
    // public static let shared = IyzicoDropDown()
     @IBOutlet weak var dropDownViewHeight: NSLayoutConstraint!

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class IyzicoNavBar: UIView {
+class IyzicoNavBar: BaseView {
     @IBOutlet weak var headerContainerStackView: UIStackView!
     @IBOutlet weak var titleImageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
