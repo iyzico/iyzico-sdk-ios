@@ -223,7 +223,7 @@
 				8352F73726BD084F00B2D965 /* CocoaLumberjack.framework */,
 				8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift.framework */,
 				8356C46325C7EC3F001B5DD5 /* Lottie.framework */,
-				8356C3AB25C7EA90001B5DD5 /* Pods_iyzi_co_test_framework.framework */,
+				8356C3AB25C7EA90001B5DD5 /* Pods_iyzicoSDK.framework */,
 				8352F73926BD084F00B2D965 /* SVGKit.framework */,
 			);
 			name = Products;
@@ -480,7 +480,7 @@
 			remoteRef = 8352F73826BD084F00B2D965 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8356C3AB25C7EA90001B5DD5 /* Pods_iyzi_co_test_framework.framework */ = {
+		8356C3AB25C7EA90001B5DD5 /* Pods_iyzicoSDK.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Pods_iyzicoSDK.framework;
