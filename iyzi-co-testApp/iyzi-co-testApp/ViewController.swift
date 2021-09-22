@@ -21,11 +21,11 @@ class ViewController: UIViewController {
     @IBAction func topUpFlow(_ sender: Any) {
         #warning("change in prod")
         Iyzico.shared.initialize(clientIp: "127.0.0.1",
-                                 clientId: "qumpara",
-                                 clientSecret: "qumparaSecret",
-                                 baseUrl: "https://sandbox-consumerapigw.iyzipay.com",
+                                 clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
+                                 clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
+                                 baseUrl: "https://consumerapigw.iyzipay.com",
                                  language: .TURKISH)
-        Iyzico.shared.startTopUp(buyerEmail: "iyzicotest10000@email.com", //msahincakir34+02042021@gmail.com
+        Iyzico.shared.startTopUp(buyerEmail: "msahincakir34+22092021@gmail.com", //msahincakir34+02042021@gmail.com
                                  buyerPhone: "+90 555 555 55 55",
                                  buyerName: "nil",
                                  buyerSurname: "nil")
@@ -78,12 +78,12 @@ class ViewController: UIViewController {
         #warning("change in prod")
         Iyzico.shared.initialize(
             clientIp: "127.0.0.1",
-            clientId: "qumpara",
-            clientSecret: "qumparaSecret",
-            baseUrl: "https://sandbox-consumerapigw.iyzipay.com",
+            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
+            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
+            baseUrl: "https://consumerapigw.iyzipay.com",
             language: .TURKISH)
         Iyzico.shared.startCashOut(
-            buyerEmail: "iyzicotest100003@email.com", //newuser1234@gmail.com
+            buyerEmail: "msahincakir34+22092021@gmail.com", //newuser1234@gmail.com
             buyerPhone: "+90 555 555 55 55",
             walletPrice: 800.00,
             buyerName: "nil",
@@ -96,11 +96,11 @@ class ViewController: UIViewController {
         #warning("change in prod")
         Iyzico.shared.initialize(
             clientIp: "127.0.0.1",
-            clientId: "qumpara",
-            clientSecret: "qumparaSecret",
-            baseUrl: "https://sandbox-consumerapigw.iyzipay.com",
-            merchantApiKey: "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl",
-            merchantSecretKey: "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9",
+            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9",
+            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
+            baseUrl: "https://consumerapigw.iyzipay.com",
+            merchantApiKey: "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg",
+            merchantSecretKey: "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O",
             language: .TURKISH)
         
         Iyzico.shared.startPayWithIyzico(
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
             buyerIdentityNumber: "74300864791",
             buyerCity: "Istanbul",
             buyerCountry: "Turkey",
-            buyerEmail: "iyzicotest100004@email.com",
+            buyerEmail: "msahincakir34+22092021@gmail.com", //iyzicotest100004@email.com
             buyerPhone: "+905074018765",
             buyerIp: "Ip",
             buyerRegistrationAddress: "Adres",

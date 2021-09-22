@@ -979,7 +979,9 @@ extension IyzicoHomeVC {
     
     fileprivate func getBalance() -> String? {
        let balance = SDKManager.flow == .payWithIyzico ? iyzicoHomeVM.pwiRetrieveResponse?.memberBalance?.amount : mainVM.balancesResponse?.amount
-        
+        if balance == nil {
+            return "0.00"
+        }
         return balance
     }
     
