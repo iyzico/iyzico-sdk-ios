@@ -526,3 +526,7 @@ enum CardBrandsName: Int, CaseIterable {
         }
     }
 }
+
+enum ErrorCodes: String {
+    case notValidEmail = "200"
+}

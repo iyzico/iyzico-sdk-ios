@@ -47,7 +47,7 @@ class NewMemberVM: BaseVM {
         { [weak self] (response: BaseResponse<GsmUpdateResponseModel>?) in
             self?.gsmUpdateResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -66,7 +66,7 @@ class NewMemberVM: BaseVM {
         { [weak self] (response: BaseResponse<QuickLoginInitializeResponseModel>?) in
             self?.loginInitializeResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -125,7 +125,7 @@ class NewMemberVM: BaseVM {
         { [weak self] (response: BaseResponse<QuickRegisterInitializeResponseModel>?) in
             self?.registerInitializeResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -142,7 +142,7 @@ class NewMemberVM: BaseVM {
         { [weak self] (response: BaseResponse<InitResponseModel>?) in
             self?.initializeResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -157,7 +157,7 @@ class NewMemberVM: BaseVM {
         { [weak self] (response: BaseResponse<InitResponseModel>?) in
             self?.initializeResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -171,7 +171,7 @@ class NewMemberVM: BaseVM {
             self?.initializeResponse = response?.data
             SDKManager.checkoutToken = self?.initializeResponse?.checkoutToken
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _,  _) in
             onFailure(error)
         }
     }

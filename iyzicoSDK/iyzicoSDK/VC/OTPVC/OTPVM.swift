@@ -45,7 +45,7 @@ class OTPVM: BaseVM {
             self?.loginCompleteResponse = response?.data
             DefaultsManager.set(value: response?.data?.accessToken, forKey: .accessToken)
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _,  _) in
             onFailure(error)
         }
     }
@@ -60,7 +60,7 @@ class OTPVM: BaseVM {
         { [weak self] (response: BaseResponse<QuickLoginInitializeResponseModel>?) in
             self?.smsResendResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }

@@ -70,13 +70,13 @@ class IyzicoHomeVM: BaseVM {
     
     //MARK: - Requests
     func getCards(onSuccess: @escaping (CardItemsResponseModel?) -> Void,
-                  onFailure: @escaping (String?) -> Void) {
+                  onFailure: @escaping (String?,String?) -> Void) {
         Networking.request(router: CardRouter.cards)
         { [weak self] (response: BaseResponse<CardItemsResponseModel>?) in
             self?.getCardsResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
-            onFailure(error)
+        } failure: { (error, errorCode, _) in
+            onFailure(error, errorCode)
         }
     }
     
@@ -92,7 +92,7 @@ class IyzicoHomeVM: BaseVM {
         { [weak self] (response: BaseResponse<DepositWithRegisteredCardResponseModel>?) in
             self?.depositWithRegisteredCardResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, networkStatusType) in
+        } failure: { (error, _, networkStatusType) in
             onFailure(error, networkStatusType)
         }
     }
@@ -113,7 +113,7 @@ class IyzicoHomeVM: BaseVM {
         { [weak self] (response: BaseResponse<DepositWithNewCardResponseModel>?) in
             self?.depositWithNewCardResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, networkStatusType) in
+        } failure: { (error, _, networkStatusType) in
             onFailure(error, networkStatusType)
         }
     }
@@ -126,7 +126,7 @@ class IyzicoHomeVM: BaseVM {
             self?.protectedBankAccountsResponse = response.data
             onSuccess(self?.protectedBankAccountsResponse)
         },
-        failure: { (error, networkStatusType) in
+        failure: { (error, _, networkStatusType) in
             onFailure(error)
         })
     }
@@ -140,7 +140,7 @@ class IyzicoHomeVM: BaseVM {
         { [weak self] (response: BaseResponse<PWIRetieveResponseModel>?) in
             self?.pwiRetrieveResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -156,7 +156,7 @@ class IyzicoHomeVM: BaseVM {
             
             self?.installmentDetailResponse = response
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error, _,  _) in
             onFailure(error)
         }
     }
@@ -375,7 +375,7 @@ extension IyzicoHomeVM {
     }
     
     func userHasCreditCard() -> Bool {
-        let cards = SDKManager.flow == .payWithIyzico ? pwiRetrieveResponse?.memberCards?.count != 0 : getCardsResponse?.items?.count != 0
+        let cards = SDKManager.flow == .payWithIyzico ? pwiRetrieveResponse?.memberCards?.count ?? .zero > 0 : getCardsResponse?.items?.count ?? .zero > 0
         return cards //getCardsResponse?.items?.count != 0
     }
     
@@ -399,7 +399,7 @@ extension IyzicoHomeVM {
             
             self?.payWithBalanceResponse = response
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -417,7 +417,7 @@ extension IyzicoHomeVM {
             
             self?.mixedPaymentWithSavedCardResponse = response
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error, _,  _) in
             onFailure(error)
         }
     }
@@ -440,7 +440,7 @@ extension IyzicoHomeVM {
             
             self?.mixedPaymentWithSavedCardResponse = response
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -479,7 +479,7 @@ extension IyzicoHomeVM {
         { [weak self] (response: MixedPaymentWithSavedCardResponseModel) in
             self?.mixedPaymentWithSavedCardResponse = response
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -517,7 +517,7 @@ extension IyzicoHomeVM {
         { [weak self] (response: MixedPaymentWithSavedCardResponseModel) in
             self?.mixedPaymentWithSavedCardResponse = response
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }
@@ -537,7 +537,7 @@ extension IyzicoHomeVM {
             
             self?.paymentBankTransferResponse = response
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
     }

@@ -316,7 +316,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate {
                 indexPaths = [IndexPath(row: .zero, section: section)]
                 break
             case .creditCardList:
-                guard let validatedCardsModel = iyzicoHomeVM.getCards() else { return }
+                let validatedCardsModel = iyzicoHomeVM.getCards() ?? []
                 for row in validatedCardsModel.indices {
                     let indexPath = IndexPath(row: row, section: section)
                     indexPaths.append(indexPath)
@@ -661,22 +661,35 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate {
     private func getCards() {
         iyzicoHomeVM.getCards(
         onSuccess: { [weak self] (response: CardItemsResponseModel?) in
-            self?.mainVM.getBalances(
+            self?.getBalanceService()
+        },
+        onFailure: { [weak self] errorDescription, errorCode in
+            self?.showError(errorDescription: errorDescription)
+            self?.getBalanceService()
+       //     if errorCode == ErrorCodes.notValidEmail.rawValue {
+                print(errorCode)
+            //}
+        })
+    }
+    
+    private func getBalanceService() {
+        self.mainVM.getBalances(
             onSuccess: { [weak self] (response: BalancesResponseModel?) in
-                self?.iyzicoHomeVM.getProtectedBankAccounts(
-                onSuccess: { [weak self] response in
-                    self?.configurePaymentTypeUI(isFirstTime: true)
-                },
-                onFailure: { [weak self] errorDescription in
-                    self?.showError(errorDescription: errorDescription)
-                })
+                self?.getProtectedBankAccounts()
             }, onFailure: { errorDescription in
+                self.showError(errorDescription: errorDescription)
+                self.getProtectedBankAccounts()
+            })
+    }
+    
+    private func getProtectedBankAccounts() {
+        self.iyzicoHomeVM.getProtectedBankAccounts(
+            onSuccess: { [weak self] response in
+                self?.configurePaymentTypeUI(isFirstTime: true)
+            },
+            onFailure: { [weak self] errorDescription in
                 self?.showError(errorDescription: errorDescription)
             })
-        },
-        onFailure: { [weak self] errorDescription in
-            self?.showError(errorDescription: errorDescription)
-        })
     }
     
     private func getDepositWithRegisteredCard() {
@@ -767,7 +780,7 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
             return 1 // kredi kartı ekleme alanında kaç tane alan varsa
         case .installment:
             if vcType == .topUp {
-                return .zero
+                return 1
             }
             return 1 // kredi kartı ekleme alanında kaç tane alan varsa
         case .eft:

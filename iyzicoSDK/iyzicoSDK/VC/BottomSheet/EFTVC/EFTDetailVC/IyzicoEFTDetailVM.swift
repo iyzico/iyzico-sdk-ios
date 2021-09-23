@@ -27,7 +27,7 @@ extension IyzicoEFTDetailVM {
         Networking.request(router: PWIRouter.paymentWithBankTransferNotify(requestModel: requestModel))
         { (response: PaymentBankTransferResponseModel) in
             onSuccess(response)
-        } failure: { (error, _) in
+        } failure: { (error,_, _) in
             onFailure(error)
         }
     }
