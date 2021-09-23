@@ -25,7 +25,7 @@ class TransferVM: BaseVM {
         { [weak self] (response: BaseResponse<CashoutCompleteResponseModel>?) in
             self?.cashoutCompleteResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, networkStatusType) in
+        } failure: { (error, _, networkStatusType) in
             onFailure(error, networkStatusType)
         }
     }

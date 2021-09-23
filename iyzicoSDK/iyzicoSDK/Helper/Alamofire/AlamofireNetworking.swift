@@ -18,7 +18,7 @@ class Networking {
     static func request<T: Decodable>(router: URLRequestConvertible,
                                       shouldShowLoading: Bool = true,
                                       success: @escaping (T) -> Void,
-                                      failure: @escaping (String?, NetworkStatusTypes) -> Void) {
+                                      failure: @escaping (String?, String?, NetworkStatusTypes) -> Void) {
         if shouldShowLoading {
             showLoading() {
                
@@ -30,6 +30,7 @@ class Networking {
                     let statusMessage = dict?["status"] as? String
                     let consumerErrorMessage = dict?["consumerErrorMessage"] as? String
                     let errorMessage = dict?["errorMessage"] as? String
+                    let errorCode = dict?["errorCode"] as? String
                     let error = consumerErrorMessage != nil ? consumerErrorMessage : errorMessage
                     switch response.response?.statusCode ?? 204 { //204-> No Content
                     case 200..<300:
@@ -40,17 +41,17 @@ class Networking {
                                 success(data)
                             }
                             else {
-                                failure(error, .responseFailure)
+                                failure(error, errorCode, .responseFailure)
                             }
-                            case .failure( _):
+                        case .failure( _):
                             hideLoading()
                             let validatedError = error != nil ? error : "Hata"
-                            failure(validatedError, .failure)
+                            failure(validatedError,errorCode, .failure)
                         }
                         
                     default:
                         hideLoading()
-                        failure(error, .failure)
+                        failure(error, errorCode, .failure)
                     }
                 }
             }
@@ -67,6 +68,7 @@ class Networking {
 //                let errorCode = dict?["errorCode"] as? String
 //                let fullErrorMessage = (consumerErrorMessage ?? "") + (errorCode ?? "")
                 let errorMessage = dict?["errorMessage"] as? String
+                let errorCode = dict?["errorCode"] as? String
                 let error = consumerErrorMessage != nil ? consumerErrorMessage : errorMessage
                 switch response.response?.statusCode ?? 204 { //204-> No Content
                 case 200..<300:
@@ -76,14 +78,14 @@ class Networking {
                             success(data)
                         }
                         else {
-                            failure(error, .responseFailure)
+                            failure(error, errorCode, .responseFailure)
                         }
                     case .failure:
                         let validatedError = error != nil ? error : "Hata"
-                        failure(validatedError, .failure)
+                        failure(validatedError, errorCode, .failure)
                     }
                 default:
-                    failure(error, .failure)
+                    failure(error, errorCode, .failure)
                 }
             }
         }

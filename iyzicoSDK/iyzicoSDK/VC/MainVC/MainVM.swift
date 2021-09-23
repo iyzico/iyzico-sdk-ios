@@ -17,7 +17,7 @@ class MainVM: BaseVM {
         { [weak self] (response: BaseResponse<BalancesResponseModel>?) in
             self?.balancesResponse = response?.data
             onSuccess(response?.data)
-        } failure: { (error, _) in
+        } failure: { (error, _, _) in
             onFailure(error)
         }
 
