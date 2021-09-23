@@ -316,7 +316,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate {
                 indexPaths = [IndexPath(row: .zero, section: section)]
                 break
             case .creditCardList:
-                guard let validatedCardsModel = iyzicoHomeVM.getCards() else { return }
+                let validatedCardsModel = iyzicoHomeVM.getCards() ?? []
                 for row in validatedCardsModel.indices {
                     let indexPath = IndexPath(row: row, section: section)
                     indexPaths.append(indexPath)
@@ -676,6 +676,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate {
         },
         onFailure: { [weak self] errorDescription in
             self?.showError(errorDescription: errorDescription)
+            self?.configurePaymentTypeUI(isFirstTime: true)
         })
     }
     
@@ -767,7 +768,7 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
             return 1 // kredi kartı ekleme alanında kaç tane alan varsa
         case .installment:
             if vcType == .topUp {
-                return .zero
+                return 1
             }
             return 1 // kredi kartı ekleme alanında kaç tane alan varsa
         case .eft:
