@@ -105,8 +105,8 @@ class ViewController: UIViewController {
         
         Iyzico.shared.startPayWithIyzico(
             brand: "Lidyana.com",
-            price: 50.0,
-            paidPrice: 51.0,
+            price: 1.0,
+            paidPrice: 1.0,
             currency: Currency.TRY,
             enabledInstallments: [1],
             basketId: "B67832",
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
                 productId: "BI101",
                 itemType: BasketItemType.PHYSICAL.rawValue,
                 itemName: "Binocular",
-                price: "50.0"
+                price: "1.0"
             )]
         )
         
