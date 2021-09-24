@@ -56,13 +56,15 @@ class NewMemberVM: BaseVM {
                             clientIp: String?,
                             loginChannel: String?,
                             shouldShowLoading: Bool,
+                            shouldHideLoading: Bool = true,
                             onSuccess: @escaping (QuickLoginInitializeResponseModel?) -> Void,
                             onFailure: @escaping (String?) -> Void) {
         let requestModel = QuickLoginInitializeRequestModel(email: email?.lowercased(),
                                                             clientIp: clientIp,
                                                             loginChannel: loginChannel)
         Networking.request(router: LoginRouter.otpQuickLoginInitialize(requestModel: requestModel),
-                           shouldShowLoading: shouldShowLoading)
+                           shouldShowLoading: shouldShowLoading,
+                           shouldHideLoading: shouldHideLoading)
         { [weak self] (response: BaseResponse<QuickLoginInitializeResponseModel>?) in
             self?.loginInitializeResponse = response?.data
             onSuccess(response?.data)
@@ -80,6 +82,7 @@ class NewMemberVM: BaseVM {
                                pdppPermission: String? = nil,
                                communicationsPermission: String? = nil,
                                shouldShowLoading: Bool,
+                               shouldHideLoading: Bool = true,
                                onSuccess: @escaping (QuickRegisterInitializeResponseModel?) -> Void,
                                onFailure: @escaping (String?) -> Void) {
         
@@ -121,7 +124,8 @@ class NewMemberVM: BaseVM {
        
         
         Networking.request(router: RegisterRouter.quickRegister(requestModel: requestModel),
-                           shouldShowLoading: shouldShowLoading)
+                           shouldShowLoading: shouldShowLoading,
+                           shouldHideLoading: shouldHideLoading)
         { [weak self] (response: BaseResponse<QuickRegisterInitializeResponseModel>?) in
             self?.registerInitializeResponse = response?.data
             onSuccess(response?.data)
@@ -133,12 +137,14 @@ class NewMemberVM: BaseVM {
     func getCashoutInitialize(email: String?,
                               amount: String?,
                               currencyType: String?,
+                              shouldHideLoading: Bool = true,
                               onSuccess: @escaping (InitResponseModel?) -> Void,
                               onFailure: @escaping (String?) -> Void) {
         let requestModel = CashoutInitRequestModel(email: email?.lowercased(),
                                                    amount: amount,
                                                    currencyType: currencyType)
-        Networking.request(router: CashoutRouter.initializeCashoutToBalance(requestModel: requestModel))
+        Networking.request(router: CashoutRouter.initializeCashoutToBalance(requestModel: requestModel),
+                           shouldHideLoading: shouldHideLoading)
         { [weak self] (response: BaseResponse<InitResponseModel>?) in
             self?.initializeResponse = response?.data
             onSuccess(response?.data)
@@ -149,11 +155,13 @@ class NewMemberVM: BaseVM {
     
     func getTopUpInitialize(email: String?,
                             transactionType: TransactionType?,
+                            shouldHideLoading: Bool = true,
                             onSuccess: @escaping (InitResponseModel?) -> Void,
                             onFailure: @escaping (String?) -> Void) {
         let requestModel = InitTransactionRequestModel(email: email?.lowercased(),
                                                        transactionType: transactionType)
-        Networking.request(router: TransactionRouter.initTransaction(requestModel: requestModel))
+        Networking.request(router: TransactionRouter.initTransaction(requestModel: requestModel),
+                           shouldHideLoading: shouldHideLoading)
         { [weak self] (response: BaseResponse<InitResponseModel>?) in
             self?.initializeResponse = response?.data
             onSuccess(response?.data)
@@ -163,10 +171,12 @@ class NewMemberVM: BaseVM {
     }
     
     func getPWIInitialize(request: PWIinitRequestModel,
-                            onSuccess: @escaping (InitResponseModel?) -> Void,
-                            onFailure: @escaping (String?) -> Void) {
+                          shouldHideLoading: Bool = true,
+                          onSuccess: @escaping (InitResponseModel?) -> Void,
+                          onFailure: @escaping (String?) -> Void) {
         let requestModel = request
-        Networking.request(router: PWIRouter.initPWI(requestModel: requestModel))
+        Networking.request(router: PWIRouter.initPWI(requestModel: requestModel),
+                           shouldHideLoading: shouldHideLoading)
         { [weak self] (response: BaseResponse<InitResponseModel>?) in
             self?.initializeResponse = response?.data
             SDKManager.checkoutToken = self?.initializeResponse?.checkoutToken

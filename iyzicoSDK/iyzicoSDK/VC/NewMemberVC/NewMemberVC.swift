@@ -318,6 +318,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
         }
         else {
             if vcType == .payWithIyzico || vcType == .topUp || vcType == .cashout {
+                hideLoading()
                 pushtoNotaMemberVC()
             } else {
                 getRegisterInitialize(shouldShowLoading: false)
@@ -417,6 +418,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
         viewModel.getCashoutInitialize(email: emailTextInputView.textField.text,
                                        amount: "₺50000,00".serviceAmountFormatAsString,
                                        currencyType: "TRY",
+                                       shouldHideLoading: false,
         onSuccess: { [weak self] (response: InitResponseModel?) in
             self?.chooseAuthenticationService(isMemberExist: response?.memberExist)
         },
@@ -429,6 +431,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
     private func getTopUpInitialize() {
         viewModel.getTopUpInitialize(email: emailTextInputView.textField.text,
                                      transactionType: .DEPOSIT,
+                                     shouldHideLoading: false,
         onSuccess: { [weak self] (response: InitResponseModel?) in
             self?.chooseAuthenticationService(isMemberExist: response?.memberExist)
         },
@@ -439,6 +442,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
     
     private func getPWIInitialize() {
         viewModel.getPWIInitialize(request: SDKManager.PWIrequest,
+                                   shouldHideLoading: false,
                                    onSuccess: { [weak self] (response: InitResponseModel?) in
                                     self?.chooseAuthenticationService(isMemberExist: response?.memberExist)
                                    },

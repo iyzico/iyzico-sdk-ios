@@ -17,6 +17,7 @@ class Networking {
     
     static func request<T: Decodable>(router: URLRequestConvertible,
                                       shouldShowLoading: Bool = true,
+                                      shouldHideLoading: Bool = true,
                                       success: @escaping (T) -> Void,
                                       failure: @escaping (String?, String?, NetworkStatusTypes) -> Void) {
         if shouldShowLoading {
@@ -36,7 +37,10 @@ class Networking {
                     case 200..<300:
                         switch response.result {
                         case .success(let data):
-                            hideLoading()
+                            if shouldHideLoading {
+                                hideLoading()
+                            }
+                         
                             if statusMessage == NetworkStatusTypes.success.rawValue {
                                 success(data)
                             }
@@ -74,6 +78,9 @@ class Networking {
                 case 200..<300:
                     switch response.result {
                     case .success(let data):
+                        if shouldHideLoading {
+                            hideLoading()
+                        }
                         if statusMessage == NetworkStatusTypes.success.rawValue {
                             success(data)
                         }
@@ -81,10 +88,18 @@ class Networking {
                             failure(error, errorCode, .responseFailure)
                         }
                     case .failure:
+                        if shouldHideLoading {
+                            hideLoading()
+                        }
+
                         let validatedError = error != nil ? error : "Hata"
                         failure(validatedError, errorCode, .failure)
                     }
                 default:
+                    if shouldHideLoading {
+                        hideLoading()
+                    }
+
                     failure(error, errorCode, .failure)
                 }
             }
@@ -112,10 +127,6 @@ class Networking {
         loadingVC.dismiss(animated: true, completion: nil)
     }
     
-  
-   
-   
-  
 }
 
 extension Networking {
