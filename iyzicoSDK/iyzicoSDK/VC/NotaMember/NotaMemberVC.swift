@@ -342,6 +342,7 @@ extension NotaMemberVC {
     private func getPWIInitialize() {
         SDKManager.PWIrequest.buyer?.gsmNumber = phoneTextField.textField.text?.removeWhiteSpaces
         viewModel.getPWIInitialize(request: SDKManager.PWIrequest,
+                                   shouldHideLoading: false,
                                    onSuccess: { [weak self] (response: InitResponseModel?) in
                                     self?.chooseAuthenticationService()
                                    },
@@ -356,6 +357,7 @@ extension NotaMemberVC {
         viewModel.getCashoutInitialize(email: SDKManager.email,
                                          amount: "₺50000,00".serviceAmountFormatAsString,
                                          currencyType: "TRY",
+                                         shouldHideLoading: false,
                                          onSuccess: { [weak self] (response: InitResponseModel?) in
                                             self?.chooseAuthenticationService()
                                          },
@@ -367,6 +369,7 @@ extension NotaMemberVC {
     private func getTopUpInitialize() {
         viewModel.getTopUpInitialize(email: SDKManager.email,
                                        transactionType: .DEPOSIT,
+                                       shouldHideLoading: false,
                                        onSuccess: { [weak self] (response: InitResponseModel?) in
                                         self?.chooseAuthenticationService()
                                        },
