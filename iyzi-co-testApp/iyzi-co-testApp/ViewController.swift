@@ -25,7 +25,7 @@ class ViewController: UIViewController {
                                  clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR",
                                  baseUrl: "https://consumerapigw.iyzipay.com",
                                  language: .TURKISH)
-        Iyzico.shared.startTopUp(buyerEmail: "huseyinakcay@yandex.com", //msahincakir34+02042021@gmail.com
+        Iyzico.shared.startTopUp(buyerEmail: "msahincakir34+22092021@gmail.com", //msahincakir34+02042021@gmail.com
                                  buyerPhone: "+90 555 555 55 55",
                                  buyerName: "nil",
                                  buyerSurname: "nil")
