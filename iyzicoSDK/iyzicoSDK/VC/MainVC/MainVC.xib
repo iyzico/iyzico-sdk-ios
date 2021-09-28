@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainVC" customModule="iyzicoSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="iyzicoNavBar" destination="Pbj-1H-98s" id="6Xo-Pf-t3V"/>
+                <outlet property="mainView" destination="HaW-a6-lMv" id="GRM-Um-Ki4"/>
+                <outlet property="navView" destination="ja0-xK-92p" id="gFb-Hv-hsi"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mri-P9-CjA">
+                    <rect key="frame" x="0.0" y="44" width="428" height="848"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ja0-xK-92p">
+                            <rect key="frame" x="0.0" y="0.0" width="428" height="0.0"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbj-1H-98s" customClass="IyzicoNavBar" customModule="iyzicoSDK" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="0.0"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Pbj-1H-98s" secondAttribute="bottom" id="2Aj-MQ-LQr"/>
+                                <constraint firstAttribute="height" priority="1" id="9Pv-pw-gGc"/>
+                                <constraint firstItem="Pbj-1H-98s" firstAttribute="top" secondItem="ja0-xK-92p" secondAttribute="top" id="C7J-ra-D4R"/>
+                                <constraint firstItem="Pbj-1H-98s" firstAttribute="leading" secondItem="ja0-xK-92p" secondAttribute="leading" id="Uyz-vR-Bf9"/>
+                                <constraint firstAttribute="trailing" secondItem="Pbj-1H-98s" secondAttribute="trailing" id="VwK-FZ-Akh"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HaW-a6-lMv">
+                            <rect key="frame" x="0.0" y="0.0" width="428" height="848"/>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="mri-P9-CjA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8LQ-L5-3oy"/>
+                <constraint firstItem="mri-P9-CjA" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="CR9-w3-Cm6"/>
+                <constraint firstItem="mri-P9-CjA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dIZ-gR-nSa"/>
+                <constraint firstItem="mri-P9-CjA" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="jBw-8d-Byw"/>
+                <constraint firstItem="mri-P9-CjA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lMk-7n-NgG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mri-P9-CjA" secondAttribute="bottom" id="lzM-ja-ya7"/>
+            </constraints>
+            <point key="canvasLocation" x="21.739130434782609" y="73.660714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
