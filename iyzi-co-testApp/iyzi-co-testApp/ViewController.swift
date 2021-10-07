@@ -21,9 +21,9 @@ class ViewController: UIViewController {
     @IBAction func topUpFlow(_ sender: Any) {
         #warning("change in prod")
         Iyzico.shared.initialize(clientIp: "127.0.0.1",
-                                 clientId: "qumpara", //tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9
-                                 clientSecret: "qumparaSecret", //zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR
-                                 baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://consumerapigw.iyzipay.com
+                                 clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
+                                 clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
+                                 baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
                                  language: .TURKISH)
         Iyzico.shared.startTopUp(buyerEmail: "msahincakir34+22092021@gmail.com", //msahincakir34+02042021@gmail.com
                                  buyerPhone: "+90 555 555 55 55",
@@ -78,9 +78,9 @@ class ViewController: UIViewController {
         #warning("change in prod")
         Iyzico.shared.initialize(
             clientIp: "127.0.0.1",
-            clientId: "qumpara", //tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9
-            clientSecret: "qumparaSecret", //zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR
-            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://consumerapigw.iyzipay.com
+            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
+            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
+            baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
             language: .TURKISH)
         Iyzico.shared.startCashOut(
             buyerEmail: "msahincakir34+22092021@gmail.com", //newuser1234@gmail.com
@@ -96,11 +96,11 @@ class ViewController: UIViewController {
         #warning("change in prod")
         Iyzico.shared.initialize(
             clientIp: "127.0.0.1",
-            clientId: "qumpara", //tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9
-            clientSecret: "qumparaSecret", //zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR
-            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://consumerapigw.iyzipay.com
-            merchantApiKey: "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl", //aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg
-            merchantSecretKey: "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9", //MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O
+            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
+            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
+            baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+            merchantApiKey: "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg", //sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl
+            merchantSecretKey: "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O", //sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9
             language: .TURKISH)
         
         Iyzico.shared.startPayWithIyzico(
