@@ -13,4 +13,5 @@ struct QuickLoginInitializeResponseModel: Decodable {
     let userUuid: String?
     let gsmVerified: Bool?
     let maskedGsmNumber: String?
+    let gsmNumber: String?
 }
