@@ -5,7 +5,7 @@ import Foundation
 struct PWIRetieveResponseModel: Codable {
     let memberToken: String?
     let memberID: Int?
-    let checkoutDetail: CheckoutDetail?
+    var checkoutDetail: CheckoutDetail?
     let memberCards: [CardResponseModel]?
     let memberBalance: MemberBalance?
     
@@ -24,7 +24,7 @@ struct CheckoutDetail: Codable {
     let currency: String?
     let merchantGatewayBaseURL: String?
     let storeNewCardEnabled, payWithIyzicoUsed: Bool?
-    let gsmNumber, email: String?
+    var gsmNumber, email: String?
     let metadata: Metadata?
     let buyerSurname: String?
     let force3Ds, creditCardEnabled, hide3DS, fundEnabled: Bool?
