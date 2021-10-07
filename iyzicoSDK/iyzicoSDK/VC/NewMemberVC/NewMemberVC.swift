@@ -270,7 +270,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
     private func navigateToOtpVC(isGsmVerified: Bool?) {
         let vc = OTPVC()
         vc.viewModel.isGsmVerified = isGsmVerified
-        vc.viewModel.navigatedPhoneNumber = phoneTextInputView.textField.text?.removeWhiteSpaces
+        vc.viewModel.navigatedPhoneNumber = viewModel.loginInitializeResponse?.gsmNumber
         vc.viewModel.navigatedGsmUpdateResponse = viewModel.gsmUpdateResponse
         vc.viewModel.navigatedLoginInitializeResponse = viewModel.loginInitializeResponse
         vc.viewModel.navigatedRegisterInitializeResponse = viewModel.registerInitializeResponse
@@ -342,7 +342,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
         SDKManager.PWIrequest.buyer?.gsmNumber = phoneTextInputView.textField.text?.removeWhiteSpaces
     }
     
-    private func checkGmsVerified(isGsmVerified: Bool?) {
+    private func checkGsmVerified(isGsmVerified: Bool?) {
         let validatedIsGsmVerified = isGsmVerified ?? false
         if validatedIsGsmVerified || viewModel.isPhoneNumberChanged == false {
             navigateToOtpVC(isGsmVerified: validatedIsGsmVerified)
@@ -365,7 +365,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
     
     private func changeSDKInitializeValues() {
         SDKManager.email = emailTextInputView.textField.text
-        SDKManager.phone = phoneTextInputView.textField.text
+        SDKManager.phone = viewModel.loginInitializeResponse?.gsmNumber
     }
     
     //MARK: - Service Calls
@@ -388,7 +388,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
                                      shouldShowLoading: shouldShowLoading,
         onSuccess: { [weak self] (response: QuickLoginInitializeResponseModel?) in
             self?.changeSDKInitializeValues()
-            self?.checkGmsVerified(isGsmVerified: response?.gsmVerified)
+            self?.checkGsmVerified(isGsmVerified: response?.gsmVerified)
         },
         onFailure: { [weak self] errorDescription in
             self?.showError(errorDescription: errorDescription)

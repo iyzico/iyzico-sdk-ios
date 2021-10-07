@@ -13,6 +13,7 @@ class IyzicoHomeVM: BaseVM {
     var depositWithNewCardResponse: DepositWithNewCardResponseModel?
     var protectedBankAccountsResponse: ProtectedBankAccountsOuterResponseModel?
     var navigatedInitializeResponse: InitResponseModel?
+    var navigatedPhoneNumber: String?
     var pwiRetrieveResponse: PWIRetieveResponseModel? {
         didSet {
             setInitialSelectedCellsForFlow()
@@ -49,7 +50,7 @@ class IyzicoHomeVM: BaseVM {
             NotificationCenter.default.post(name: .updatePrice, object: nil)
         }
     }
-        
+    
     //MARK: - Add New Card Properties
     var priceCheckBoxSelectedStatus = false
     var isUserDisabledPriceCheckbox = true
@@ -122,23 +123,24 @@ class IyzicoHomeVM: BaseVM {
                                   onFailure: @escaping (String?) -> Void) {
         Networking.request(router: DepositsRouter.protectedBankAccounts,
                            shouldShowLoading: false,
-        success: { [weak self] (response: BaseResponse<ProtectedBankAccountsOuterResponseModel>) in
+                           success: { [weak self] (response: BaseResponse<ProtectedBankAccountsOuterResponseModel>) in
             self?.protectedBankAccountsResponse = response.data
             onSuccess(self?.protectedBankAccountsResponse)
         },
-        failure: { (error, _, networkStatusType) in
+                           failure: { (error, _, networkStatusType) in
             onFailure(error)
         })
     }
     
     func getRetrievePWI(onSuccess: @escaping (PWIRetieveResponseModel?) -> Void,
-                  onFailure: @escaping (String?) -> Void) {
+                        onFailure: @escaping (String?) -> Void) {
         
         let requestModel = PWIRetrieveRequestModel(checkoutToken: navigatedInitializeResponse?.checkoutToken, locale: Language.TURKISH.rawValue)
         
         Networking.request(router: PWIRouter.retrievePWI(requestModel: requestModel))
         { [weak self] (response: BaseResponse<PWIRetieveResponseModel>?) in
             self?.pwiRetrieveResponse = response?.data
+            self?.pwiRetrieveResponse?.checkoutDetail?.gsmNumber = self?.navigatedPhoneNumber
             onSuccess(response?.data)
         } failure: { (error, _, _) in
             onFailure(error)
@@ -147,9 +149,9 @@ class IyzicoHomeVM: BaseVM {
     
     func getInstallment(price: String?, binNumber: String?,
                         shouldShowLoading: Bool = true,
-        onSuccess: @escaping (InstallmentResponseModel?) -> Void,
+                        onSuccess: @escaping (InstallmentResponseModel?) -> Void,
                         onFailure: @escaping (String?) -> Void) {
-  
+        
         let requestModel = InstallmentRequestModel(locale: Language.TURKISH.rawValue, price: price, binNumber: binNumber)
         Networking.request(router: PWIRouter.retrieveInstallments(requestModel: requestModel),shouldShowLoading: shouldShowLoading)
         { [weak self] (response: InstallmentResponseModel) in
@@ -201,7 +203,7 @@ class IyzicoHomeVM: BaseVM {
                 selectedCardType = getCard(indexPath)?.cardType // getCardsResponse?.items?[indexPath.row].cardType
             case .addNewCreditCard:
                 changeAllElementsInSelectedCells(status: false, exceptForIndexs: [selectedCells.endIndex - 1])
-//                let selectedCellsLast = selectedCells[selectedCells.endIndex - 1]
+                //                let selectedCellsLast = selectedCells[selectedCells.endIndex - 1]
                 selectedCells[selectedCells.endIndex - 1] = true
             default:
                 break
@@ -214,7 +216,7 @@ class IyzicoHomeVM: BaseVM {
                 selectedCells[indexPath.row] = true
             case .addNewCreditCard:
                 changeAllElementsInSelectedCells(status: false, exceptForIndexs: [selectedCells.endIndex - 1])
-//                let selectedCellsLast = selectedCells[selectedCells.endIndex - 1]
+                //                let selectedCellsLast = selectedCells[selectedCells.endIndex - 1]
                 selectedCells[selectedCells.endIndex - 1] = true
             default:
                 break
@@ -267,19 +269,19 @@ class IyzicoHomeVM: BaseVM {
         return myAccountBalanceAsDouble > 0
     }
     
-//    func canUserPaymentWithAccountBalance(with paymentType: IyzicoHomePaymentTypes) -> Bool {
-//        switch paymentType {
-//        case .creditCard(let creditCardPaymentType):
-//            switch creditCardPaymentType {
-//            case .withCreditCard(let selectionType):
-//                return selectionType != .mixed
-//            case .withNewCard(let selectionType):
-//                return selectionType != .mixed
-//            }
-//        default:
-//            return true
-//        }
-//    }
+    //    func canUserPaymentWithAccountBalance(with paymentType: IyzicoHomePaymentTypes) -> Bool {
+    //        switch paymentType {
+    //        case .creditCard(let creditCardPaymentType):
+    //            switch creditCardPaymentType {
+    //            case .withCreditCard(let selectionType):
+    //                return selectionType != .mixed
+    //            case .withNewCard(let selectionType):
+    //                return selectionType != .mixed
+    //            }
+    //        default:
+    //            return true
+    //        }
+    //    }
     
     //Mixed payment means user will user his my account balance + credit card balance
     func isMixedPayment(basketPrice: String?, myAccountBalance: String?) -> Bool {
@@ -307,7 +309,7 @@ class IyzicoHomeVM: BaseVM {
         }
         return false
     }
-       
+    
     
     func getWillBeSpendFromCardAmount(basketPrice: String?, myAccountBalance: String?) -> String? {
         let basketPriceAsDouble = basketPrice?.asDouble ?? 0.00
@@ -405,7 +407,7 @@ extension IyzicoHomeVM {
     }
     
     func payWithMixedPaymentWithSavedCard(onSuccess: @escaping (MixedPaymentWithSavedCardResponseModel?) -> Void,
-                        onFailure: @escaping (String?) -> Void) {
+                                          onFailure: @escaping (String?) -> Void) {
         
         let balanceAmount = pwiRetrieveResponse?.memberBalance?.amount
         let memberToken = pwiRetrieveResponse?.memberToken
@@ -423,7 +425,7 @@ extension IyzicoHomeVM {
     }
     
     func payWithMixedPaymentWithNewCard(onSuccess: @escaping (MixedPaymentWithSavedCardResponseModel?) -> Void,
-                                          onFailure: @escaping (String?) -> Void) {
+                                        onFailure: @escaping (String?) -> Void) {
         
         let balanceAmount = pwiRetrieveResponse?.memberBalance?.amount
         let cardNumber = newCardInputsArray?[1].input?.textField.text?.removeWhiteSpaces
@@ -446,7 +448,7 @@ extension IyzicoHomeVM {
     }
     
     func payWithPaymentWithNewCard(isNewCard: Bool,onSuccess: @escaping (MixedPaymentWithSavedCardResponseModel?) -> Void,
-                                        onFailure: @escaping (String?) -> Void) {
+                                   onFailure: @escaping (String?) -> Void) {
         
         let price = installmentPrice?.asString
         let memberID = "\(pwiRetrieveResponse?.memberID ?? 0)"
@@ -463,7 +465,7 @@ extension IyzicoHomeVM {
         if !isNewCard {
             cardToken = selectedCardForPayment != nil ? selectedCardForPayment?.cardToken : getCard(IndexPath(row: .zero, section: .zero))?.cardToken
         }
-      
+        
         
         var paymentCard = PaymentCard()
         if isNewCard {
@@ -485,7 +487,7 @@ extension IyzicoHomeVM {
     }
     
     func payWithPaymentWithNewCard3DS(isNewCard: Bool,onSuccess: @escaping (MixedPaymentWithSavedCardResponseModel?) -> Void,
-                                   onFailure: @escaping (String?) -> Void) {
+                                      onFailure: @escaping (String?) -> Void) {
         
         let price = installmentPrice?.asString
         let memberID = "\(pwiRetrieveResponse?.memberID ?? 0)"
@@ -522,8 +524,9 @@ extension IyzicoHomeVM {
         }
     }
     
-    func payWithBankTransfer(bankID:Int?, onSuccess: @escaping (PaymentBankTransferResponseModel?) -> Void,
-                        onFailure: @escaping (String?) -> Void) {
+    func payWithBankTransfer(bankID:Int?,
+                             onSuccess: @escaping (PaymentBankTransferResponseModel?) -> Void,
+                             onFailure: @escaping (String?) -> Void) {
         
         let memberID = pwiRetrieveResponse?.memberID
         let email = pwiRetrieveResponse?.checkoutDetail?.email

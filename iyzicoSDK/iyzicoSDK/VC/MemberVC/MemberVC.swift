@@ -21,7 +21,7 @@ class MemberVC: BaseVC {
         let bundle = Bundle(for: type(of: self))
         self.init(nibName: NibName.shared.MemberVC, bundle: bundle)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -83,10 +83,10 @@ class MemberVC: BaseVC {
         changeAccountButton.setTitleColor(.clearBlue3, for: .normal)
         changeAccountButton.titleLabel?.font = .markProBold16
         switch SDKManager.flow {
-            case .cashout, .settlement, .refund:
-                changeAccountButton.isHidden = true
-            default:
-                changeAccountButton.isHidden = false
+        case .cashout, .settlement, .refund:
+            changeAccountButton.isHidden = true
+        default:
+            changeAccountButton.isHidden = false
         }
     }
     
@@ -97,7 +97,7 @@ class MemberVC: BaseVC {
 //        vc.delegate = self
         vc.viewModel.navigatedPhoneNumber = SDKManager.phone?.removeWhiteSpaces
         vc.viewModel.navigatedLoginInitializeResponse = newMemberVM.loginInitializeResponse
-//        vc.viewModel.navigatedRegisterInitializeResponse = newMemberVM.registerInitializeResponse
+        //        vc.viewModel.navigatedRegisterInitializeResponse = newMemberVM.registerInitializeResponse
         vc.viewModel.isGsmVerified = isGsmVerified
         vc.viewModel.navigatedInitializeResponse = newMemberVM.initializeResponse
         navigationController?.pushViewController(vc, animated: true)
@@ -111,7 +111,7 @@ class MemberVC: BaseVC {
     
     //MARK: - Service Calls
     private func getLoginInitialize() {
-        #warning("Change in prod")
+#warning("Change in prod")
         newMemberVM.getLoginInitialize(email: SDKManager.email,
                                        clientIp: SDKManager.clientIp,
                                        loginChannel: "THIRD_PARTY_APP",
@@ -129,7 +129,7 @@ class MemberVC: BaseVC {
 //            }
             self?.navigateToOtpVC(isGsmVerified: response?.gsmVerified)
         },
-        onFailure: { [weak self] errorDescription in
+                                       onFailure: { [weak self] errorDescription in
             self?.showError(errorDescription: errorDescription)
             Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
         })

@@ -272,6 +272,7 @@ extension OTPVC {
         case .payWithIyzico:
            let vc = IyzicoHomeVC(vcType: .payWithIyzico)
             vc.iyzicoHomeVM.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
+            vc.iyzicoHomeVM.navigatedPhoneNumber = viewModel.navigatedLoginInitializeResponse?.gsmNumber
             navigationController?.pushViewController(vc, animated: true)
         }
     }
