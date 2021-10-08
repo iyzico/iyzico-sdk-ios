@@ -21,29 +21,21 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-Lb-2Rx">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="272.5"/>
                                         <state key="normal" title="TopUp Flow"/>
                                         <connections>
                                             <action selector="topUpFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mBj-Zg-3KZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-0k-fTc">
-                                        <rect key="frame" x="0.0" y="163.5" width="414" height="163.5"/>
-                                        <state key="normal" title="Settlement Flow"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fu9-W2-5qZ">
-                                        <rect key="frame" x="0.0" y="327" width="414" height="164"/>
-                                        <state key="normal" title="Refund Flow"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvo-eN-JX4">
-                                        <rect key="frame" x="0.0" y="491" width="414" height="163.5"/>
+                                        <rect key="frame" x="0.0" y="272.5" width="414" height="273"/>
                                         <state key="normal" title="Cashout Flow"/>
                                         <connections>
                                             <action selector="cashoutFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5H7-vr-Lo3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2O-VD-53h">
-                                        <rect key="frame" x="0.0" y="654.5" width="414" height="163.5"/>
+                                        <rect key="frame" x="0.0" y="545.5" width="414" height="272.5"/>
                                         <state key="normal" title="Pay With Iyzico Flow"/>
                                         <connections>
                                             <action selector="payWithIyzicoFlow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QNp-x9-BG6"/>
