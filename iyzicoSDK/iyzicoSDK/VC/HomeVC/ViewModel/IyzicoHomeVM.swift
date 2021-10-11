@@ -140,7 +140,7 @@ class IyzicoHomeVM: BaseVM {
         Networking.request(router: PWIRouter.retrievePWI(requestModel: requestModel))
         { [weak self] (response: BaseResponse<PWIRetieveResponseModel>?) in
             self?.pwiRetrieveResponse = response?.data
-            self?.pwiRetrieveResponse?.checkoutDetail?.gsmNumber = self?.navigatedPhoneNumber
+            self?.pwiRetrieveResponse?.checkoutDetail?.gsmNumber = self?.navigatedPhoneNumber ?? response?.data?.checkoutDetail?.gsmNumber
             onSuccess(response?.data)
         } failure: { (error, _, _) in
             onFailure(error)
