@@ -25,15 +25,18 @@ class ViewController: UIViewController {
                                  clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
                                  baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
                                  language: .TURKISH)
+        
+//        Iyzico.shared.initialize(clientIp: "127.0.0.1",
+//                                 clientId: "qumpara", //qumpara
+//                                 clientSecret: "qumparaSecret", //qumparaSecret
+//                                 baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+//                                 language: .TURKISH)
+        
         Iyzico.shared.startTopUp(buyerEmail: "msahincakir34+22092021@gmail.com", //msahincakir34+02042021@gmail.com
                                  buyerPhone: "+90 555 555 55 55",
                                  buyerName: "nil",
                                  buyerSurname: "nil")
-        //        Iyzico.shared.startTopUp(email: "msahincakir34+23032021@gmail.com",
-        //                                 phone: "+90 531 860 52 05",
-        //                                 brand: "Lidyana.com",
-        //                                 name: "Vural",
-        //                                 surname: "Celik")
+        
     }
     
     //@IBAction func settlementFlow(_ sender: Any) {
@@ -82,6 +85,14 @@ class ViewController: UIViewController {
             clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
             baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
             language: .TURKISH)
+        
+//        Iyzico.shared.initialize(
+//            clientIp: "127.0.0.1",
+//            clientId: "qumpara", //qumpara
+//            clientSecret: "qumparaSecret", //
+//            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+//            language: .TURKISH)
+        
         Iyzico.shared.startCashOut(
             buyerEmail: "msahincakir34+22092021@gmail.com", //newuser1234@gmail.com
             buyerPhone: "+90 555 555 55 55",
@@ -103,12 +114,21 @@ class ViewController: UIViewController {
             merchantSecretKey: "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O", //sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9
             language: .TURKISH)
         
+//        Iyzico.shared.initialize(
+//            clientIp: "127.0.0.1",
+//            clientId: "qumpara", //qumpara
+//            clientSecret: "qumparaSecret", //qumparaSecret
+//            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+//            merchantApiKey: "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl", //sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl
+//            merchantSecretKey: "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9", //sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9
+//            language: .TURKISH)
+        
         Iyzico.shared.startPayWithIyzico(
             brand: "Lidyana.com",
             price: 1.0,
             paidPrice: 1.0,
             currency: Currency.TRY,
-            enabledInstallments: [1],
+            enabledInstallments: [1,2,3,6,9],
             basketId: "B67832",
             paymentGroup: nil,
             paymentSource: "MOBILE_SDK",
