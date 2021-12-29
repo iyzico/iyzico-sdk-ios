@@ -164,7 +164,9 @@ class ViewController: UIViewController {
                 productId: "BI101",
                 itemType: BasketItemType.PHYSICAL.rawValue,
                 itemName: "Binocular",
-                price: "1.0"
+                price: "1.0",
+                subMerchantKey: nil,
+                subMerchantPrice: nil
             )]
         )
         

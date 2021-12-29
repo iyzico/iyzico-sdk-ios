@@ -136,7 +136,9 @@ extension Iyzico {
                                                price: item.price,
                                                name: item.name,
                                                category1: item.category1,
-                                               itemType: item.itemType)
+                                               itemType: item.itemType,
+                                               subMerchantKey: item.subMerchantKey,
+                                               subMerchantPrice: item.subMerchantPrice)
             basketItemsArray.append(basketItem)
         }
         
