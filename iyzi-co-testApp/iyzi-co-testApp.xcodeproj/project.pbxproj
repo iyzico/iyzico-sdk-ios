@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		771CA5BC25F108DB008B0EB8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771CA5BB25F108DB008B0EB8 /* Alamofire.framework */; };
-		771CA5BD25F108DB008B0EB8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 771CA5BB25F108DB008B0EB8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8352F73A26BD085300B2D965 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73926BD084F00B2D965 /* SVGKit.framework */; };
-		8352F73B26BD085300B2D965 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73926BD084F00B2D965 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8352F75026BD09CE00B2D965 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73726BD084F00B2D965 /* CocoaLumberjack.framework */; };
-		8352F75126BD09CE00B2D965 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73726BD084F00B2D965 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		771CA5BC25F108DB008B0EB8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; fileRef = 771CA5BB25F108DB008B0EB8 /* Alamofire */; };
+		771CA5BD25F108DB008B0EB8 /* Alamofire in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 771CA5BB25F108DB008B0EB8 /* Alamofire */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8352F73A26BD085300B2D965 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73926BD084F00B2D965 /* SVGKit */; };
+		8352F73B26BD085300B2D965 /* SVGKit in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73926BD084F00B2D965 /* SVGKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8352F75026BD09CE00B2D965 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73726BD084F00B2D965 /* CocoaLumberjack */; };
+		8352F75126BD09CE00B2D965 /* CocoaLumberjack in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8352F73726BD084F00B2D965 /* CocoaLumberjack */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8356C3AC25C7EA90001B5DD5 /* iyzicoSDK.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2B525C7EA90001B5DD5 /* iyzicoSDK.xcworkspace */; };
 		8356C3C425C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2D925C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist */; };
 		8356C3C525C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DA25C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist */; };
@@ -23,10 +23,10 @@
 		8356C3CA25C7EA90001B5DD5 /* Manifest.lock in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2E125C7EA90001B5DD5 /* Manifest.lock */; };
 		8356C44025C7EA91001B5DD5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8356C3A125C7EA90001B5DD5 /* Podfile */; };
 		8356C44125C7EA91001B5DD5 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 8356C3A225C7EA90001B5DD5 /* Podfile.lock */; };
-		8356C46425C7EC3F001B5DD5 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46325C7EC3F001B5DD5 /* Lottie.framework */; };
-		8356C46525C7EC3F001B5DD5 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46325C7EC3F001B5DD5 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8356C46625C7EC42001B5DD5 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift.framework */; };
-		8356C46725C7EC42001B5DD5 /* IQKeyboardManagerSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8356C46425C7EC3F001B5DD5 /* lottie-ios in Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46325C7EC3F001B5DD5 /* lottie-ios */; };
+		8356C46525C7EC3F001B5DD5 /* lottie-ios in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46325C7EC3F001B5DD5 /* lottie-ios */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8356C46625C7EC42001B5DD5 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift */; };
+		8356C46725C7EC42001B5DD5 /* IQKeyboardManagerSwift in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		83C57D29257E332D00209750 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C57D28257E332D00209750 /* AppDelegate.swift */; };
 		83C57D2D257E332D00209750 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C57D2C257E332D00209750 /* ViewController.swift */; };
 		83C57D30257E332D00209750 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83C57D2E257E332D00209750 /* Main.storyboard */; };
@@ -112,11 +112,11 @@
 			dstSubfolderSpec = 10;
 			files = (
 				83F34C7726EF8B8400ABAE5A /* iyzicoSDK.framework in Embed Frameworks */,
-				8356C46725C7EC42001B5DD5 /* IQKeyboardManagerSwift.framework in Embed Frameworks */,
-				8352F73B26BD085300B2D965 /* SVGKit.framework in Embed Frameworks */,
-				8356C46525C7EC3F001B5DD5 /* Lottie.framework in Embed Frameworks */,
-				8352F75126BD09CE00B2D965 /* CocoaLumberjack.framework in Embed Frameworks */,
-				771CA5BD25F108DB008B0EB8 /* Alamofire.framework in Embed Frameworks */,
+				8356C46725C7EC42001B5DD5 /* IQKeyboardManagerSwift in Embed Frameworks */,
+				8352F73B26BD085300B2D965 /* SVGKit in Embed Frameworks */,
+				8356C46525C7EC3F001B5DD5 /* lottie-ios in Embed Frameworks */,
+				8352F75126BD09CE00B2D965 /* CocoaLumberjack in Embed Frameworks */,
+				771CA5BD25F108DB008B0EB8 /* Alamofire in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,11 +166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F34C7626EF8B8400ABAE5A /* iyzicoSDK.framework in Frameworks */,
-				8356C46625C7EC42001B5DD5 /* IQKeyboardManagerSwift.framework in Frameworks */,
-				8352F73A26BD085300B2D965 /* SVGKit.framework in Frameworks */,
-				8356C46425C7EC3F001B5DD5 /* Lottie.framework in Frameworks */,
-				8352F75026BD09CE00B2D965 /* CocoaLumberjack.framework in Frameworks */,
-				771CA5BC25F108DB008B0EB8 /* Alamofire.framework in Frameworks */,
+				8356C46625C7EC42001B5DD5 /* IQKeyboardManagerSwift in Frameworks */,
+				8352F73A26BD085300B2D965 /* SVGKit in Frameworks */,
+				8356C46425C7EC3F001B5DD5 /* lottie-ios in Frameworks */,
+				8352F75026BD09CE00B2D965 /* CocoaLumberjack in Frameworks */,
+				771CA5BC25F108DB008B0EB8 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,12 +219,12 @@
 		8356C2B825C7EA90001B5DD5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				771CA5BB25F108DB008B0EB8 /* Alamofire.framework */,
-				8352F73726BD084F00B2D965 /* CocoaLumberjack.framework */,
-				8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift.framework */,
-				8356C46325C7EC3F001B5DD5 /* Lottie.framework */,
-				8356C3AB25C7EA90001B5DD5 /* Pods_iyzicoSDK.framework */,
-				8352F73926BD084F00B2D965 /* SVGKit.framework */,
+				771CA5BB25F108DB008B0EB8 /* Alamofire */,
+				8352F73726BD084F00B2D965 /* CocoaLumberjack */,
+				8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift */,
+				8356C46325C7EC3F001B5DD5 /* lottie-ios */,
+				8356C3AB25C7EA90001B5DD5 /* Pods-iyzicoSDK */,
+				8352F73926BD084F00B2D965 /* SVGKit */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -459,44 +459,50 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		771CA5BB25F108DB008B0EB8 /* Alamofire.framework */ = {
+		771CA5BB25F108DB008B0EB8 /* Alamofire */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
+			name = Alamofire;
 			path = Alamofire.framework;
 			remoteRef = 771CA5BA25F108DB008B0EB8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8352F73726BD084F00B2D965 /* CocoaLumberjack.framework */ = {
+		8352F73726BD084F00B2D965 /* CocoaLumberjack */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
+			name = CocoaLumberjack;
 			path = CocoaLumberjack.framework;
 			remoteRef = 8352F73626BD084F00B2D965 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8352F73926BD084F00B2D965 /* SVGKit.framework */ = {
+		8352F73926BD084F00B2D965 /* SVGKit */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
+			name = SVGKit;
 			path = SVGKit.framework;
 			remoteRef = 8352F73826BD084F00B2D965 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8356C3AB25C7EA90001B5DD5 /* Pods_iyzicoSDK.framework */ = {
+		8356C3AB25C7EA90001B5DD5 /* Pods-iyzicoSDK */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
+			name = "Pods-iyzicoSDK";
 			path = Pods_iyzicoSDK.framework;
 			remoteRef = 8356C3AA25C7EA90001B5DD5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift.framework */ = {
+		8356C46125C7EC3F001B5DD5 /* IQKeyboardManagerSwift */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
+			name = IQKeyboardManagerSwift;
 			path = IQKeyboardManagerSwift.framework;
 			remoteRef = 8356C46025C7EC3F001B5DD5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8356C46325C7EC3F001B5DD5 /* Lottie.framework */ = {
+		8356C46325C7EC3F001B5DD5 /* lottie-ios */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
+			name = "lottie-ios";
 			path = Lottie.framework;
 			remoteRef = 8356C46225C7EC3F001B5DD5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -730,7 +736,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = Q4E69GH98L;
 				INFOPLIST_FILE = "iyzi-co-testApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -752,7 +758,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = Q4E69GH98L;
 				INFOPLIST_FILE = "iyzi-co-testApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

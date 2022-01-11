@@ -20,17 +20,17 @@ class ViewController: UIViewController {
     //askdfjkfd90s0sd9@gmail.com gsm verified false at member vc
     @IBAction func topUpFlow(_ sender: Any) {
         #warning("change in prod")
-        Iyzico.shared.initialize(clientIp: "127.0.0.1",
-                                 clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
-                                 clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
-                                 baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
-                                 language: .TURKISH)
-        
 //        Iyzico.shared.initialize(clientIp: "127.0.0.1",
-//                                 clientId: "qumpara", //qumpara
-//                                 clientSecret: "qumparaSecret", //qumparaSecret
-//                                 baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+//                                 clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
+//                                 clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
+//                                 baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
 //                                 language: .TURKISH)
+        
+        Iyzico.shared.initialize(clientIp: "127.0.0.1",
+                                 clientId: "qumpara", //qumpara
+                                 clientSecret: "qumparaSecret", //qumparaSecret
+                                 baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+                                 language: .TURKISH)
         
         Iyzico.shared.startTopUp(buyerEmail: "msahincakir34+22092021@gmail.com", //msahincakir34+02042021@gmail.com
                                  buyerPhone: "+90 555 555 55 55",
@@ -79,19 +79,19 @@ class ViewController: UIViewController {
     
     @IBAction func cashoutFlow(_ sender: Any) {
         #warning("change in prod")
-        Iyzico.shared.initialize(
-            clientIp: "127.0.0.1",
-            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
-            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
-            baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
-            language: .TURKISH)
-        
 //        Iyzico.shared.initialize(
 //            clientIp: "127.0.0.1",
-//            clientId: "qumpara", //qumpara
-//            clientSecret: "qumparaSecret", //
-//            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+//            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
+//            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
+//            baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
 //            language: .TURKISH)
+        
+        Iyzico.shared.initialize(
+            clientIp: "127.0.0.1",
+            clientId: "qumpara", //qumpara
+            clientSecret: "qumparaSecret", //
+            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+            language: .TURKISH)
         
         Iyzico.shared.startCashOut(
             buyerEmail: "msahincakir34+22092021@gmail.com", //newuser1234@gmail.com
@@ -105,23 +105,23 @@ class ViewController: UIViewController {
     //msahincakir34+23032021@gmail.com
     @IBAction func payWithIyzicoFlow(_ sender: Any) {
         #warning("change in prod")
-        Iyzico.shared.initialize(
-            clientIp: "127.0.0.1",
-            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
-            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
-            baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
-            merchantApiKey: "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg", //sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl
-            merchantSecretKey: "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O", //sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9
-            language: .TURKISH)
-        
 //        Iyzico.shared.initialize(
 //            clientIp: "127.0.0.1",
-//            clientId: "qumpara", //qumpara
-//            clientSecret: "qumparaSecret", //qumparaSecret
-//            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
-//            merchantApiKey: "sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl", //sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl
-//            merchantSecretKey: "sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9", //sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9
+//            clientId: "tyHJXKUb7uxeksaejjLjTgC8ZQYuQ9", //qumpara
+//            clientSecret: "zb5KTrDatdP9ebSeHmQ5SG4SGJw3eR", //qumparaSecret
+//            baseUrl: "https://consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+//            merchantApiKey: "aaqZZtlaUdEQY1DgK1Guw8Prj16Hv6gg", //sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl
+//            merchantSecretKey: "MU2SxEhkC3bTwSsgnUvPcBsKUzNzoW9O", //sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9
 //            language: .TURKISH)
+        
+        Iyzico.shared.initialize(
+            clientIp: "127.0.0.1",
+            clientId: "qumpara", //qumpara
+            clientSecret: "qumparaSecret", //qumparaSecret
+            baseUrl: "https://sandbox-consumerapigw.iyzipay.com", //https://sandbox-consumerapigw.iyzipay.com
+            merchantApiKey: "sandbox-9mf76Q4wJLZjv2GxyM8BflBfrAYSULTD", //sandbox-fEzf4Lbbzw5yGOVjGGl6UF2sM3CZ2nPl
+            merchantSecretKey: "sandbox-nwm4ooTetPJDChjBxf3WqQwKW6qr6irx", //sandbox-DR5z07SXKVWyzwOHR6c85tccPb5ogOE9
+            language: .TURKISH)
         
         Iyzico.shared.startPayWithIyzico(
             brand: "Lidyana.com",
@@ -130,7 +130,7 @@ class ViewController: UIViewController {
             currency: Currency.TRY,
             enabledInstallments: [1,2,3,6,9],
             basketId: "B67832",
-            paymentGroup: nil,
+            paymentGroup: .PRODUCT,
             paymentSource: "MOBILE_SDK",
             urlCallback: "https://www.merchant.com/callback",
             buyerId: "BY789",
@@ -165,8 +165,8 @@ class ViewController: UIViewController {
                 itemType: BasketItemType.PHYSICAL.rawValue,
                 itemName: "Binocular",
                 price: "1.0",
-                subMerchantKey: nil,
-                subMerchantPrice: nil
+                subMerchantKey: "Sll5o4Dd3msNHWaHmJ5h4UOv7yA=",
+                subMerchantPrice: "1.0"
             )]
         )
         
