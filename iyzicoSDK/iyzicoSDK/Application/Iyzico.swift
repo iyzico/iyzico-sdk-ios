@@ -38,6 +38,8 @@ public class Iyzico {
         } else {
             // Fallback on earlier versions
         }
+        //MARK: - ios15 Section settings
+        GlobalMethodsManager.sectionHeaderTopPadding()
     }
 }
 
@@ -167,34 +169,6 @@ extension Iyzico {
         checkSDKConfigurations()
     }
     
-//    public func startSettlement(buyerEmail: String,
-//                                buyerPhone: String,
-//                                walletPrice: Double,
-//                                buyerName: String? = nil,
-//                                buyerSurname: String? = nil) {
-//        SDKManager.flow = .settlement
-//        SDKManager.email = buyerEmail.lowercased()
-//        SDKManager.phone = buyerPhone.addWhitespacesToPhone
-//        SDKManager.walletPrice = walletPrice
-//        SDKManager.name = buyerName
-//        SDKManager.surname = buyerSurname
-//        checkSDKConfigurations()
-//    }
-//
-//    public func startRefund(buyerEmail: String,
-//                            buyerPhone: String,
-//                            productId: String,
-//                            buyerName: String? = nil,
-//                            buyerSurname: String? = nil) {
-//        SDKManager.flow = .refund
-//        SDKManager.email = buyerEmail.lowercased()
-//        SDKManager.phone = buyerPhone.addWhitespacesToPhone
-//        SDKManager.productId = productId
-//        SDKManager.name = buyerName
-//        SDKManager.surname = buyerSurname
-//        checkSDKConfigurations()
-//    }
-    
     public func startCashOut(buyerEmail: String,
                              buyerPhone: String,
                              walletPrice: Double,
@@ -299,6 +273,7 @@ extension Iyzico {
             getCashoutInitialize()
         }
     }
+    
 }
 
 //MARK: - Service Calls

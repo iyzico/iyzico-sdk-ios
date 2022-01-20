@@ -18,8 +18,6 @@
 		8356C3C525C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DA25C7EA90001B5DD5 /* Pods-iyzicoSDK-Info.plist */; };
 		8356C3C625C7EA90001B5DD5 /* Pods-iyzicoSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8356C2DB25C7EA90001B5DD5 /* Pods-iyzicoSDK-dummy.m */; };
 		8356C3C725C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DD25C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.markdown */; };
-		8356C3C825C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DE25C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig */; };
-		8356C3C925C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2DF25C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig */; };
 		8356C3CA25C7EA90001B5DD5 /* Manifest.lock in Resources */ = {isa = PBXBuildFile; fileRef = 8356C2E125C7EA90001B5DD5 /* Manifest.lock */; };
 		8356C44025C7EA91001B5DD5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8356C3A125C7EA90001B5DD5 /* Podfile */; };
 		8356C44125C7EA91001B5DD5 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 8356C3A225C7EA90001B5DD5 /* Podfile.lock */; };
@@ -413,7 +411,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					83C57D24257E332D00209750 = {
 						CreatedOnToolsVersion = 12.2;
@@ -526,9 +524,7 @@
 				83C57D35257E333100209750 /* LaunchScreen.storyboard in Resources */,
 				83C57D32257E333100209750 /* Assets.xcassets in Resources */,
 				8356C44125C7EA91001B5DD5 /* Podfile.lock in Resources */,
-				8356C3C825C7EA90001B5DD5 /* Pods-iyzicoSDK.release.xcconfig in Resources */,
 				8356C3AC25C7EA90001B5DD5 /* iyzicoSDK.xcworkspace in Resources */,
-				8356C3C925C7EA90001B5DD5 /* Pods-iyzicoSDK.debug.xcconfig in Resources */,
 				83C57D30257E332D00209750 /* Main.storyboard in Resources */,
 				8356C44025C7EA91001B5DD5 /* Podfile in Resources */,
 				8356C3C425C7EA90001B5DD5 /* Pods-iyzicoSDK-acknowledgements.plist in Resources */,

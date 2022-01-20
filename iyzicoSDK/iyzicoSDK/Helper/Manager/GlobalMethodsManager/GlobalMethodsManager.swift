@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class GlobalMethodsManager {
     
@@ -17,5 +18,11 @@ class GlobalMethodsManager {
     static func getOsVersion()  -> String {
         let os = ProcessInfo().operatingSystemVersion
         return "iOS - \(os.majorVersion)"
+    }
+    
+    static func sectionHeaderTopPadding() {
+        if #available(iOS 15.0, *) {
+            UITableView.appearance().sectionHeaderTopPadding = 0.0
+        }
     }
 }
