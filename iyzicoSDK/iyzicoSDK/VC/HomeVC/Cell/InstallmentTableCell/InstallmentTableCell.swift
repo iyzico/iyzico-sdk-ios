@@ -87,13 +87,14 @@ class InstallmentTableCell: UITableViewCell {
             priceCheckBox.borderWidth = CGFloat(Constant.shared.borderWidthBig)
             priceCheckBox.cornerRadius = Constant.shared.defaultCheckBoxCornerRadius
             priceCheckBox.checkBoxType = .check
+//            priceCheckBox.isSelected = true
         }
     }
     
     @IBOutlet weak var amountLabel: UILabel! {
         didSet {
             amountLabel.text = StringConstant.shared.newCardCellCardAmountLabelText
-            amountLabel.font = .markProMedium14
+            amountLabel.font = .markPro14
             amountLabel.textColor = .darkGrey
         }
     }
@@ -103,7 +104,6 @@ class InstallmentTableCell: UITableViewCell {
             priceLabel.text = "-"
             priceLabel.font = .markProMedium14
             priceLabel.textColor = .darkGrey
-            priceLabel.textAlignment = .right
         }
     }
 
@@ -197,7 +197,7 @@ extension InstallmentTableCell: UITableViewDataSource {
 
 extension InstallmentTableCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.priceCheckBox.deSelect()
+//        self.priceCheckBox.deSelect()
         let installment = installmentModel?.installmentPrices?[indexPath.row].installmentNumber
         let totalPrice = installmentModel?.installmentPrices?[indexPath.row].totalPrice
         delegate?.getInstallmentNumber(installment: installment, totalPrice: totalPrice)

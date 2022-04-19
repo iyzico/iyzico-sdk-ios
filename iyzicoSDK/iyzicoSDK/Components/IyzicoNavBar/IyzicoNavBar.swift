@@ -125,7 +125,7 @@ extension IyzicoNavBar {
     fileprivate func setUpTimeLabel() {
         timeLabel.font = .markPro14
         timeLabel.textColor = .blueGrey
-        timeLabel.text = StringConstant.shared.timeLabelName
+        timeLabel.text = ""
     }
     
     fileprivate func setUpCountDownLabel() {

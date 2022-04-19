@@ -14,6 +14,7 @@ class NibName {
     // MARK: - Components
     let IyzicoCheckBox = "IyzicoCheckBox"
     let IyzicoCardView = "IyzicoCardView"
+    let IyzicoCardBonusView = "IyzicoCardBonusView"
     let IyzicoPopUpView = "IyzicoPopUpView"
     let IyzicoTermAndCond = "IyzicoTermAndCond"
     let IyzicoDropDown = "IyzicoDropDown"
@@ -62,5 +63,6 @@ class NibName {
     let InstallmentTableCell = "InstallmentTableCell"
     let InstallmentCell = "InstallmentCell"
     let ButtonCell = "ButtonCell"
+    let UseBalanceCell = "UseBalanceCell"
     
 }

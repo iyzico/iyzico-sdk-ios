@@ -100,6 +100,11 @@ class ResultVC: BaseVC, ResultCellDelegate {
                                 nameLabelTitle: SDKManager.brand ?? "",
                                 closeButtonType: .close)
                 pushTo3DS()
+            case .threeDSecureWithURL:
+                configureNavBar(navBarBottomViewVisibility: true,
+                                nameLabelTitle: SDKManager.brand ?? "",
+                                closeButtonType: .close)
+                pushTo3DS(withURL: true)
             case .successWithProducts:
                 //Discarded feature
                 break
@@ -156,11 +161,17 @@ class ResultVC: BaseVC, ResultCellDelegate {
         }
     }
     
-    func pushTo3DS() {
+    func pushTo3DS(withURL: Bool = false) {
         DispatchQueue.main.asyncAfter(deadline: .now()+2) { [unowned self] in
-            let vc = WebVC(vcType: .html)
-            vc.html = self.resultVM.html
-            self.navigationController?.pushViewController(vc, animated: true)
+            if withURL {
+                let vc = WebVC(vcType: .htmlWithUrl)
+                vc.html = self.resultVM.html
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = WebVC(vcType: .html)
+                vc.html = self.resultVM.html
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

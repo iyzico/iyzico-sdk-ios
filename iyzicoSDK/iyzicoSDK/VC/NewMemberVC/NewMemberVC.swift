@@ -200,7 +200,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
     
     private func setupTitleLabel() {
         titleLabel.text = constants.titleLabelText
-        titleLabel.font = .markProBold24
+        titleLabel.font = .markProBold20
     }
     
     private func setupTitleDescriptionLabel() {

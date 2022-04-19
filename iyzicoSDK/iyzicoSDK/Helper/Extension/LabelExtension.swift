@@ -10,7 +10,7 @@ import UIKit
 
 extension UILabel {
     
-    func addAttribute(text: String = "", attText: String, color: UIColor = .red700, highletedFont: UIFont = .markProBold15) {
+    func addAttribute(text: String = "", attText: String, color: UIColor = .red700, highletedFont: UIFont = .markProBold15, isCenter: Bool = false) {
         var currentText = text
         if currentText == "" {
             currentText = self.text ?? ""
@@ -22,6 +22,7 @@ extension UILabel {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.lineSpacing = 5
+        paragraphStyle.alignment = isCenter ? .center : .left
     
         attrStri.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: .zero, length: text.count))
         attrStri.addAttribute(.foregroundColor, value: color, range: nsRange)

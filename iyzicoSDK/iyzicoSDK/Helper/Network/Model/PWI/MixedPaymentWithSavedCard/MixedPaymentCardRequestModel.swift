@@ -12,12 +12,14 @@ struct MixedPaymentCardRequestModel: Codable {
     let memberBalanceAmount: Double?
     let memberToken: String?
     let paymentCard: PaymentCard?
+    let reward: Reward?
     
-    init(paymentChannel: String?, memberBalanceAmount: Double?, memberToken: String? = nil, paymentCard: PaymentCard?) {
+    init(paymentChannel: String?, memberBalanceAmount: Double?, memberToken: String? = nil, paymentCard: PaymentCard?, reward: Reward?) {
         self.paymentChannel = paymentChannel
         self.memberBalanceAmount = memberBalanceAmount
         self.memberToken = memberToken
         self.paymentCard = paymentCard
+        self.reward = reward
     }
     
    
@@ -43,4 +45,13 @@ struct PaymentCard: Codable {
     }
 }
 
+struct Reward: Codable {
+    let rewardAmount: Double?
+    let rewardUsage: Int?
+    
+    init(rewardAmount: Double? = nil, rewardUsage: Int? = nil) {
+        self.rewardAmount = rewardAmount
+        self.rewardUsage = rewardUsage
+    }
+}
 

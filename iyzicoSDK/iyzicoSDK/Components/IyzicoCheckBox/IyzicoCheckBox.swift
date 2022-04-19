@@ -126,13 +126,12 @@ extension IyzicoCheckBox {
     }
     
     func setSelected(tintColor: UIColor = .green800) {
-        if  checkBoxButton.isSelected == true {
+        if checkBoxButton.isSelected {
             deSelect()
-        }
-        else {
+        } else {
             select(tintColor: tintColor)
         }
-    }
+    } 
     
     func select(tintColor: UIColor = .green800) {
         frontImageView.isHidden = false

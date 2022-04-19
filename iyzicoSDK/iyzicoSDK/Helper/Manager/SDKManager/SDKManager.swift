@@ -162,8 +162,8 @@ class SDKManager: Iyzico {
                 configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.name, errorValue: .basketProductNameError))
                 configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.category1, errorValue: .basketProductCategoryError))
                 configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.itemType, errorValue: .basketProductItemTypeError))
-                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.subMerchantKey, errorValue: .error))
-                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.subMerchantPrice, errorValue: .error))
+//                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.subMerchantKey, errorValue: .error))
+//                configModelArrayByFlow.append(SDKConfigurationModel(configValue: item.subMerchantPrice, errorValue: .error))
             })
         }
         

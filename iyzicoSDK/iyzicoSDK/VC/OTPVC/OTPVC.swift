@@ -16,9 +16,14 @@ class OTPVC: BaseVC {
     @IBOutlet weak var smsSendedDescriptionLabel: UILabel!
     @IBOutlet weak var mobileCodeInputStackView: UIStackView!
     @IBOutlet weak var containerStackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var phoneNumberStack: UIStackView! {
+        didSet {
+            phoneNumberStack.setCustomSpacing(4, after: phoneLabel)
+        }
+    }
     @IBOutlet weak var textInput1: IyzicoTextInput! {
         didSet {
-            textInput1.shouldChangeCharactersIn = { [unowned self] text in
+            textInput1.shouldChangeCharactersIn = { [unowned self] text, replString in
                 self.textInput1.textField.text = text
                 guard text.isBackspace != true else {return}
                 if self.viewModel.isPasted == false {
@@ -32,8 +37,8 @@ class OTPVC: BaseVC {
     }
     @IBOutlet weak var textInput2: IyzicoTextInput! {
         didSet {
-          
-            textInput2.shouldChangeCharactersIn = { [unowned self] text in
+            
+            textInput2.shouldChangeCharactersIn = { [unowned self] text, replString in
                 self.textInput2.textField.text = text
                 guard text.isBackspace != true else {return}
                 if self.viewModel.isPasted == false {
@@ -52,8 +57,8 @@ class OTPVC: BaseVC {
     }
     @IBOutlet weak var textInput3: IyzicoTextInput! {
         didSet {
-           
-            textInput3.shouldChangeCharactersIn = { [unowned self] text in
+            
+            textInput3.shouldChangeCharactersIn = { [unowned self] text, replString in
                 self.textInput3.textField.text = text
                 guard text.isBackspace != true else {return}
                 if self.viewModel.isPasted == false {
@@ -73,7 +78,7 @@ class OTPVC: BaseVC {
     @IBOutlet weak var textInput4: IyzicoTextInput! {
         didSet {
             
-            textInput4.shouldChangeCharactersIn = { [unowned self] text in
+            textInput4.shouldChangeCharactersIn = { [unowned self] text, replString in
                 self.textInput4.textField.text = text
                 guard text.isBackspace != true else {return}
                 if self.viewModel.isPasted == false {
@@ -92,8 +97,8 @@ class OTPVC: BaseVC {
     }
     @IBOutlet weak var textInput5: IyzicoTextInput! {
         didSet {
-
-            textInput5.shouldChangeCharactersIn = { [unowned self] text in
+            
+            textInput5.shouldChangeCharactersIn = { [unowned self] text, replString in
                 self.textInput5.textField.text = text
                 guard text.isBackspace != true else {return}
                 if self.viewModel.isPasted == false {
@@ -113,7 +118,7 @@ class OTPVC: BaseVC {
     @IBOutlet weak var textInput6: IyzicoTextInput! {
         didSet {
             
-            textInput6.shouldChangeCharactersIn = { [unowned self] text in
+            textInput6.shouldChangeCharactersIn = { [unowned self] text, replString in
                 self.textInput6.textField.text = text
                 if text.isBackspace != true {
                     self.view.endEditing(true)
@@ -134,7 +139,7 @@ class OTPVC: BaseVC {
         didSet {
             messageLabel.text = StringConstant.shared.otpVCSendAgainTitleText
             messageLabel.textColor = .darkGrey
-            messageLabel.font = .markPro16
+            messageLabel.font = .markPro14
         }
     }
     
@@ -142,7 +147,7 @@ class OTPVC: BaseVC {
         didSet {
             codeLabel.text = StringConstant.shared.otpVCSendAgainCodeText
             codeLabel.textColor = .darkGrey
-            codeLabel.font = .markProBold28
+            codeLabel.font = .markProBold20
         }
     }
     
@@ -159,7 +164,7 @@ class OTPVC: BaseVC {
     
     var viewModel = OTPVM()
     var timer: Timer?
-   
+    
     lazy var textInputs = [textInput1,
                            textInput2,
                            textInput3,
@@ -202,7 +207,7 @@ class OTPVC: BaseVC {
         customizeForPayWithIyzico()
     }
 }
- // MARK: - Action
+// MARK: - Action
 extension OTPVC {
     
     @IBAction func didTappedSendAgainButton(_ sender: Any) {
@@ -210,12 +215,12 @@ extension OTPVC {
     }
     
     @IBAction func didTappedChangePhoneButton(_ sender: Any) {
-//        switch SDKManager.flow {
-//        case .topUp, .payWithIyzico:
-//            navigateToNewMemberVC()
-//        case .settlement, .refund, .cashout:
-//            openSupportPage()
-//        }
+        //        switch SDKManager.flow {
+        //        case .topUp, .payWithIyzico:
+        //            navigateToNewMemberVC()
+        //        case .settlement, .refund, .cashout:
+        //            openSupportPage()
+        //        }
         if viewModel.changeButtonType == .change {
             navigateToNewMemberVC()
         }
@@ -256,24 +261,24 @@ extension OTPVC {
     
     private func continueButtonAction() {
         switch SDKManager.flow {
-        case .topUp:
-            let vc = IyzicoTransferVC(vcType: .topUp)
-            vc.viewModel.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
-            navigationController?.pushViewController(vc, animated: true)
-        case .settlement:
-            navigationController?.pushViewController(SettlementVC(), animated: true)
-        case .refund:
-            ///TODO - Make control with service
-            navigationController?.pushViewController(ResultVC(vcType: .refundSuccess), animated: true)
-        case .cashout:
-            let vc = IyzicoTransferVC(vcType: .cashout)
-            vc.viewModel.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
-            navigationController?.pushViewController(vc, animated: true)
-        case .payWithIyzico:
-           let vc = IyzicoHomeVC(vcType: .payWithIyzico)
-            vc.iyzicoHomeVM.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
-            vc.iyzicoHomeVM.navigatedPhoneNumber = viewModel.navigatedLoginInitializeResponse?.gsmNumber
-            navigationController?.pushViewController(vc, animated: true)
+            case .topUp:
+                let vc = IyzicoTransferVC(vcType: .topUp)
+                vc.viewModel.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
+                navigationController?.pushViewController(vc, animated: true)
+            case .settlement:
+                navigationController?.pushViewController(SettlementVC(), animated: true)
+            case .refund:
+                ///TODO - Make control with service
+                navigationController?.pushViewController(ResultVC(vcType: .refundSuccess), animated: true)
+            case .cashout:
+                let vc = IyzicoTransferVC(vcType: .cashout)
+                vc.viewModel.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
+                navigationController?.pushViewController(vc, animated: true)
+            case .payWithIyzico:
+                let vc = IyzicoHomeVC(vcType: .payWithIyzico)
+                vc.iyzicoHomeVM.navigatedInitializeResponse = viewModel.navigatedInitializeResponse
+                vc.iyzicoHomeVM.navigatedPhoneNumber = viewModel.navigatedLoginInitializeResponse?.gsmNumber
+                navigationController?.pushViewController(vc, animated: true)
         }
     }
     func customizeForPayWithIyzico() {
@@ -300,7 +305,7 @@ extension OTPVC {
         setupSmsSendedContainerStackView()
         setupSmsSendedImageView()
         setupSmsSendedDescriptionLabel()
-//        setupChangePhoneButtonVisibility(isGsmVerified: viewModel.isGsmVerified)
+        //        setupChangePhoneButtonVisibility(isGsmVerified: viewModel.isGsmVerified)
     }
     
     fileprivate func setUpContentImageView() {
@@ -311,18 +316,18 @@ extension OTPVC {
         phoneLabel.font = .markProMedium14
         phoneLabel.textColor = .blueGrey
         phoneLabel.text = viewModel.getMaskedPhoneText()
-//        phoneLabel.securePhoneText(number: viewModel.navigatedPhoneNumber ?? "")
+        //        phoneLabel.securePhoneText(number: viewModel.navigatedPhoneNumber ?? "")
     }
     
     fileprivate func setUpChangePhoneButton() {
         changePhoneButton.titleLabel?.font = .markProBold12
         changePhoneButton.setTitleColor(.clearBlue, for: .normal)
-//        switch SDKManager.flow {
-//        case .topUp, .payWithIyzico:
-//            changePhoneButton.setTitle(StringConstant.shared.otpVCChangePhoneButtonTitle, for: .normal)
-//        case .settlement, .refund, .cashout:
-//            changePhoneButton.setTitle(StringConstant.shared.otpVCSupportButtonTitle, for: .normal)
-//        }
+        //        switch SDKManager.flow {
+        //        case .topUp, .payWithIyzico:
+        //            changePhoneButton.setTitle(StringConstant.shared.otpVCChangePhoneButtonTitle, for: .normal)
+        //        case .settlement, .refund, .cashout:
+        //            changePhoneButton.setTitle(StringConstant.shared.otpVCSupportButtonTitle, for: .normal)
+        //        }
         if viewModel.changeButtonType == .change {
             changePhoneButton.setTitle(StringConstant.shared.otpVCChangePhoneButtonTitle, for: .normal)
         }
@@ -379,11 +384,11 @@ extension OTPVC {
     
     fileprivate func checkTextInputs() {
         let isValid = ValidationManager.checkValidation(inputs: [textInput1,
-                                                          textInput2,
-                                                          textInput3,
-                                                          textInput4,
-                                                          textInput5,
-                                                          textInput6])
+                                                                 textInput2,
+                                                                 textInput3,
+                                                                 textInput4,
+                                                                 textInput5,
+                                                                 textInput6])
         if isValid {
             continueButton.setUp(buttonType: .primaryLvl1(state: .normal),title: StringConstant.shared.continueButtonTitle)
         } else {
@@ -412,11 +417,11 @@ extension OTPVC {
         smsSendedContainerStackView.isHidden = false
     }
     
-//    private func setupChangePhoneButtonVisibility(isGsmVerified: Bool?) {
-//        if SDKManager.flow == .payWithIyzico || SDKManager.flow == .topUp {
-//            changePhoneButton.isHidden = isGsmVerified ?? true
-//        }
-//    }
+    //    private func setupChangePhoneButtonVisibility(isGsmVerified: Bool?) {
+    //        if SDKManager.flow == .payWithIyzico || SDKManager.flow == .topUp {
+    //            changePhoneButton.isHidden = isGsmVerified ?? true
+    //        }
+    //    }
 }
 
 //MARK: - Helper Methods
@@ -492,14 +497,14 @@ extension OTPVC {
 //MARK: - Service Calls
 extension OTPVC {
     private func getLoginComplete() {
-        #warning("Change in prod")
+#warning("Change in prod")
         self.viewModel.getLoginComplete(verificationCode: getVerificationCode(),
                                         clientIp: SDKManager.clientIp,
                                         loginChannel: "THIRD_PARTY_APP",
-        onSuccess: { [weak self] (response: LoginCompleteResponseModel?) in
+                                        onSuccess: { [weak self] (response: LoginCompleteResponseModel?) in
             self?.continueButtonAction()
         },
-        onFailure: { [weak self] errorDescription in
+                                        onFailure: { [weak self] errorDescription in
             self?.showError(errorDescription: errorDescription)
             self?.removeTextFieldInputs()
             Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
@@ -507,19 +512,19 @@ extension OTPVC {
     }
     
     private func getResendSms() {
-        #warning("Change in prod")
+#warning("Change in prod")
         switch SDKManager.flow {
-        case .cashout, .payWithIyzico, .topUp:
-            viewModel.getResendSms(
-            onSuccess: { [weak self] (response: QuickLoginInitializeResponseModel?) in
-                self?.startCountDown()
-                self?.configureSmsSendedView()
-            }, onFailure: { [weak self] errorDescription in
-                self?.showError(errorDescription: errorDescription)
-                Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
-            })
-        default:
-            break
+            case .cashout, .payWithIyzico, .topUp:
+                viewModel.getResendSms(
+                    onSuccess: { [weak self] (response: QuickLoginInitializeResponseModel?) in
+                        self?.startCountDown()
+                        self?.configureSmsSendedView()
+                    }, onFailure: { [weak self] errorDescription in
+                        self?.showError(errorDescription: errorDescription)
+                        Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
+                    })
+            default:
+                break
         }
     }
 }

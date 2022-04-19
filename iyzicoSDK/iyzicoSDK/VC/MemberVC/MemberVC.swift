@@ -30,7 +30,14 @@ class MemberVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavBar(closeButtonType: .cancel)
+        if SDKManager.flow == .payWithIyzico {
+            configureNavBar(navBarBottomViewVisibility: true,
+                            timerStackViewVisibility: true,
+                            nameLabelTitle: SDKManager.brand ?? "",
+                            closeButtonType: .cancel)
+        } else {
+            configureNavBar(closeButtonType: .cancel)
+        }
     }
     
     //MARK: - Events
@@ -55,7 +62,7 @@ class MemberVC: BaseVC {
     }
     
     private func setupTitleLabel(){
-        titleLabel.font = .markProBold24
+        titleLabel.font = .markProBold20
         titleLabel.textColor = .darkGrey
         switch SDKManager.flow {
         case .refund:

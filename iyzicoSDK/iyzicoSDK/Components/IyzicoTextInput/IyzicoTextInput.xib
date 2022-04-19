@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IyzicoTextInput" customModule="iyzi_co_test_framework" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IyzicoTextInput" customModule="iyzicoSDK" customModuleProvider="target">
             <connections>
                 <outlet property="contentStackView" destination="JZN-H3-RvD" id="MIa-vY-nVQ"/>
                 <outlet property="contentView" destination="fbY-X2-7AC" id="NZ3-Vx-1lq"/>
@@ -97,7 +97,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Hzn-ua-9LP">
                                                             <rect key="frame" x="0.0" y="20" width="346" height="22"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1dD-Q1-8Ue" customClass="CustomTextField" customModule="iyzi_co_test_framework" customModuleProvider="target">
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1dD-Q1-8Ue" customClass="CustomTextField" customModule="iyzicoSDK" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="346" height="22"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" name="MarkPro-Medium" family="Mark Pro" pointSize="16"/>
@@ -141,7 +141,7 @@
                                             </subviews>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-vf-GGg">
-                                            <rect key="frame" x="354" y="35" width="25" height="25"/>
+                                            <rect key="frame" x="354" y="22.5" width="25" height="25"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="V3k-4I-Abo">
                                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -164,6 +164,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="Qo4-vf-GGg" firstAttribute="centerY" secondItem="TaO-tC-mY2" secondAttribute="centerY" id="4Cl-CS-TPu"/>
                                         <constraint firstAttribute="bottom" secondItem="qJR-MJ-oKU" secondAttribute="bottom" constant="8" id="7Jo-LC-SsH"/>
                                         <constraint firstItem="qJR-MJ-oKU" firstAttribute="top" secondItem="TaO-tC-mY2" secondAttribute="top" constant="8" id="BWD-xz-jLS"/>
                                         <constraint firstAttribute="trailing" secondItem="qJR-MJ-oKU" secondAttribute="trailing" id="ipr-X9-Vd1"/>
@@ -181,7 +182,6 @@
                         <constraint firstAttribute="trailing" secondItem="JZN-H3-RvD" secondAttribute="trailing" id="Mpo-KF-ikY"/>
                         <constraint firstAttribute="bottom" secondItem="JZN-H3-RvD" secondAttribute="bottom" id="X8p-GJ-jY0"/>
                         <constraint firstItem="JZN-H3-RvD" firstAttribute="top" secondItem="fbY-X2-7AC" secondAttribute="top" id="cjI-BQ-8Yq"/>
-                        <constraint firstAttribute="bottom" secondItem="Qo4-vf-GGg" secondAttribute="bottom" constant="10" id="rlB-1d-jUf"/>
                     </constraints>
                 </view>
             </subviews>

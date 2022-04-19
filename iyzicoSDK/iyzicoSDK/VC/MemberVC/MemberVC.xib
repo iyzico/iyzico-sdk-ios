@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemberVC" customModule="iyzi_co_test_framework" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemberVC" customModule="iyzicoSDK" customModuleProvider="target">
             <connections>
                 <outlet property="changeAccountButton" destination="cJo-A3-zqI" id="urN-N2-V6K"/>
                 <outlet property="memberButton" destination="G6P-hy-pBN" id="lOM-Od-ycU"/>
@@ -32,17 +32,17 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5N-yV-XNJ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="284"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QQR-fp-pqM">
-                                            <rect key="frame" x="24" y="114" width="366" height="170"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QQR-fp-pqM">
+                                            <rect key="frame" x="24" y="24" width="366" height="260"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aI-fm-Jb6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="133.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="231.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1B-EV-Dye">
-                                                    <rect key="frame" x="0.0" y="149.5" width="366" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="239.5" width="366" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="QQR-fp-pqM" firstAttribute="top" secondItem="t5N-yV-XNJ" secondAttribute="top" constant="114" id="D9M-sZ-SjY"/>
+                                        <constraint firstItem="QQR-fp-pqM" firstAttribute="top" secondItem="t5N-yV-XNJ" secondAttribute="top" constant="24" id="D9M-sZ-SjY"/>
                                         <constraint firstItem="QQR-fp-pqM" firstAttribute="leading" secondItem="t5N-yV-XNJ" secondAttribute="leading" constant="24" id="Zi0-cb-jsV"/>
                                         <constraint firstAttribute="trailing" secondItem="QQR-fp-pqM" secondAttribute="trailing" constant="24" id="nD9-Xc-4zS"/>
                                         <constraint firstAttribute="bottom" secondItem="QQR-fp-pqM" secondAttribute="bottom" id="o0k-GT-qh0"/>
@@ -68,7 +68,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ORt-UZ-uwF">
                                             <rect key="frame" x="16" y="0.0" width="382" height="144"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6P-hy-pBN" customClass="IyzicoMemberView" customModule="iyzi_co_test_framework" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6P-hy-pBN" customClass="IyzicoMemberView" customModule="iyzicoSDK" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="82"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>

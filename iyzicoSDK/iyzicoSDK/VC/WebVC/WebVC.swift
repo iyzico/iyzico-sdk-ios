@@ -26,6 +26,9 @@ class WebVC: BaseVC {
         initializeWebView()
         if vcType == .html {
             load(html: html)
+        } else if vcType == .htmlWithUrl {
+            self.showLoading()
+            loadContent(urlString: html ?? "")
         } else {
             self.showLoading()
             loadContent(urlString: vcType.getUrl())
@@ -36,7 +39,7 @@ class WebVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if vcType == .html {
+        if vcType == .html || vcType == .htmlWithUrl {
             configureNavBar(headerContainerStackViewVisibility: true,
                             backButtonVisibility: false,
                             titleImageViewVisibility: false,
