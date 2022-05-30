@@ -62,6 +62,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
     //MARK: - Events
     private func initializeEvents() {
         iyzicoButton.didTappedButton = { [unowned self] in
+            iyzicoHomeVM.makePaymentTapped = true
             self.makePayment()
         }
     }
@@ -77,6 +78,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
             if self.menu[section].sectionType == .creditCardList && iyzicoHomeVM.userHasCreditCard() && menu[section].isExtended && SDKManager.flow == .payWithIyzico {
                 getFirstInstallment()
             }
+            
         }
     }
     
@@ -89,7 +91,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
             getInstallment(binNumber: binNumber, shouldShowLoading: false, reloadTableView: false, reloadSection: true)
         } else if (binNumber?.count ?? .zero) < 6 {
             showInfoView()
-            UIView.performWithoutAnimation {
+            DispatchQueue.main.async {
                 self.tableView.reloadSections([IyzicoMenuSectionType.installment.rawValue], with: .none)
             }
         }
@@ -125,9 +127,12 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
                               at: .top,
                               animated: true)
         showInfoView()
-        UIView.performWithoutAnimation {
+        DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+//        UIView.performWithoutAnimation {
+//            self.tableView.reloadData()
+//        }
         iyzicoHomeVM.addCardSelected = true
         iyzicoHomeVM.priceCheckBoxSelectedStatus = false
     }
@@ -241,7 +246,9 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
         if sectionType != .eft {
             checkForIyzicoButtonSelectedStatus()
         }
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     private func checkForIyzicoButtonSelectedStatus(conditionsArray: [Bool]? = nil) {
@@ -258,7 +265,9 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
             inputModel.input?.showErrorByType(requiredMessage: inputModel.requiredMessage ?? "",
                                               notValidMessage: inputModel.notValidMessage ?? "")
         })
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         let isNewCardInputsValid = !(iyzicoHomeVM.newCardInputsArray?.map{ $0.input?.isInputValid }.contains(false) ?? true)
         return isNewCardInputsValid
     }
@@ -433,52 +442,86 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
                 let myAccountBalance = getBalance()
                 let isMixedPayment = iyzicoHomeVM.isMixedPayment(basketPrice: basketPrice,
                                                                  myAccountBalance: myAccountBalance)
+                let isFundEnabled = iyzicoHomeVM.pwiRetrieveResponse?.checkoutDetail?.fundEnabled
                 if isFirstTime {
                     if isMixedPayment {
-                        if userHasCreditCard {
-                            if iyzicoHomeVM.numberOfIyzicoCards == iyzicoHomeVM.memberCards?.count {
-                                configurePaymentTypeUIByNewCard()
-                                iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
-                            } else {
-                                iyzicoHomeVM.changeAllElementsInSelectedCells(status: false, exceptForIndexs: [iyzicoHomeVM.numberOfIyzicoCards])
-                                iyzicoHomeVM.selectedCells[iyzicoHomeVM.numberOfIyzicoCards] = true
-                                iyzicoHomeVM.selectedCardForPayment = iyzicoHomeVM.memberCards?[iyzicoHomeVM.numberOfIyzicoCards]
-                                if iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == true {
-                                    iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.mixed))
-                                } else {
-                                    iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
-                                }
-                                getFirstInstallment()
-                            }
-                        } else {
-                            configurePaymentTypeUIByNewCard()
-                            iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
-                        }
-                        extendCell(in: 2)
-                    } else {
-                        if myAccountBalance?.asDouble == 0.0 {
+                        if isFundEnabled == true {
                             if userHasCreditCard {
                                 if iyzicoHomeVM.numberOfIyzicoCards == iyzicoHomeVM.memberCards?.count {
                                     configurePaymentTypeUIByNewCard()
                                     iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
-                                    getFirstInstallment()
                                 } else {
                                     iyzicoHomeVM.changeAllElementsInSelectedCells(status: false, exceptForIndexs: [iyzicoHomeVM.numberOfIyzicoCards])
                                     iyzicoHomeVM.selectedCells[iyzicoHomeVM.numberOfIyzicoCards] = true
                                     iyzicoHomeVM.selectedCardForPayment = iyzicoHomeVM.memberCards?[iyzicoHomeVM.numberOfIyzicoCards]
-                                    iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.mixed))
+                                    if iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == true {
+                                        iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.mixed))
+                                    } else {
+                                        iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
+                                    }
                                     getFirstInstallment()
                                 }
                             } else {
                                 configurePaymentTypeUIByNewCard()
                                 iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
                             }
-                            extendCell(in: 2)
                         } else {
-                            iyzicoHomeVM.changeAllElementsInSelectedCells(status: false, exceptForIndexs: [0])
-                            iyzicoHomeVM.selectedCells[0] = true
-                            extendCell(in: IyzicoMenuSectionType.account.rawValue)
-                            iyzicoHomeVM.paymentType = .myAccount
+                            if userHasCreditCard {
+                                if iyzicoHomeVM.numberOfIyzicoCards == iyzicoHomeVM.memberCards?.count {
+                                    configurePaymentTypeUIByNewCard()
+                                    iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
+                                } else {
+                                    iyzicoHomeVM.changeAllElementsInSelectedCells(status: false, exceptForIndexs: [iyzicoHomeVM.numberOfIyzicoCards])
+                                    iyzicoHomeVM.selectedCells[iyzicoHomeVM.numberOfIyzicoCards] = true
+                                    iyzicoHomeVM.selectedCardForPayment = iyzicoHomeVM.memberCards?[iyzicoHomeVM.numberOfIyzicoCards]
+                                    iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
+                                    getFirstInstallment()
+                                }
+                            } else {
+                                configurePaymentTypeUIByNewCard()
+                                iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
+                            }
+                        }
+                        extendCell(in: 2)
+                    } else {
+                        if isFundEnabled == true {
+                            if myAccountBalance?.asDouble == 0.0 {
+                                if userHasCreditCard {
+                                    if iyzicoHomeVM.numberOfIyzicoCards == iyzicoHomeVM.memberCards?.count {
+                                        configurePaymentTypeUIByNewCard()
+                                        iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
+                                        getFirstInstallment()
+                                    } else {
+                                        iyzicoHomeVM.changeAllElementsInSelectedCells(status: false, exceptForIndexs: [iyzicoHomeVM.numberOfIyzicoCards])
+                                        iyzicoHomeVM.selectedCells[iyzicoHomeVM.numberOfIyzicoCards] = true
+                                        iyzicoHomeVM.selectedCardForPayment = iyzicoHomeVM.memberCards?[iyzicoHomeVM.numberOfIyzicoCards]
+                                        iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.mixed))
+                                        getFirstInstallment()
+                                    }
+                                } else {
+                                    configurePaymentTypeUIByNewCard()
+                                    iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
+                                }
+                                extendCell(in: 2)
+                            } else {
+                                iyzicoHomeVM.changeAllElementsInSelectedCells(status: false, exceptForIndexs: [0])
+                                iyzicoHomeVM.selectedCells[0] = true
+                                extendCell(in: IyzicoMenuSectionType.account.rawValue)
+                                iyzicoHomeVM.paymentType = .myAccount
+                            }
+                        } else {
+                            if userHasCreditCard {
+                                iyzicoHomeVM.changeAllElementsInSelectedCells(status: false, exceptForIndexs: [0])
+                                iyzicoHomeVM.selectedCells[0] = true
+                                iyzicoHomeVM.selectedCardForPayment = iyzicoHomeVM.memberCards?[0]
+                                iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.mixed))
+                                getFirstInstallment()
+                            } else {
+                                configurePaymentTypeUIByNewCard()
+                                iyzicoHomeVM.paymentType = .creditCard(.withCreditCard(.basic))
+                            }
+                            
+                            extendCell(in: 2)
                         }
                     }
                 } else {
@@ -537,7 +580,9 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
             default:
                 iyzicoHomeVM.paymentType = .none
         }
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         checkForIyzicoButtonSelectedStatus()
         setPaymentTypeByExpandStatus()
     }
@@ -551,7 +596,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
     private func configureUseBalanceVisibility(cell: UITableViewCell, isThreeDSVerified: Bool) {
         guard let installmentTableCell = cell as? InstallmentTableCell else { return }
         let myAccountBalance = getBalance()//mainVM.balancesResponse?.amount
-        installmentTableCell.priceContainerStackView.isHidden = (!iyzicoHomeVM.getUseBalanceVisibility(basketPrice: SDKManager.price?.roundedTwoDigitWithDot, myAccountBalance: myAccountBalance) || iyzicoHomeVM.addCardSelected || !isThreeDSVerified)
+        installmentTableCell.priceContainerStackView.isHidden = (!iyzicoHomeVM.getUseBalanceVisibility(basketPrice: SDKManager.price?.roundedTwoDigitWithDot, myAccountBalance: myAccountBalance) || iyzicoHomeVM.addCardSelected || !isThreeDSVerified || iyzicoHomeVM.pwiRetrieveResponse?.checkoutDetail?.fundEnabled == false)
         //// SONRADAN EKLEDNI
         //        if !installmentTableCell.priceContainerStackView.isHidden {
         //            iyzicoHomeVM.priceCheckBoxSelectedStatus = iyzicoHomeVM.isUserDisabledPriceCheckbox ?  !installmentTableCell.priceContainerStackView.isHidden : false
@@ -620,7 +665,7 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
     }
     
     private func setPaymentTypeForCreditCardList(cell: UITableViewCell?) {
-        let isMixedPayment = iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == true && iyzicoHomeVM.isIyzicoDisabled
+        let isMixedPayment = iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == true && iyzicoHomeVM.isIyzicoDisabled && iyzicoHomeVM.pwiRetrieveResponse?.checkoutDetail?.fundEnabled == true
         let payWithIyzicoSelectionType = isMixedPayment ? paymentSelection.mixed : paymentSelection.basic
         let selectionType = vcType == .payWithIyzico ? payWithIyzicoSelectionType : .basic
         if let _ = cell as? MyAccountCell {
@@ -722,7 +767,9 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
                 onSuccess: { [weak self] (response: CardBonusResponseModel?) in
                     if let index = indexPath {
                         self?.iyzicoHomeVM.memberCards?[index.row].isBonusHidden = false
-                        self?.tableView.reloadRows(at: [index], with: .none)
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadRows(at: [index], with: .none)
+                        }
                     }
                 },
                 onFailure: { [weak self] _,_ in
@@ -791,7 +838,9 @@ class IyzicoHomeVC: BaseVC, NewCardCellDelegate, MyAccountCellDelegate, IyzicoCa
         iyzicoHomeVM.getRetrievePWI { [weak self] (response: PWIRetieveResponseModel?) in
             guard let self = self else {return}
             self.configurePaymentTypeUI(isFirstTime: true)
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } onFailure: { [weak self] errorDescription in
             self?.showError(errorDescription: errorDescription)
         }
@@ -908,13 +957,14 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
                     cell.iyzicoCardView.bonusTotalView.useBonusCheckbox.deSelect()
                 }
                 selectedIndex = indexPath.row
-                cell.iyzicoCardView.bonusTotalView.delegate = self
-                cell.isUserInteractionEnabled = !isDisabled
-                cell.setCell(indexPath: indexPath, isDisabled: isDisabled)
+                cell.delegate = self
                 var newCardModel = iyzicoHomeVM.getCard(indexPath)
                 newCardModel?.isDisabled = isDisabled
                 cell.cardModel = newCardModel
                 selectedIndex = indexPath.row
+                cell.iyzicoCardView.bonusTotalView.delegate = self
+                cell.isUserInteractionEnabled = !isDisabled
+                cell.setCell(indexPath: indexPath, isDisabled: isDisabled, numOfIyzicoCards: iyzicoHomeVM.numberOfIyzicoCards)
                 if iyzicoHomeVM.selectedCells[selectedIndex] {
                     cell.iyzicoCardView.checkBox.select()
                     self.iyzicoHomeVM.selectedCardType = cell.cardModel?.cardType
@@ -988,7 +1038,7 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
                         default:
                             if vcType == .payWithIyzico {
                                 let plusInstallmentCountText = plusInstallmentBanklist?[0].plusInstallment == plusInstallmentBanklist?[1].plusInstallment ? "+ \(plusInstallmentBanklist?[0].plusInstallment ?? "0")" : "+ \(plusInstallmentBanklist?[0].plusInstallment ?? "0") ve + \(plusInstallmentBanklist?[1].plusInstallment ?? "0")"
-                                cell.installmentOfferLabel.addAttribute(text: "\(plusInstallmentBanklist?[0].cardBankDtoList?[0].cardBankName ?? "") veya \(plusInstallmentBanklist?[0].cardBankDtoList?[1].cardBankName ?? "") kartınla yapacağın taksitli alışverişlerde vade farksız  \(plusInstallmentCountText) Taksit!", attText: "vade farksız  \(plusInstallmentCountText) Taksit!",
+                                cell.installmentOfferLabel.addAttribute(text: "\(plusInstallmentBanklist?[0].cardBankDtoList?[0].cardBankName ?? "") veya \(plusInstallmentBanklist?[1].cardBankDtoList?[0].cardBankName ?? "") kartınla yapacağın taksitli alışverişlerde vade farksız  \(plusInstallmentCountText) Taksit!", attText: "vade farksız  \(plusInstallmentCountText) Taksit!",
                                                                         color: .mediumGreenTwo,
                                                                         highletedFont: .markProBold14,
                                                                         isCenter: true)
@@ -1052,21 +1102,22 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
                 cell.delegate = self
                 iyzicoHomeVM.setDefaultPrice()
                 cell.priceLabel.text = getBalance()?.addTLWithNoDots
-                if iyzicoHomeVM.isIyzicoDisabled && iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == true && iyzicoHomeVM.newCardSelected {
+                if iyzicoHomeVM.isIyzicoDisabled && iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == true && iyzicoHomeVM.newCardSelected && iyzicoHomeVM.pwiRetrieveResponse?.checkoutDetail?.fundEnabled == true {
                     cell.priceCheckBox.select()
                     iyzicoHomeVM.priceCheckBoxSelectedStatus = true
                 } else {
                     cell.priceCheckBox.deSelect()
                     iyzicoHomeVM.priceCheckBoxSelectedStatus = false
                 }
-                
-                if iyzicoHomeVM.showInfoView {
-                    cell.showInfoView()
-                } else {
-                    if iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == false {
-                        cell.priceCheckBox.isSelected = false
+                if iyzicoHomeVM.makePaymentTapped == false {
+                    if iyzicoHomeVM.showInfoView {
+                        cell.showInfoView()
+                    } else {
+                        if iyzicoHomeVM.selectedCardForPayment?.threeDSVerified == false {
+                            cell.priceCheckBox.isSelected = false
+                        }
+                        cell.showInstallment(model: iyzicoHomeVM.installmentDetailResponse?.installmentDetails)
                     }
-                    cell.showInstallment(model: iyzicoHomeVM.installmentDetailResponse?.installmentDetails)
                 }
                 
                 cell.withDrawView.isHidden = !iyzicoHomeVM.priceCheckBoxSelectedStatus
@@ -1114,6 +1165,7 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if menu[section].sectionType == .addNewCreditCard || menu[section].sectionType == .installment { return nil }
+//        if iyzicoHomeVM.pwiRetrieveResponse?.checkoutDetail?.bankTransferEnabled == false { return nil }
         if vcType == .topUp && menu[section].sectionType == .account { return nil }
         initializeHeaderSectionsEvents(section: section)
         return headerArray[section]
@@ -1122,6 +1174,8 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if menu[section].sectionType == .addNewCreditCard || menu[section].sectionType == .installment { return .zero }
         if vcType == .topUp && menu[section].sectionType == .account { return .zero }
+        if iyzicoHomeVM.pwiRetrieveResponse?.checkoutDetail?.bankTransferEnabled == false && menu[section].sectionType == .eft { return .zero }
+        if iyzicoHomeVM.pwiRetrieveResponse?.checkoutDetail?.fundEnabled == false && menu[section].sectionType == .account { return .zero}
         return Constant.shared.iyzicoHomeVCHeaderViewHeight
     }
     
@@ -1159,7 +1213,12 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
             iyzicoHomeVM.isBonusEnabled = false
             getBonus(indexPath: indexPath)
             getInstallment(binNumber: iyzicoHomeVM.selectedCardForPayment?.binNumber, reloadTableView: false, reloadSection: true)
-            
+            if iyzicoHomeVM.getUseBalanceVisibility(basketPrice: SDKManager.price?.roundedTwoDigitWithDot,
+                                                    myAccountBalance: getBalance()) {
+                iyzicoHomeVM.priceCheckBoxSelectedStatus = true
+            } else {
+                iyzicoHomeVM.priceCheckBoxSelectedStatus = false
+            }
         }
         
         
@@ -1190,8 +1249,8 @@ extension IyzicoHomeVC: UITableViewDelegate, UITableViewDataSource {
                 }
                 self.iyzicoHomeVM.isAddCardBonusAvailable = true
                 self.iyzicoHomeVM.bonusUsageAmount = model?.amount ?? 0.0
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadSections([IyzicoMenuSectionType.addNewCreditCard.rawValue],
+                DispatchQueue.main.async {
+                    self.tableView.reloadSections([IyzicoMenuSectionType.addNewCreditCard.rawValue],
                                                    with: .none)
                 }
                 
@@ -1354,7 +1413,7 @@ extension IyzicoHomeVC: InstallmentTableCellDelegate {
         iyzicoHomeVM.priceCheckBoxSelectedStatus = priceCheckBox.isSelected
         iyzicoHomeVM.isUserDisabledPriceCheckbox = priceCheckBox.isSelected
         iyzicoHomeVM.newCardSelected.toggle()
-        UIView.performWithoutAnimation {
+        DispatchQueue.main.async {
             self.tableView.reloadSections([IyzicoMenuSectionType.installment.rawValue], with: .none)
             self.tableView.reloadSections([IyzicoMenuSectionType.creditCardList.rawValue], with: .none)
         }
@@ -1365,5 +1424,15 @@ extension IyzicoHomeVC: InstallmentTableCellDelegate {
         iyzicoHomeVM.installmentCount = installment
         iyzicoHomeVM.installmentPrice = totalPrice
     }
+    
+}
+
+extension IyzicoHomeVC: CreditCardCellDelegate {
+    func saveCardModel(data: Data?, index: IndexPath?) {
+        if let data = data, let index = index {
+            self.iyzicoHomeVM.memberCards?[index.row].cardImage = data
+        }
+    }
+    
     
 }

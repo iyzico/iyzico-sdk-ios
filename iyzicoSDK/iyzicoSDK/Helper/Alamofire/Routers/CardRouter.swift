@@ -98,7 +98,7 @@ enum CardRouter: APIConfiguration {
     var accessToken: String? {
         switch self {
             case .cards, .cardBonus, .newCardBonus:
-                return DefaultsManager.get(forKey: .accessToken, type: String.self)
+                return DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         }
     }
 }

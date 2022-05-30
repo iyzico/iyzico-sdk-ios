@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class OTPVC: BaseVC {
     @IBOutlet weak var contentImageView: UIImageView!
@@ -427,7 +428,7 @@ extension OTPVC {
 //MARK: - Helper Methods
 extension OTPVC {
     private func startCountDown() {
-        timer?.invalidate()
+        invalidateTimer()
         
         sendAgainButton.isHidden = true
         clockImageView.image = Asset.basicClockBlack.image

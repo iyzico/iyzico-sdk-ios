@@ -43,7 +43,7 @@ class OTPVM: BaseVM {
         Networking.request(router: LoginRouter.loginComplete(requestModel: requestModel))
         { [weak self] (response: BaseResponse<LoginCompleteResponseModel>?) in
             self?.loginCompleteResponse = response?.data
-            DefaultsManager.set(value: response?.data?.accessToken, forKey: .accessToken)
+            DefaultsManager.set(response?.data?.accessToken, forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
             onSuccess(response?.data)
         } failure: { (error, _,  _) in
             onFailure(error)

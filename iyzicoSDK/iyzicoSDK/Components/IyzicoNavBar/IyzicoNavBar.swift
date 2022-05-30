@@ -244,7 +244,7 @@ extension IyzicoNavBar {
     }
     
     @objc fileprivate func willEnterForegroundNotification() {
-        let differenceInSeconds = Date() -  (backgroundTime ?? Date())
+        let differenceInSeconds = Date() - (backgroundTime ?? Date())
         let time = (self.currentSecond ??  Constant.shared.appTimerSecond) -  Int(differenceInSeconds)
         IyzicoNavBar.timer?.invalidate()
         if time < .zero {
@@ -254,6 +254,7 @@ extension IyzicoNavBar {
             startTimer()
         }
         self.backgroundTime = nil
+        Constant.shared.appTimerSecond = 300
     }
 
 }

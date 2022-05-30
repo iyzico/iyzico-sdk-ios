@@ -13,9 +13,9 @@ protocol InstallmentTableCellDelegate: class {
 }
 
 class InstallmentTableCell: UITableViewCell {
-    
+
     weak var delegate: InstallmentTableCellDelegate?
-    
+
     @IBOutlet weak var installmentTableViewHeightConst: NSLayoutConstraint!
     @IBOutlet weak var isntallmentTableview: UITableView! {
         didSet {
@@ -26,7 +26,7 @@ class InstallmentTableCell: UITableViewCell {
             isntallmentTableview.delegate = self
             isntallmentTableview.dataSource = self
             isntallmentTableview.registerCell(type: InstallmentCell.self)
-            
+
         }
     }
     @IBOutlet weak var tableContentView: UIView! {
@@ -37,9 +37,9 @@ class InstallmentTableCell: UITableViewCell {
             tableContentView.layer.cornerRadius = Constant.shared.defaultCornerRadius
         }
     }
-    
+
     @IBOutlet weak var tableTitleView: UIView!
-    
+
     @IBOutlet weak var tableTitleLabel: UILabel! {
         didSet {
             tableTitleLabel.text = "Taksit Seçenekleri"
@@ -54,16 +54,16 @@ class InstallmentTableCell: UITableViewCell {
             installmentInfoView.layer.cornerRadius = Constant.shared.defaultCornerRadius
         }
     }
-    
+
     @IBOutlet weak var installmentInfoLabel: UILabel! {
         didSet {
             installmentInfoLabel.text =  StringConstant.shared.iyzicoHomeVCInstallmentInfoText//"Taksit seçenekleri kart numaranızı girdikten sonra görünecektir."
             installmentInfoLabel.font = .markPro14
             installmentInfoLabel.textColor = .blueGrey
-            
+
         }
     }
-    
+
     @IBOutlet weak var amaountBackView: UIView! {
         didSet {
             amaountBackView.layer.borderWidth = CGFloat(Constant.shared.borderWidthSmall)
@@ -80,17 +80,17 @@ class InstallmentTableCell: UITableViewCell {
     }
     @IBOutlet weak var withDrawView: UIView!
     @IBOutlet weak var priceContainerStackView: UIStackView!
-    
+
     @IBOutlet weak var priceCheckBox: IyzicoCheckBox! {
         didSet {
             priceCheckBox.borderColor = UIColor.silverTwo.cgColor
             priceCheckBox.borderWidth = CGFloat(Constant.shared.borderWidthBig)
             priceCheckBox.cornerRadius = Constant.shared.defaultCheckBoxCornerRadius
             priceCheckBox.checkBoxType = .check
-//            priceCheckBox.isSelected = true
+            //            priceCheckBox.isSelected = true
         }
     }
-    
+
     @IBOutlet weak var amountLabel: UILabel! {
         didSet {
             amountLabel.text = StringConstant.shared.newCardCellCardAmountLabelText
@@ -98,7 +98,7 @@ class InstallmentTableCell: UITableViewCell {
             amountLabel.textColor = .darkGrey
         }
     }
-    
+
     @IBOutlet weak var priceLabel: UILabel! {
         didSet {
             priceLabel.text = "-"
@@ -108,8 +108,8 @@ class InstallmentTableCell: UITableViewCell {
     }
 
     var installmentModel: InstallmentDetail?
-    
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         if SDKManager.flow == .topUp {
@@ -123,7 +123,7 @@ class InstallmentTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     @IBAction func didTappedAmountButton(_ sender: Any) {
         delegate?.didTappedAmountButton(priceCheckBox: priceCheckBox)
     }
@@ -131,35 +131,35 @@ class InstallmentTableCell: UITableViewCell {
 
 //MARK:- Funcs
 extension InstallmentTableCell {
-    
+
     func showInstallmentTableView() {
         self.tableContentView.isHidden = false
         self.tableTitleView.isHidden = false
         self.installmentInfoView.isHidden = true
         selectFirstIndexOfTableview()
     }
-    
+
     func showInfoView() {
         self.installmentInfoView.isHidden =  priceCheckBox.isSelected ? true : false
         self.tableContentView.isHidden = true
         self.tableTitleView.isHidden = true
         isntallmentTableview.reloadData()
     }
-    
+
     func selectFirstIndexOfTableview() {
         isntallmentTableview.reloadData()
         let indexPath = IndexPath(row:.zero, section: .zero)
         isntallmentTableview.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
         self.tableView(isntallmentTableview, didSelectRowAt: indexPath)
     }
-    
+
     func hideInstallmentTableView() {
         self.tableContentView.isHidden = true
         self.tableTitleView.isHidden = true
         self.installmentInfoView.isHidden = true
         isntallmentTableview.reloadData()
     }
-    
+
     func showInstallment(model: [InstallmentDetail]?) {
         installmentModel = model?.first
         let installment = (model?.first?.installmentPrices?.count ?? 0) > 0 ? true : false
@@ -170,18 +170,18 @@ extension InstallmentTableCell {
             hideInstallmentTableView()
         }
     }
-    
+
     func setTableViewHeight(cellCount: Int = 4) {
         self.installmentTableViewHeightConst.constant = CGFloat(50 * cellCount)
     }
 }
 
 extension InstallmentTableCell: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return installmentModel?.installmentPrices?.count ?? .zero
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NibName.shared.InstallmentCell, for: indexPath) as! InstallmentCell
         if installmentModel?.installmentPrices?[indexPath.row].installmentNumber == 1 {
@@ -189,7 +189,7 @@ extension InstallmentTableCell: UITableViewDataSource {
         } else {
             cell.setInstallmentCell(model: installmentModel?.installmentPrices?[indexPath.row])
         }
-        
+
         return cell
     }
 }
@@ -197,7 +197,7 @@ extension InstallmentTableCell: UITableViewDataSource {
 
 extension InstallmentTableCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.priceCheckBox.deSelect()
+        //        self.priceCheckBox.deSelect()
         let installment = installmentModel?.installmentPrices?[indexPath.row].installmentNumber
         let totalPrice = installmentModel?.installmentPrices?[indexPath.row].totalPrice
         delegate?.getInstallmentNumber(installment: installment, totalPrice: totalPrice)

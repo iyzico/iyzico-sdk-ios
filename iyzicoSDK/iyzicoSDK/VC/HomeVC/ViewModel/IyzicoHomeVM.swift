@@ -39,6 +39,7 @@ class IyzicoHomeVM: BaseVM {
     var selectedCell: UITableViewCell? = nil
     var isAddCardBonusAvailable: Bool = false
     var isCreditCardListCellOpened: Bool = false
+    var makePaymentTapped: Bool = false
     
     //MARK: - Regular Properties
     var paymentType: IyzicoHomePaymentTypes = .myAccount {
@@ -269,7 +270,7 @@ class IyzicoHomeVM: BaseVM {
         var iyzicoVirtualCardIndex = -1
         
         for card in cardList {
-            if card.iyzicoCard == true {
+            if card.iyzicoCard == true && card.iyzicoVirtualCard == false {
                 iyzicoCardIndex = cardList.firstIndex(where: { $0 == card }) ?? 0
                 numberOfIyzicoCards += 1
             }
@@ -278,10 +279,10 @@ class IyzicoHomeVM: BaseVM {
                 numberOfIyzicoCards += 1
             }
             if iyzicoCardIndex != -1 {
-                newCardList.move(from: iyzicoCardIndex, to: 0)
+                newCardList.move(from: iyzicoCardIndex, to: 1)
             }
             if iyzicoVirtualCardIndex != -1 {
-                newCardList.move(from: iyzicoVirtualCardIndex, to: 1)
+                newCardList.move(from: iyzicoVirtualCardIndex, to: 0)
             }
         }
 //        print(memberCards as Any)
@@ -519,7 +520,8 @@ extension IyzicoHomeVM {
         let balanceAmount = pwiRetrieveResponse?.memberBalance?.amount
         let memberToken = pwiRetrieveResponse?.memberToken
         let cardToken = selectedCardForPayment != nil ? selectedCardForPayment?.cardToken : getCard(IndexPath(row: .zero, section: .zero))?.cardToken
-        let requestModel = MixedPaymentCardRequestModel(paymentChannel: "THIRD_PARTY", memberBalanceAmount: balanceAmount?.asDouble, memberToken: memberToken, paymentCard: PaymentCard(cardToken: cardToken), reward: Reward(rewardAmount: rewardAmount, rewardUsage: rewardUsage))
+        let consumerToken: String? = DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
+        let requestModel = MixedPaymentCardRequestModel(paymentChannel: "THIRD_PARTY", memberBalanceAmount: balanceAmount?.asDouble, memberToken: memberToken, paymentCard: PaymentCard(cardToken: cardToken, consumerToken: consumerToken), reward: Reward(rewardAmount: rewardAmount, rewardUsage: rewardUsage))
         
         Networking.request(router: PWIRouter.mixedPaymentWithSavedCard(requestModel: requestModel))
         { [weak self] (response: MixedPaymentWithSavedCardResponseModel) in
@@ -572,6 +574,7 @@ extension IyzicoHomeVM {
         let cvc = newCardInputsArray?[3].input?.textField.text
         let rewardAmount = bonusUsageAmount
         let rewardUsage = isBonusEnabled ? 1 : 0
+        let consumerToken: String? = DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         var cardToken: String?
         if !isNewCard {
             cardToken = selectedCardForPayment != nil ? selectedCardForPayment?.cardToken : getCard(IndexPath(row: .zero, section: .zero))?.cardToken
@@ -582,7 +585,7 @@ extension IyzicoHomeVM {
         if isNewCard {
             paymentCard = PaymentCard(cardNumber: cardNumber, cardHolderName: cardHolderName, expireYear: expireYear, expireMonth: expireMonth, cvc: cvc, registerConsumerCard: true, registerCard: 0)
         } else {
-            paymentCard = PaymentCard(cardToken: cardToken)
+            paymentCard = PaymentCard(cardToken: cardToken, consumerToken: consumerToken)
         }
         
         let requestModel = PaymentCardRequestModel(paymentChannel: "THIRD_PARTY", paidPrice: price, memberID: memberID, installment: installment, gsmNumber: gsmNumber, buyerProtected: buyerProtected, memberToken: memberToken,
@@ -614,6 +617,7 @@ extension IyzicoHomeVM {
         let rewardAmount = bonusUsageAmount
         let rewardUsage = isBonusEnabled ? 1 : 0
         var cardToken: String?
+        let consumerToken: String? = DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         if !isNewCard {
             cardToken = selectedCardForPayment != nil ? selectedCardForPayment?.cardToken : getCard(IndexPath(row: .zero, section: .zero))?.cardToken
         }
@@ -622,7 +626,7 @@ extension IyzicoHomeVM {
         if isNewCard {
             paymentCard = PaymentCard(cardNumber: cardNumber, cardHolderName: cardHolderName, expireYear: expireYear, expireMonth: expireMonth, cvc: cvc, registerConsumerCard: true, registerCard: 0)
         } else {
-            paymentCard = PaymentCard(cardToken: cardToken)
+            paymentCard = PaymentCard(cardToken: cardToken, consumerToken: consumerToken)
         }
         
         let requestModel = PaymentCardRequestModel(paymentChannel: "THIRD_PARTY", paidPrice: price, memberID: memberID, installment: installment, gsmNumber: gsmNumber, buyerProtected: buyerProtected, memberToken: memberToken,

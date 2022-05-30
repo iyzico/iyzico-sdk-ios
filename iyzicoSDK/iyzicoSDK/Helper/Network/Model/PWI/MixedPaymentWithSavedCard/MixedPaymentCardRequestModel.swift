@@ -27,13 +27,13 @@ struct MixedPaymentCardRequestModel: Codable {
 
 // MARK: - PaymentCard
 struct PaymentCard: Codable {
-    let cardToken: String?
+    let cardToken, consumerToken: String?
     let cardNumber, cardHolderName, expireYear, expireMonth: String?
     let cvc: String?
     let registerConsumerCard: Bool?
     let registerCard: Int?
     
-    init(cardToken: String? = nil,cardNumber: String? = nil, cardHolderName: String? = nil, expireYear: String? = nil, expireMonth: String? = nil, cvc: String? = nil, registerConsumerCard: Bool? = nil, registerCard: Int? = nil) {
+    init(cardToken: String? = nil,cardNumber: String? = nil, cardHolderName: String? = nil, expireYear: String? = nil, expireMonth: String? = nil, cvc: String? = nil, registerConsumerCard: Bool? = nil, registerCard: Int? = nil, consumerToken: String? = nil) {
         self.cardToken = cardToken
         self.cardNumber = cardNumber
         self.cardHolderName = cardHolderName
@@ -42,6 +42,7 @@ struct PaymentCard: Codable {
         self.cvc = cvc
         self.registerConsumerCard = registerConsumerCard
         self.registerCard = registerCard
+        self.consumerToken = consumerToken
     }
 }
 

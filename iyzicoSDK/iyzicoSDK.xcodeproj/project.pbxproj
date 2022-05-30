@@ -17,12 +17,14 @@
 		48ACF9EE2590C8000087351A /* IyzicoHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ACF9EC2590C8000087351A /* IyzicoHomeVC.xib */; };
 		48D256A7259204BF003CC598 /* IyzicoMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D256A6259204BF003CC598 /* IyzicoMenuHeaderView.swift */; };
 		48D256AB259204C8003CC598 /* IyzicoMenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48D256AA259204C8003CC598 /* IyzicoMenuHeaderView.xib */; };
-		5BDAB463280EF3F50099E12B /* IyzicoCardBonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAB461280EF3F50099E12B /* IyzicoCardBonusView.swift */; };
-		5BDAB464280EF3F50099E12B /* IyzicoCardBonusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BDAB462280EF3F50099E12B /* IyzicoCardBonusView.xib */; };
-		5BDAB468280EF4410099E12B /* CardBonusResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAB465280EF4410099E12B /* CardBonusResponseModel.swift */; };
-		5BDAB469280EF4410099E12B /* NewCardBonusRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAB466280EF4410099E12B /* NewCardBonusRequestModel.swift */; };
-		5BDAB46A280EF4410099E12B /* CardBonusRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAB467280EF4410099E12B /* CardBonusRequestModel.swift */; };
-		67DB702DA46697E940B86D8C /* Pods_iyzicoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CBB892826A1107A6027D43 /* Pods_iyzicoSDK.framework */; };
+		5B13A6E9281ADA7200B0BD44 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B13A6E8281ADA7100B0BD44 /* DateExtension.swift */; };
+		5B95137027EABD5D002AF690 /* IyzicoCardBonusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B95136F27EABD5D002AF690 /* IyzicoCardBonusView.xib */; };
+		5B95137227EABDA4002AF690 /* IyzicoCardBonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95137127EABDA4002AF690 /* IyzicoCardBonusView.swift */; };
+		5BAC69C227EA92CC0024D2A9 /* UseBalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC69C027EA92CC0024D2A9 /* UseBalanceCell.swift */; };
+		5BAC69C327EA92CC0024D2A9 /* UseBalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BAC69C127EA92CC0024D2A9 /* UseBalanceCell.xib */; };
+		5BDEEA4C27FD2158002F18B2 /* CardBonusResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEEA4B27FD2158002F18B2 /* CardBonusResponseModel.swift */; };
+		5BDEEA4E27FD232C002F18B2 /* CardBonusRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEEA4D27FD232C002F18B2 /* CardBonusRequestModel.swift */; };
+		5BF9DC9E2805B381001EA363 /* NewCardBonusRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9DC9D2805B381001EA363 /* NewCardBonusRequestModel.swift */; };
 		771CA61D25F117E1008B0EB8 /* EncryptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771CA61C25F117E1008B0EB8 /* EncryptManager.swift */; };
 		771CA63425F17771008B0EB8 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771CA63325F17771008B0EB8 /* ConnectionManager.swift */; };
 		772955EE25D2AA3000F8EB3B /* MemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772955EC25D2AA3000F8EB3B /* MemberVC.swift */; };
@@ -158,9 +160,9 @@
 		83490DDF258E14EA0028BA90 /* IyzicoNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83490DDE258E14EA0028BA90 /* IyzicoNavBar.swift */; };
 		83490DE3258E14F80028BA90 /* IyzicoNavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83490DE2258E14F80028BA90 /* IyzicoNavBar.xib */; };
 		83490DE7258E73DA0028BA90 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83490DE6258E73DA0028BA90 /* Timer.swift */; };
-		834CBAB0257F831B006A1F4B /* (null) in Sources */ = {isa = PBXBuildFile; };
-		834CBABB257F8DAD006A1F4B /* (null) in Sources */ = {isa = PBXBuildFile; };
-		834CBAC3257F95E7006A1F4B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		834CBAB0257F831B006A1F4B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		834CBABB257F8DAD006A1F4B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		834CBAC3257F95E7006A1F4B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		834DCAAE25C01B0A0024CFC6 /* CreditCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DCAAC25C01B0A0024CFC6 /* CreditCardCell.swift */; };
 		834DCAAF25C01B0A0024CFC6 /* CreditCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834DCAAD25C01B0A0024CFC6 /* CreditCardCell.xib */; };
 		834DCAB425C02E250024CFC6 /* NewCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DCAB225C02E250024CFC6 /* NewCardCell.swift */; };
@@ -216,7 +218,7 @@
 		8354525D25C3672D0090E506 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354525C25C3672D0090E506 /* Protocol.swift */; };
 		8354727D26CBEED3007482A1 /* InstallmentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354727B26CBEED3007482A1 /* InstallmentTableCell.swift */; };
 		8354727E26CBEED3007482A1 /* InstallmentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8354727C26CBEED3007482A1 /* InstallmentTableCell.xib */; };
-		83547CC62580B5C00027E596 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		83547CC62580B5C00027E596 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		83547CF22580C0210027E596 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83547CF12580C0210027E596 /* UIViewExtension.swift */; };
 		83547CFA2580C0300027E596 /* IyzicoTextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83547CF52580C0300027E596 /* IyzicoTextArea.swift */; };
 		83547CFB2580C0300027E596 /* IyzicoTextArea.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83547CF62580C0300027E596 /* IyzicoTextArea.xib */; };
@@ -258,6 +260,7 @@
 		83D4D3A1258CFE5C00EBC93F /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4D3A0258CFE5C00EBC93F /* Enum.swift */; };
 		83D4D3A5258D330C00EBC93F /* String-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4D3A4258D330C00EBC93F /* String-Extension.swift */; };
 		90D7B83826EF9B36006BB8C8 /* IyzicoBasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7B83726EF9B36006BB8C8 /* IyzicoBasketItem.swift */; };
+		954114E5F6E0A706B37692E3 /* Pods_iyzicoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E7ADE1A8D6EFD7C8373EEE /* Pods_iyzicoSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -271,11 +274,16 @@
 		48ACF9EC2590C8000087351A /* IyzicoHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IyzicoHomeVC.xib; sourceTree = "<group>"; };
 		48D256A6259204BF003CC598 /* IyzicoMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IyzicoMenuHeaderView.swift; sourceTree = "<group>"; };
 		48D256AA259204C8003CC598 /* IyzicoMenuHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IyzicoMenuHeaderView.xib; sourceTree = "<group>"; };
-		5BDAB461280EF3F50099E12B /* IyzicoCardBonusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IyzicoCardBonusView.swift; sourceTree = "<group>"; };
-		5BDAB462280EF3F50099E12B /* IyzicoCardBonusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IyzicoCardBonusView.xib; sourceTree = "<group>"; };
-		5BDAB465280EF4410099E12B /* CardBonusResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardBonusResponseModel.swift; path = PWI/CardBonusResponseModel.swift; sourceTree = "<group>"; };
-		5BDAB466280EF4410099E12B /* NewCardBonusRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewCardBonusRequestModel.swift; path = PWI/NewCardBonusRequestModel.swift; sourceTree = "<group>"; };
-		5BDAB467280EF4410099E12B /* CardBonusRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardBonusRequestModel.swift; path = PWI/CardBonusRequestModel.swift; sourceTree = "<group>"; };
+		5B13A6E8281ADA7100B0BD44 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		5B95136F27EABD5D002AF690 /* IyzicoCardBonusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IyzicoCardBonusView.xib; sourceTree = "<group>"; };
+		5B95137127EABDA4002AF690 /* IyzicoCardBonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IyzicoCardBonusView.swift; sourceTree = "<group>"; };
+		5BAC69C027EA92CC0024D2A9 /* UseBalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseBalanceCell.swift; sourceTree = "<group>"; };
+		5BAC69C127EA92CC0024D2A9 /* UseBalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UseBalanceCell.xib; sourceTree = "<group>"; };
+		5BDEEA4B27FD2158002F18B2 /* CardBonusResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBonusResponseModel.swift; sourceTree = "<group>"; };
+		5BDEEA4D27FD232C002F18B2 /* CardBonusRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBonusRequestModel.swift; sourceTree = "<group>"; };
+		5BF9DC9D2805B381001EA363 /* NewCardBonusRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardBonusRequestModel.swift; sourceTree = "<group>"; };
+		666173DB63EE284D3D93FF82 /* Pods-iyzicoSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iyzicoSDK.debug.xcconfig"; path = "Target Support Files/Pods-iyzicoSDK/Pods-iyzicoSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		6F7F09CF8A9D4F9A3ED0907D /* Pods-iyzicoSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iyzicoSDK.release.xcconfig"; path = "Target Support Files/Pods-iyzicoSDK/Pods-iyzicoSDK.release.xcconfig"; sourceTree = "<group>"; };
 		771CA61C25F117E1008B0EB8 /* EncryptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptManager.swift; sourceTree = "<group>"; };
 		771CA63325F17771008B0EB8 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		772955EC25D2AA3000F8EB3B /* MemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberVC.swift; sourceTree = "<group>"; };
@@ -510,9 +518,7 @@
 		83D4D3A0258CFE5C00EBC93F /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		83D4D3A4258D330C00EBC93F /* String-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Extension.swift"; sourceTree = "<group>"; };
 		90D7B83726EF9B36006BB8C8 /* IyzicoBasketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IyzicoBasketItem.swift; sourceTree = "<group>"; };
-		921FDCB0DA4D29A338EE5650 /* Pods-iyzicoSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iyzicoSDK.release.xcconfig"; path = "Target Support Files/Pods-iyzicoSDK/Pods-iyzicoSDK.release.xcconfig"; sourceTree = "<group>"; };
-		AF43814557F0318C6A76F033 /* Pods-iyzicoSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iyzicoSDK.debug.xcconfig"; path = "Target Support Files/Pods-iyzicoSDK/Pods-iyzicoSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		D4CBB892826A1107A6027D43 /* Pods_iyzicoSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iyzicoSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1E7ADE1A8D6EFD7C8373EEE /* Pods_iyzicoSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iyzicoSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,7 +526,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67DB702DA46697E940B86D8C /* Pods_iyzicoSDK.framework in Frameworks */,
+				954114E5F6E0A706B37692E3 /* Pods_iyzicoSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,8 +536,8 @@
 		449DDC02D14405810831A168 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AF43814557F0318C6A76F033 /* Pods-iyzicoSDK.debug.xcconfig */,
-				921FDCB0DA4D29A338EE5650 /* Pods-iyzicoSDK.release.xcconfig */,
+				666173DB63EE284D3D93FF82 /* Pods-iyzicoSDK.debug.xcconfig */,
+				6F7F09CF8A9D4F9A3ED0907D /* Pods-iyzicoSDK.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -624,13 +630,22 @@
 			path = HeaderView;
 			sourceTree = "<group>";
 		};
-		5BDAB460280EF3F50099E12B /* IyzicoCardBonusView */ = {
+		5B95136A27EABC13002AF690 /* IyzicoCardBonusView */ = {
 			isa = PBXGroup;
 			children = (
-				5BDAB461280EF3F50099E12B /* IyzicoCardBonusView.swift */,
-				5BDAB462280EF3F50099E12B /* IyzicoCardBonusView.xib */,
+				5B95137127EABDA4002AF690 /* IyzicoCardBonusView.swift */,
+				5B95136F27EABD5D002AF690 /* IyzicoCardBonusView.xib */,
 			);
 			path = IyzicoCardBonusView;
+			sourceTree = "<group>";
+		};
+		5BAC69BF27EA92A60024D2A9 /* UseBalanceCell */ = {
+			isa = PBXGroup;
+			children = (
+				5BAC69C027EA92CC0024D2A9 /* UseBalanceCell.swift */,
+				5BAC69C127EA92CC0024D2A9 /* UseBalanceCell.xib */,
+			);
+			path = UseBalanceCell;
 			sourceTree = "<group>";
 		};
 		771CA61A25F117CB008B0EB8 /* EncryptManager */ = {
@@ -800,9 +815,6 @@
 		7786221C25EF73AD0044C3A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5BDAB467280EF4410099E12B /* CardBonusRequestModel.swift */,
-				5BDAB465280EF4410099E12B /* CardBonusResponseModel.swift */,
-				5BDAB466280EF4410099E12B /* NewCardBonusRequestModel.swift */,
 				830A224726B7FFD300444DCD /* PWI */,
 				77C6F972261AF90C00CCFB8C /* Deposits */,
 				77C6F971261AF90400CCFB8C /* Transaction */,
@@ -1155,6 +1167,9 @@
 				8350482326B971A7002BB779 /* PWIRetrieve */,
 				8350482226B9719D002BB779 /* PWIinit */,
 				8350482126B97195002BB779 /* Installment */,
+				5BDEEA4B27FD2158002F18B2 /* CardBonusResponseModel.swift */,
+				5BDEEA4D27FD232C002F18B2 /* CardBonusRequestModel.swift */,
+				5BF9DC9D2805B381001EA363 /* NewCardBonusRequestModel.swift */,
 			);
 			path = PWI;
 			sourceTree = "<group>";
@@ -1604,7 +1619,7 @@
 				83C57D12257E32E400209750 /* iyzicoSDK */,
 				83C57D11257E32E400209750 /* Products */,
 				449DDC02D14405810831A168 /* Pods */,
-				CB07BD12D50094DCC3A2F170 /* Frameworks */,
+				845BA73FABA4D5DB4AF9E9A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1634,9 +1649,9 @@
 		83C57D77257E341700209750 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				5BDAB460280EF3F50099E12B /* IyzicoCardBonusView */,
 				77C2A96025EE47F400692059 /* IyzicoAmountView */,
 				83C57D7C257E342C00209750 /* IyzicoButton */,
+				5B95136A27EABC13002AF690 /* IyzicoCardBonusView */,
 				8351E02925823D0E0097ACAA /* IyzicoCardView */,
 				8351E01425820D020097ACAA /* IyzicoCheckBox */,
 				7759D9F12602479300D5717B /* IyzicoContactView */,
@@ -1727,6 +1742,7 @@
 				7758EBAB26032DE900830E91 /* UIPanGestureRecgonizer+Extension.swift */,
 				77E83AD6260CD99F00446788 /* UITextView+Extension.swift */,
 				830A225A26B83AA900444DCD /* UIDevice-Extension.swift */,
+				5B13A6E8281ADA7100B0BD44 /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1734,6 +1750,7 @@
 		83D305BA25BF3C3800690F03 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5BAC69BF27EA92A60024D2A9 /* UseBalanceCell */,
 				8354727A26CBEEAC007482A1 /* InstallmentTableCell */,
 				8343A23226664354001FE995 /* InstallmentCell */,
 				834DCAB925C084200024CFC6 /* ButtonCell */,
@@ -1761,10 +1778,10 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
-		CB07BD12D50094DCC3A2F170 /* Frameworks */ = {
+		845BA73FABA4D5DB4AF9E9A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D4CBB892826A1107A6027D43 /* Pods_iyzicoSDK.framework */,
+				D1E7ADE1A8D6EFD7C8373EEE /* Pods_iyzicoSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1787,7 +1804,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83C57D18257E32E400209750 /* Build configuration list for PBXNativeTarget "iyzicoSDK" */;
 			buildPhases = (
-				D2555DA8957259C814BD99F1 /* [CP] Check Pods Manifest.lock */,
+				D6B9951EE99BE424FC16223C /* [CP] Check Pods Manifest.lock */,
 				83C57D0B257E32E400209750 /* Headers */,
 				83C57D0C257E32E400209750 /* Sources */,
 				83C57D0D257E32E400209750 /* Frameworks */,
@@ -1809,7 +1826,7 @@
 		83C57D07257E32E400209750 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					83C57D0F257E32E400209750 = {
 						CreatedOnToolsVersion = 12.2;
@@ -1850,7 +1867,6 @@
 				83547CFB2580C0300027E596 /* IyzicoTextArea.xib in Resources */,
 				772955EF25D2AA3000F8EB3B /* MemberVC.xib in Resources */,
 				48ACF9D42590B88D0087351A /* OTPVC.xib in Resources */,
-				5BDAB464280EF3F50099E12B /* IyzicoCardBonusView.xib in Resources */,
 				77C9366025C0409A003532E2 /* SettlementVC.xib in Resources */,
 				8351E019258210620097ACAA /* IyzicoCheckBox.xib in Resources */,
 				834E4F1626D7783900817FE7 /* NotaMemberVC.xib in Resources */,
@@ -1868,6 +1884,8 @@
 				83547CFD2580C0300027E596 /* IyzicoTextInput.xib in Resources */,
 				8343A23626664354001FE995 /* InstallmentCell.xib in Resources */,
 				777F16C325C2A3A000729055 /* IyzicoProductInfoView.xib in Resources */,
+				5B95137027EABD5D002AF690 /* IyzicoCardBonusView.xib in Resources */,
+				5BAC69C327EA92CC0024D2A9 /* UseBalanceCell.xib in Resources */,
 				835BB12A2590D325009C4744 /* IyzicoInfoVC.xib in Resources */,
 				834DCAB525C02E250024CFC6 /* NewCardCell.xib in Resources */,
 				7786655725CC349B00BDAB1C /* infoLottie.json in Resources */,
@@ -1921,10 +1939,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
-		D2555DA8957259C814BD99F1 /* [CP] Check Pods Manifest.lock */ = {
+		D6B9951EE99BE424FC16223C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1954,7 +1971,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77EC402325D3CD0500F6CB89 /* LogManager.swift in Sources */,
-				834CBAC3257F95E7006A1F4B /* (null) in Sources */,
+				834CBAC3257F95E7006A1F4B /* BuildFile in Sources */,
 				77EC404D25D5147500F6CB89 /* ParametersEncoding.swift in Sources */,
 				77C6F96F261AF83000CCFB8C /* DepositsRouter.swift in Sources */,
 				8328FDB22587735B003EB812 /* Image.swift in Sources */,
@@ -1969,7 +1986,7 @@
 				7753EEBF25F0C0B000B010D8 /* CashoutCompleteResponseModel.swift in Sources */,
 				778C5F4925F0FB9900051FCE /* RegisterRouter.swift in Sources */,
 				7753EEB225F0BBF600B010D8 /* TransferVM.swift in Sources */,
-				834CBABB257F8DAD006A1F4B /* (null) in Sources */,
+				834CBABB257F8DAD006A1F4B /* BuildFile in Sources */,
 				77968D5025EF7A34001DB14B /* BaseRequest.swift in Sources */,
 				777F16C625C2A3AA00729055 /* IyzicoProductInfoView.swift in Sources */,
 				775EB1BB25F7497700412A8A /* SmsResendRequestModel.swift in Sources */,
@@ -1984,6 +2001,7 @@
 				77F62428262465DD0054DF95 /* GsmUpdateRequestModel.swift in Sources */,
 				77EC405025D5148E00F6CB89 /* URLComponents+Extension.swift in Sources */,
 				8350482526B971BE002BB779 /* InstallmentRequestModel.swift in Sources */,
+				5B95137227EABDA4002AF690 /* IyzicoCardBonusView.swift in Sources */,
 				8353651225922CDA00699AD4 /* IyzicoEFTDetailVC.swift in Sources */,
 				835BB1292590D325009C4744 /* IyzicoInfoVC.swift in Sources */,
 				7759D9F4260247B400D5717B /* IyzicoContactView.swift in Sources */,
@@ -2002,7 +2020,7 @@
 				8351E02025821FBF0097ACAA /* IyzicoTermAndCond.swift in Sources */,
 				48ACF9D32590B88D0087351A /* OTPVC.swift in Sources */,
 				77BFE2F226390F9E007652A6 /* ProtectedBankAccountsQueryRequestModel.swift in Sources */,
-				83547CC62580B5C00027E596 /* (null) in Sources */,
+				83547CC62580B5C00027E596 /* BuildFile in Sources */,
 				835240C125C3ED8D00A420EE /* UserManager.swift in Sources */,
 				834DCAAE25C01B0A0024CFC6 /* CreditCardCell.swift in Sources */,
 				835319A226BA7B590006C971 /* PayWithBalanceRequestModel.swift in Sources */,
@@ -2032,6 +2050,7 @@
 				776C350525F61B7400EE0637 /* QuickRegisterInitializeRequestModel.swift in Sources */,
 				777F16AE25C29E8000729055 /* IyzicoSectionView.swift in Sources */,
 				83525F2C25CFF9C500163E07 /* Int-Extension.swift in Sources */,
+				5BDEEA4C27FD2158002F18B2 /* CardBonusResponseModel.swift in Sources */,
 				77EC404A25D5142300F6CB89 /* Task.swift in Sources */,
 				83547CF22580C0210027E596 /* UIViewExtension.swift in Sources */,
 				83512898259365E3007EB981 /* KeyboardManager.swift in Sources */,
@@ -2046,7 +2065,6 @@
 				7786222425EF76B00044C3A2 /* QuickLoginInitializeResponseModel.swift in Sources */,
 				77C9365F25C0409A003532E2 /* SettlementVC.swift in Sources */,
 				83490DDB258DF7D60028BA90 /* UITextField-Extension.swift in Sources */,
-				5BDAB469280EF4410099E12B /* NewCardBonusRequestModel.swift in Sources */,
 				835319C026BABE7B0006C971 /* PaymentCardRequestModel.swift in Sources */,
 				83490DDF258E14EA0028BA90 /* IyzicoNavBar.swift in Sources */,
 				48ACF9D22590B88D0087351A /* PhoneVC.swift in Sources */,
@@ -2064,7 +2082,7 @@
 				778C5F4C25F0FB9E00051FCE /* CashoutRouter.swift in Sources */,
 				775EB1C225F7505700412A8A /* BalancesQueryRequestModel.swift in Sources */,
 				77968D4D25EF7A2D001DB14B /* BaseResponse.swift in Sources */,
-				834CBAB0257F831B006A1F4B /* (null) in Sources */,
+				834CBAB0257F831B006A1F4B /* BuildFile in Sources */,
 				77A85EA82614B2E800336CDC /* ResultVM.swift in Sources */,
 				83490DE7258E73DA0028BA90 /* Timer.swift in Sources */,
 				835319AE26BA8CEF0006C971 /* MixedPaymentWithSavedCardResponseModel.swift in Sources */,
@@ -2090,7 +2108,6 @@
 				8343A23526664354001FE995 /* InstallmentCell.swift in Sources */,
 				77CA489825EFB3C600891778 /* NewMemberVM.swift in Sources */,
 				776C91D525C017110074A772 /* NewMemberVC.swift in Sources */,
-				5BDAB468280EF4410099E12B /* CardBonusResponseModel.swift in Sources */,
 				77C2A96225EE484A00692059 /* IyzicoAmountView.swift in Sources */,
 				83547D202581162C0027E596 /* TitleCell.swift in Sources */,
 				8351E01625820FF60097ACAA /* IyzicoCheckBox.swift in Sources */,
@@ -2099,7 +2116,6 @@
 				77F1896C25DE8C2600553937 /* OTPVM.swift in Sources */,
 				7758EBBF2603479E00830E91 /* BSPresentationController.swift in Sources */,
 				77968D5825EFA5CF001DB14B /* LoginCompleteResponseModel.swift in Sources */,
-				5BDAB463280EF3F50099E12B /* IyzicoCardBonusView.swift in Sources */,
 				77EC405925D5150200F6CB89 /* NetworkError.swift in Sources */,
 				7786655E25CC38C200BDAB1C /* LottieManager.swift in Sources */,
 				77E75C2B263011A200714C52 /* DepositWithNewCardResponseModel.swift in Sources */,
@@ -2110,6 +2126,7 @@
 				771CA61D25F117E1008B0EB8 /* EncryptManager.swift in Sources */,
 				830A225B26B83AA900444DCD /* UIDevice-Extension.swift in Sources */,
 				7758EBB62603473100830E91 /* BottomSheetController.swift in Sources */,
+				5BAC69C227EA92CC0024D2A9 /* UseBalanceCell.swift in Sources */,
 				83D4D386258CD13700EBC93F /* BaseVC.swift in Sources */,
 				77968D4825EF799D001DB14B /* SMSModel.swift in Sources */,
 				77BFE2FB2639155A007652A6 /* IyzicoEFTDetailVM.swift in Sources */,
@@ -2117,10 +2134,12 @@
 				83547D042580C89B0027E596 /* LabelExtension.swift in Sources */,
 				830A224926B7FFE800444DCD /* PWIinitRequestModel.swift in Sources */,
 				77C6F96C261AF81500CCFB8C /* TransactionRouter.swift in Sources */,
+				5BF9DC9E2805B381001EA363 /* NewCardBonusRequestModel.swift in Sources */,
 				8356C4D725C80E31001B5DD5 /* UIImageView-Extension.swift in Sources */,
 				8353651C2592345900699AD4 /* BankDetailCell.swift in Sources */,
 				8354727D26CBEED3007482A1 /* InstallmentTableCell.swift in Sources */,
 				8351E09F2583BCA20097ACAA /* BaseTableViewCell.swift in Sources */,
+				5B13A6E9281ADA7200B0BD44 /* DateExtension.swift in Sources */,
 				77EC405625D514EE00F6CB89 /* NetworkResponse.swift in Sources */,
 				77BFE2F526391048007652A6 /* ProtectedBankAccountsOuterResponseModel.swift in Sources */,
 				77968D4225EF792E001DB14B /* LoginCompleteRequestModel.swift in Sources */,
@@ -2132,7 +2151,7 @@
 				7753EEBC25F0BD4F00B010D8 /* CashoutCompleteRequestModel.swift in Sources */,
 				83D4D3A5258D330C00EBC93F /* String-Extension.swift in Sources */,
 				77EC409625D5216800F6CB89 /* Encodable+Extension.swift in Sources */,
-				5BDAB46A280EF4410099E12B /* CardBonusRequestModel.swift in Sources */,
+				5BDEEA4E27FD232C002F18B2 /* CardBonusRequestModel.swift in Sources */,
 				772955F425D2ABE400F8EB3B /* MemberVM.swift in Sources */,
 				7758EBAC26032DE900830E91 /* UIPanGestureRecgonizer+Extension.swift in Sources */,
 				835364F02591E00F00699AD4 /* IyzicoTransferVC.swift in Sources */,
@@ -2165,6 +2184,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2229,6 +2249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2285,7 +2306,7 @@
 		};
 		83C57D19257E32E400209750 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF43814557F0318C6A76F033 /* Pods-iyzicoSDK.debug.xcconfig */;
+			baseConfigurationReference = 666173DB63EE284D3D93FF82 /* Pods-iyzicoSDK.debug.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -2316,7 +2337,7 @@
 		};
 		83C57D1A257E32E400209750 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 921FDCB0DA4D29A338EE5650 /* Pods-iyzicoSDK.release.xcconfig */;
+			baseConfigurationReference = 6F7F09CF8A9D4F9A3ED0907D /* Pods-iyzicoSDK.release.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;

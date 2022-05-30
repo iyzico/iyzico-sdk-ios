@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //Outer Model
 struct CardItemsResponseModel: Decodable {
@@ -22,12 +23,13 @@ struct CardResponseModel: Codable, Equatable {
     let iyzicoCard, iyzicoVirtualCard, threeDSVerified: Bool?
     var isDisabled: Bool?
     var isBonusHidden: Bool? = true
+    var cardImage: Data?
     
     enum CodingKeys: String, CodingKey {
         case binNumber, lastFourDigits, cardBankName, cardType, cardAssociation
         case cardAssociationLogoURL = "cardAssociationLogoUrl"
         case cardToken
-        case iyzicoCard, iyzicoVirtualCard, threeDSVerified, isDisabled, isBonusHidden
+        case iyzicoCard, iyzicoVirtualCard, threeDSVerified, isDisabled, isBonusHidden, cardImage
     }
 }
 

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CreditCardCellDelegate: AnyObject {
+    func saveCardModel(data: Data?, index: IndexPath?)
+}
+
 class CreditCardCell: UITableViewCell {
 
     @IBOutlet weak var topSeperatorView: UIView!
@@ -31,16 +35,42 @@ class CreditCardCell: UITableViewCell {
         }
     }
     
-    #warning("KART ISMI BURADA AYARLANIYOR")
+    weak var delegate: CreditCardCellDelegate?
+    var indexPath: IndexPath?
+    
     var cardModel: CardResponseModel? {
         didSet {
             guard let validatedCardModel = cardModel else { return }
-            #warning("change in prod")
-            if cardModel?.isDisabled == true {
-                iyzicoCardView.leftImageView.image = Asset.passiveCard.image
+//            DispatchQueue.main.async {
+            if cardModel?.cardImage == nil {
+                if self.cardModel?.iyzicoCard == false {
+                    self.iyzicoCardView.leftImageView.setImageWithCaching(urlString: validatedCardModel.cardAssociationLogoURL ?? "", placeholderImage: Asset.passiveCard.image) { [weak self] image in
+//                        self?.cardModel?.cardImage = image?.pngData()
+                        self?.delegate?.saveCardModel(data: image?.pngData(), index: self?.indexPath)
+                    }
+                } else if self.cardModel?.isDisabled == true {
+                    DispatchQueue.main.async {
+                        self.iyzicoCardView.leftImageView.image = Asset.passiveCard.image
+                    }
+                } else {
+                    self.iyzicoCardView.leftImageView.setImageWithCaching(urlString: validatedCardModel.cardAssociationLogoURL ?? "", placeholderImage: Asset.passiveCard.image) { [weak self] image in
+                        self?.delegate?.saveCardModel(data: image?.pngData(), index: self?.indexPath)
+                    }
+                }
             } else {
-                iyzicoCardView.leftImageView.setImageWithCaching(urlString: validatedCardModel.cardAssociationLogoURL ?? "", placeholderImage: Asset.cards.image)
+                if self.cardModel?.isDisabled == true {
+                    DispatchQueue.main.async {
+                        self.iyzicoCardView.leftImageView.image = Asset.passiveCard.image
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.iyzicoCardView.leftImageView.image = UIImage(data: self.cardModel?.cardImage ?? Data())
+                    }
+                }
             }
+                
+//            }
+            
             iyzicoCardView.bankNameLabel.text = validatedCardModel.cardBankName
             if validatedCardModel.iyzicoCard == true {
                 if validatedCardModel.iyzicoVirtualCard == true {
@@ -75,7 +105,8 @@ class CreditCardCell: UITableViewCell {
        
     }
     
-    func setCell(indexPath: IndexPath, isDisabled: Bool) {
+    func setCell(indexPath: IndexPath, isDisabled: Bool, numOfIyzicoCards: Int) {
+        self.indexPath = indexPath
         if indexPath.row == .zero {
             topSeperatorView.isHidden = false
             bottomSeperatorView.isHidden = false
@@ -95,9 +126,15 @@ class CreditCardCell: UITableViewCell {
             iyzicoCardView.bankNameLabel.textColor = .coolGrey
             iyzicoCardView.cardNameLabel.textColor = .coolGrey
             iyzicoCardView.cardNumberLabel.textColor = .coolGrey
-            cardInfoTopSeperatorView.isHidden = false
-            cardInfoBottomSeperatorView.isHidden = false
-            cardInfoView.isHidden = false
+            if indexPath.row != numOfIyzicoCards - 1 {
+                cardInfoView.isHidden = true
+                cardInfoTopSeperatorView.isHidden = true
+                cardInfoBottomSeperatorView.isHidden = true
+            } else {
+                cardInfoView.isHidden = false
+                cardInfoTopSeperatorView.isHidden = false
+                cardInfoBottomSeperatorView.isHidden = false
+            }
         } else {
             iyzicoCardView.bankNameLabel.textColor = .coolGrey
             iyzicoCardView.cardNameLabel.textColor = .darkGrey

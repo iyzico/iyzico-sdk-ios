@@ -10,15 +10,21 @@ import Foundation
 class DefaultsManager {
     private static let standard = UserDefaults.standard
     
-    enum DefaultKeys: String {
+    public enum DefaultKeys: String {
         case accessToken = "accessToken"
+        case cachedImages = "cachedImages"
     }
     
-    static func set(value: Any?, forKey: DefaultKeys) {
-        standard.set(value, forKey: forKey.rawValue)
+    static func set<T>(_ value: T, forKey: String) where T: Encodable {
+        if let encoded = try? JSONEncoder().encode(value) {
+            standard.set(encoded, forKey: forKey)
+        }
     }
     
-    static func get<T>(forKey: DefaultKeys, type: T.Type) -> T? {
-        return standard.object(forKey: forKey.rawValue) as? T
+    static func get<T>(forKey: String) -> T? where T: Decodable {
+        guard let data = standard.value(forKey: forKey) as? Data,
+              let decodedData = try? JSONDecoder().decode(T.self, from: data)
+        else { return nil }
+        return decodedData
     }
 }

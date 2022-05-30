@@ -165,7 +165,7 @@ enum PWIRouter: APIConfiguration {
                  .mixedPaymentWithSavedCard, .mixedPaymentWithNewCard,
                  .paymentWithNewCard, .paymentWithNewCard3ds,
                  .paymentWithBankTransfer, .paymentWithBankTransferNotify:
-                return DefaultsManager.get(forKey: .accessToken, type: String.self)
+                return DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         }
     }
 }

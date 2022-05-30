@@ -82,33 +82,64 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vuF-FL-Ez1">
                             <rect key="frame" x="0.0" y="69" width="382" height="38"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="H22-bU-2Y3">
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="H22-bU-2Y3">
                                     <rect key="frame" x="0.0" y="8" width="382" height="30"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RCW-vN-VAP">
-                                            <rect key="frame" x="0.0" y="0.0" width="89.5" height="30"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCW-vN-VAP">
+                                            <rect key="frame" x="0.0" y="0.0" width="111" height="30"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp8-3s-KUg">
-                                            <rect key="frame" x="96.5" y="0.0" width="50" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzc-KV-mu7">
-                                            <rect key="frame" x="171.5" y="0.0" width="54" height="30"/>
-                                            <state key="normal" title="Değiştir"/>
-                                            <connections>
-                                                <action selector="didTappedChangePhoneButton:" destination="-1" eventType="touchUpInside" id="5Fa-TH-d1V"/>
-                                            </connections>
-                                        </button>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JSG-1M-4KF">
-                                            <rect key="frame" x="229.5" y="0.0" width="152.5" height="30"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NV8-mi-Arc">
+                                            <rect key="frame" x="115" y="0.0" width="100" height="30"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp8-3s-KUg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="FFc-SE-Fyt"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Hp8-3s-KUg" secondAttribute="bottom" id="9LW-Mt-yVL"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hp8-3s-KUg" secondAttribute="trailing" id="FRR-0X-EQ6"/>
+                                                <constraint firstItem="Hp8-3s-KUg" firstAttribute="top" secondItem="NV8-mi-Arc" secondAttribute="top" id="cr4-MP-jAh"/>
+                                                <constraint firstItem="Hp8-3s-KUg" firstAttribute="leading" secondItem="NV8-mi-Arc" secondAttribute="leading" id="eo7-cQ-Ae1"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYF-M3-KtB">
+                                            <rect key="frame" x="219" y="0.0" width="48" height="30"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzc-KV-mu7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="uhP-RW-561"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Destek"/>
+                                                    <connections>
+                                                        <action selector="didTappedChangePhoneButton:" destination="-1" eventType="touchUpInside" id="5Fa-TH-d1V"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="Xzc-KV-mu7" firstAttribute="top" secondItem="aYF-M3-KtB" secondAttribute="top" id="XPf-lT-VG0"/>
+                                                <constraint firstItem="Xzc-KV-mu7" firstAttribute="leading" secondItem="aYF-M3-KtB" secondAttribute="leading" id="jdA-In-DeP"/>
+                                                <constraint firstAttribute="trailing" secondItem="Xzc-KV-mu7" secondAttribute="trailing" id="kjf-rI-dfc"/>
+                                                <constraint firstAttribute="bottom" secondItem="Xzc-KV-mu7" secondAttribute="bottom" id="qcx-fw-fFB"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSG-1M-4KF">
+                                            <rect key="frame" x="271" y="0.0" width="111" height="30"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="2gQ-SW-KLZ"/>
+                                        <constraint firstItem="RCW-vN-VAP" firstAttribute="width" secondItem="JSG-1M-4KF" secondAttribute="width" id="d8L-y1-Kov"/>
                                     </constraints>
                                 </stackView>
                             </subviews>

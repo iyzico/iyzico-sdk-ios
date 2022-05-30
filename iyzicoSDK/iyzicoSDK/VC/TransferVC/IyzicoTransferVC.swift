@@ -251,10 +251,10 @@ extension IyzicoTransferVC {
             onSuccess: { [weak self] (response: CashoutCompleteResponseModel?) in
                 guard let validatedDepositStatus = response?.depositStatus else { return }
                 if validatedDepositStatus == .WAITING_FOR_PROVISION {
-                    self?.navigateToWaitingResultVC()
+                    self?.navigateToWaitingResultVC(message: validatedDepositStatus.rawValue, amount: self?.amountView.naturalNumberTextField.text?.serviceAmountFormatAsString)
                 }
                 else {
-                    self?.navigateToSuccessResultVC()
+                    self?.navigateToSuccessResultVC(message: validatedDepositStatus.rawValue, amount: self?.amountView.naturalNumberTextField.text?.serviceAmountFormatAsString)
                 }
             },
             onFailure: { [weak self] (errorDescription, networkStatusType) in
@@ -302,12 +302,17 @@ extension IyzicoTransferVC {
         }
     }
     
-    private func navigateToSuccessResultVC() {
-        navigationController?.pushViewController(ResultVC(vcType: .cashoutSuccess), animated: true)
+    private func navigateToSuccessResultVC(message: String?, amount: String?) {
+        let vc = ResultVC(vcType: .cashoutSuccess)
+        vc.amount = amount
+        vc.message = message
+        navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func navigateToWaitingResultVC() {
+    private func navigateToWaitingResultVC(message: String?, amount: String?) {
         let vc = ResultVC(vcType: .cashoutWaiting)
+        vc.amount = amount
+        vc.message = message
         navigationController?.pushViewController(vc, animated: true)
     }
     
