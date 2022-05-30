@@ -200,7 +200,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
     
     private func setupTitleLabel() {
         titleLabel.text = constants.titleLabelText
-        titleLabel.font = .markProBold24
+        titleLabel.font = .markProBold20
     }
     
     private func setupTitleDescriptionLabel() {
@@ -345,7 +345,7 @@ class NewMemberVC: BaseVC, BaseVCDelegate {
     private func checkGsmVerified(isGsmVerified: Bool?) {
         let validatedIsGsmVerified = isGsmVerified ?? false
         if validatedIsGsmVerified || viewModel.isPhoneNumberChanged == false {
-            navigateToOtpVC(isGsmVerified: validatedIsGsmVerified)
+            self.navigateToOtpVC(isGsmVerified: validatedIsGsmVerified)
         }
         else {
             getGsmUpdate(

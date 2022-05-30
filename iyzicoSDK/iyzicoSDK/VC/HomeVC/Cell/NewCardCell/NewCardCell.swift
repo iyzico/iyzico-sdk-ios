@@ -8,15 +8,32 @@
 import UIKit
 protocol NewCardCellDelegate: AnyObject {
     func expandAddCard(cell: NewCardCell)
-   // func didTappedAmountButton(priceCheckBox: IyzicoCheckBox)
     func didGetAllInputs(inputModels: [IyzicoTextInputModel])
     func checkCardInstallment(binNumber: String?)
-   // func getInstallmentNumber(installment: Int?, totalPrice: Double?)
+    func checkCardBonus()
 }
+
 class NewCardCell: UITableViewCell {
     
     weak var delegate: NewCardCellDelegate?
     
+    @IBOutlet weak var topSeperator: UIView!
+    @IBOutlet weak var bottomSeperator: UIView!
+    @IBOutlet weak var installmentOfferView: UIView! {
+        didSet {
+            installmentOfferView.backgroundColor = .veryLightGreen
+            installmentOfferView.layer.cornerRadius = Constant.shared.defaultCornerRadius
+            installmentOfferView.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var installmentOfferLabel: UILabel! {
+        didSet {
+            installmentOfferLabel.textColor = .mediumGreenTwo
+            installmentOfferLabel.numberOfLines = .zero
+            installmentOfferLabel.font = .markPro14
+            installmentOfferLabel.textAlignment = .center
+        }
+    }
     @IBOutlet weak var backView: UIView! {
         didSet {
             backView.layer.borderWidth = CGFloat(Constant.shared.borderWidthSmall)
@@ -35,6 +52,7 @@ class NewCardCell: UITableViewCell {
     @IBOutlet weak var plusImageView: UIImageView! {
         didSet {
             plusImageView.image = Asset.basicPlus.image
+            plusImageView.tintColor = .black
         }
     }
     
@@ -42,7 +60,7 @@ class NewCardCell: UITableViewCell {
         didSet {
             cardLabel.text = StringConstant.shared.newCardCellCardText
             cardLabel.font = .markProBold16
-            cardLabel.textColor = .niceBlue
+            cardLabel.textColor = .black
         }
     }
     
@@ -107,19 +125,21 @@ class NewCardCell: UITableViewCell {
                     self.cardNumberTextInput.isInputValid = true
                 }
                 if ValidationManager.validate(text: text, cardBrand: .AMEX) {
-                    cardCodeTextInput.configureTextInputLayout(shouldTitleStackViewVisible: false,
-                                                               placeholder: "1234")
+                    cardCodeTextInput.configureTextInputLayout(shouldTitleStackViewVisible: !cardCodeTextInput.isTextFieldEmpty,
+                                                               placeholder: "1234",
+                                                               cardCodeErrorStatus: !cardCodeTextInput.isInputValid)
                     cardCodeTextInput.cvvCount = 4
                 } else {
-                    cardCodeTextInput.configureTextInputLayout(shouldTitleStackViewVisible: false,
-                                                               placeholder: StringConstant.shared.newCardCellCardCodePlaceholder)
+                    cardCodeTextInput.configureTextInputLayout(shouldTitleStackViewVisible: !cardCodeTextInput.isTextFieldEmpty,
+                                                               placeholder: StringConstant.shared.newCardCellCardCodePlaceholder,
+                                                               cardCodeErrorStatus: !cardCodeTextInput.isInputValid)
                     cardCodeTextInput.cvvCount = 3
                 }
                 self.delegate?.didGetAllInputs(inputModels: self.getAllInputs())
                 isAllinputsValid()
             }
             cardNumberTextInput.didPastedTextAction = { [unowned self] in
-//                cardNumberTextInput.pasteTextEnabled = false
+                //                cardNumberTextInput.pasteTextEnabled = false
                 let pastedText = UIPasteboard.general.string
                 let pastedTextWithoutWhiteSpaces = pastedText?.replacingOccurrences(of: " ", with: "")
                 if pastedTextWithoutWhiteSpaces?.count == 16 {
@@ -137,9 +157,9 @@ class NewCardCell: UITableViewCell {
                 }
             }
             
-            if SDKManager.flow == .payWithIyzico {
-                cardNumberTextInput.shouldChangeCharactersIn = { [unowned self] text in
-                    if self.startCardInstallment(text: text) {
+            if SDKManager.flow == .payWithIyzico || SDKManager.flow == .topUp {
+                cardNumberTextInput.shouldChangeCharactersIn = { [unowned self] text, replacementString in
+                    if self.startCardInstallment(text: text) && !replacementString.isBackspace {
                         delegate?.checkCardInstallment(binNumber: text.removeWhiteSpaces)
                     }
                 }
@@ -210,6 +230,7 @@ class NewCardCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var totalBonusView: IyzicoCardBonusView!
     @IBOutlet weak var infoImageView: UIImageView! {
         didSet {
             infoImageView.image = Asset.basicIcnInfo.image
@@ -252,7 +273,6 @@ class NewCardCell: UITableViewCell {
     
     @IBOutlet weak var withDrawAmountLabel: UILabel! {
         didSet {
-//            withDrawAmountLabel.text = "Kartınızdan ₺68,70 çekilecektir.".uppercased()
             withDrawAmountLabel.font = .markProMedium12
             withDrawAmountLabel.textColor = .blueGrey
         }
@@ -277,7 +297,7 @@ class NewCardCell: UITableViewCell {
             isntallmentTableview.estimatedRowHeight = UITableView.automaticDimension
             isntallmentTableview.tableFooterView = .init(frame: .zero)
             isntallmentTableview.separatorStyle = .none
-           // isntallmentTableview.delegate = self
+            // isntallmentTableview.delegate = self
             //isntallmentTableview.dataSource = self
             isntallmentTableview.registerCell(type: InstallmentCell.self)
             
@@ -315,62 +335,128 @@ class NewCardCell: UITableViewCell {
             installmentInfoLabel.text = StringConstant.shared.iyzicoHomeVCInstallmentInfoText
             installmentInfoLabel.font = .markPro14
             installmentInfoLabel.textColor = .blueGrey
-           
+            
         }
     }
     
     var installmentModel: InstallmentDetail?
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         if SDKManager.flow == .topUp {
             priceContainerStackView.isHidden = true
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-//
-//    func setTableViewHeight(cellCount: Int = 4) {
-//        self.installmentTableViewHeightConst.constant = CGFloat(50 * cellCount)
-//    }
     
-    func expandCard(isHidden: Bool) {
-//        UIView.animate(withDuration: Constant.shared.duration) {
-//            self.detailView.isHidden = isHidden
-//        }
-        self.detailView.isHidden = isHidden
-//        self.installmentInfoView.isHidden = isHidden
-//        if self.tableContentView.isHidden == false || self.isCardInfoValid() || priceCheckBox.isSelected {
-//            self.installmentInfoView.isHidden = true
-//        }
-//        self.installmentInfoView.isHidden = isHidden
-//        if self.tableContentView.isHidden == false || self.isCardInfoValid() {
-//            self.installmentInfoView.isHidden = true
-//        }
-//
+    func setCellWithBonus(cardName: String?, cardNumber: String?, cvv: String?, skt: String?) {
+        
+        //        installmentOfferLabel.text = "Akbank veya Vakıfbank kartınla kartınla yapacağın taksitli alışverişlerde vade farksız + 3 Taksit!"
+        
+        if cardName?.isEmpty == false {
+            cardUserTextInput.configureTextInputLayout(shouldTitleStackViewVisible: true,
+                                                       placeholder: "")
+            cardUserTextInput.textField.text = cardName ?? ""
+            cardUserTextInput.isInputValid = true
+        }
+        
+        if cardNumber?.isEmpty == false {
+            cardNumberTextInput.configureTextInputLayout(shouldTitleStackViewVisible: true,
+                                                         placeholder: "")
+            setCardNumber(cardNumber: cardNumber)
+            cardNumberTextInput.isInputValid = true
+        }
+        if cvv?.isEmpty == false {
+            cardCodeTextInput.configureTextInputLayout(shouldTitleStackViewVisible: true,
+                                                       placeholder: "")
+            cardCodeTextInput.textField.text = cvv ?? ""
+            cardCodeTextInput.isInputValid = true
+        }
+        if skt?.isEmpty == false {
+            cardDateTextInput.configureTextInputLayout(shouldTitleStackViewVisible: true,
+                                                       placeholder: "")
+            cardDateTextInput.textField.text = skt ?? ""
+            cardDateTextInput.isInputValid = true
+        }
     }
     
-//    func showInstallment(model: [InstallmentDetail]?) {
-//        installmentModel = model?.first
-//        let installment = (model?.first?.installmentPrices?.count ?? 0) > 0 ? true : false
-//        if (!iyzicoCheckBox.isSelected || isCardInfoValid()) && !priceCheckBox.isSelected &&  installment {
-//            setTableViewHeight(cellCount: installmentModel?.installmentPrices?.count ?? 0)
-//            showInstallmentTableView()
-//        } else {
-//            hideInstallmentTableView()
-//        }
-//       // isntallmentTableview.reloadData()
-//    }
-//
-//    func hideInstallment() {
-//        self.installmentInfoView.isHidden = true
-//        hideInstallmentTableView()
-//    }
+    private func setCardNumber(cardNumber: String?) {
+        let pastedTextWithoutWhiteSpaces = cardNumber?.replacingOccurrences(of: " ", with: "")
+        if pastedTextWithoutWhiteSpaces?.count == 16 {
+            cardNumberTextInput.textField.text = cardNumber?.separate(every: 4, with: " ")
+        }
+        else {
+            cardNumberTextInput.textField.text = ""
+        }
+        cardNumberTextInput.configureTextInputLayout(shouldTitleStackViewVisible: true,
+                                                     placeholder: "")
+    }
+    
+    private func setCardCode(cardCode: String?) {
+        cardCodeTextInput.commonViewSetup(textInputType: .securityCode,
+                                          title: StringConstant.shared.newCardCellCardCodeText,
+                                          keyboardType: .numberPad,
+                                          placeholder: StringConstant.shared.newCardCellCardCodePlaceholder,
+                                          showBorder: true,
+                                          isRightViewHidden: true,
+                                          rightImage: Asset.informativeCvc.name,
+                                          stackViewSpace: .zero)
+        cardCodeTextInput.configureTextInputLayout(shouldTitleStackViewVisible: true,
+                                                   placeholder: "")
+        cardCodeTextInput.textField.text = cardCode ?? ""
+    }
+    
+    func setInfoView(model: [PlusInstallmentResponseModel]?) {
+        guard let model = model else {
+            installmentOfferLabel.isHidden = true
+            installmentOfferView.isHidden = true
+            topSeperator.isHidden = true
+            //            bottomSeperator.isHidden = true
+            return
+        }
+        switch model.count {
+            case 0:
+                installmentOfferLabel.isHidden = true
+                installmentOfferView.isHidden = true
+                topSeperator.isHidden = true
+                bottomSeperator.isHidden = false
+            case 1:
+                installmentOfferLabel.addAttribute(text: "\(model[0].cardBankDtoList?[0].cardBankName ?? "") kartınla yapacağın taksitli alışverişlerde vade farksız + \(model[0].plusInstallment ?? "0") Taksit!", attText: "vade farksız + \(model[0].plusInstallment ?? "0") Taksit!", color: .mediumGreenTwo, highletedFont: .markProBold14, isCenter: true)
+                installmentOfferView.isHidden = false
+                installmentOfferLabel.isHidden = false
+                topSeperator.isHidden = false
+                bottomSeperator.isHidden = true
+            default:
+                let plusInstallmentCountText = model[0].plusInstallment == model[1].plusInstallment ? "+ \(model[0].plusInstallment ?? "0")" : "+ \(model[0].plusInstallment ?? "0") ve + \(model[1].plusInstallment ?? "0")"
+                installmentOfferLabel.addAttribute(text: "\(model[0].cardBankDtoList?[0].cardBankName ?? "") veya \(model[0].cardBankDtoList?[1].cardBankName ?? "") kartınla yapacağın taksitli alışverişlerde vade farksız  \(plusInstallmentCountText) Taksit!", attText: "vade farksız  \(plusInstallmentCountText) Taksit!", color: .mediumGreenTwo, highletedFont: .markProBold14, isCenter: true)
+                installmentOfferLabel.isHidden = false
+                installmentOfferView.isHidden = false
+                topSeperator.isHidden = false
+                bottomSeperator.isHidden = true
+        }
+        
+    }
+    
+    func setBonusView(isHidden: Bool, enableSecondLabel: Bool = false, totalBonusAmount: Double = 0.0, usableBonusAmount: Double = 0.0) {
+        totalBonusView.isHidden = isHidden
+        totalBonusView.totalStackView.isHidden = isHidden
+        
+        if isHidden {
+            totalBonusView.useBonusCheckbox.deSelect()
+        }
+        totalBonusView.totalStackView.isHidden = !enableSecondLabel
+        totalBonusView.totalAmount = totalBonusAmount
+        totalBonusView.usableAmount = usableBonusAmount
+    }
+    
+    func expandCard(isHidden: Bool) {
+        self.detailView.isHidden = isHidden
+        self.infoView.isHidden = isHidden
+    }
     
     //MARK: - Helper Methods
     func getAllInputs() -> [IyzicoTextInputModel] {
@@ -389,18 +475,14 @@ class NewCardCell: UITableViewCell {
         return textInputs
     }
     
+    var isBonusEnabled: Bool = false
     
     func isAllinputsValid() {
         if self.cardCodeTextInput.isInputValid &&
-           self.cardUserTextInput.isInputValid &&
-           self.cardDateTextInput.isInputValid &&
-           self.cardNumberTextInput.isInputValid {
-//           self.installmentInfoView.isHidden = priceCheckBox.isSelected
-//           self.tableTitleView.isHidden = priceCheckBox.isSelected
-//           self.tableContentView.isHidden = priceCheckBox.isSelected
-         //  selectFirstIndexOfTableview()
-          // delegate?.expandAddCard(cell: self)
-          
+            self.cardUserTextInput.isInputValid &&
+            self.cardDateTextInput.isInputValid &&
+            self.cardNumberTextInput.isInputValid {
+            delegate?.checkCardBonus()
         }
     }
     
@@ -421,82 +503,17 @@ class NewCardCell: UITableViewCell {
         }
         return false
     }
-
+    
 }
 //MARK:- Actions
 extension NewCardCell {
     
     @IBAction func didTappedNewCardButton(_ sender: Any) {
-//        iyzicoCheckBox.setSelected()
-      //  self.installmentInfoView.isHidden = false
-       // hideInstallmentTableView()
         expandCard(isHidden: iyzicoCheckBox.isSelected)
         delegate?.expandAddCard(cell: self)
-        
     }
     
     @IBAction func didTappedAmountButton(_ sender: Any) {
-   //     delegate?.didTappedAmountButton(priceCheckBox: priceCheckBox)
-//        if priceCheckBox.isSelected {
-//            hideInstallmentTableView()
-//            self.installmentInfoView.isHidden = true
-//            //delegate?.hideShowInstallment(cell: self)
-//        } else if isCardInfoValid() && !priceCheckBox.isSelected {
-//            showInstallmentTableView()
-//          //  delegate?.hideShowInstallment(cell: self)
-//        } else if !iyzicoCheckBox.isSelected  {
-//            //showInstallmentTableView()
-//           // delegate?.hideShowInstallment(cell: self)
-//        }
+        
     }
-//
-//    func showInstallmentTableView() {
-//        self.tableContentView.isHidden = false
-//        self.tableTitleView.isHidden = false
-//        selectFirstIndexOfTableview()
-//
-//    }
-    
-//    func selectFirstIndexOfTableview() {
-//        isntallmentTableview.reloadData()
-//        let indexPath = IndexPath(row:.zero, section: .zero)
-//        isntallmentTableview.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
-//        self.tableView(isntallmentTableview, didSelectRowAt: indexPath)
-//    }
-//
-//    func hideInstallmentTableView() {
-//        self.tableContentView.isHidden = true
-//        self.tableTitleView.isHidden = true
-//        isntallmentTableview.reloadData()
-//    }
 }
-
-//extension NewCardCell: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return installmentModel?.installmentPrices?.count ?? .zero
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: NibName.shared.InstallmentCell, for: indexPath) as! InstallmentCell
-//        if installmentModel?.installmentPrices?[indexPath.row].installmentNumber == 1 {
-//            cell.setFullCell(model: installmentModel)
-//        } else {
-//            cell.setInstallmentCell(model: installmentModel?.installmentPrices?[indexPath.row])
-//        }
-//
-//        return cell
-//    }
-//}
-//
-//
-//extension NewCardCell: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.priceCheckBox.deSelect()
-//        let installment = installmentModel?.installmentPrices?[indexPath.row].installmentNumber
-//        let totalPrice = installmentModel?.installmentPrices?[indexPath.row].totalPrice
-//      //  delegate?.getInstallmentNumber(installment: installment, totalPrice: totalPrice)
-//    }
-//}
-
-

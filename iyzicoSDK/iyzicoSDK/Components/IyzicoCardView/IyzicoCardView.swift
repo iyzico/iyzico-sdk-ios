@@ -15,6 +15,17 @@ enum CardType: Int {
 
 class IyzicoCardView: BaseView {
     
+    @IBOutlet weak var cardDetailView: UIView!
+    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var cardNumberView: UIView!
+    @IBOutlet weak var innerStackView: UIStackView! {
+        didSet {
+            innerStackView.setCustomSpacing(.zero, after: cardNumberView)
+            innerStackView.setCustomSpacing(.zero, after: cardDetailView)
+            innerStackView.setCustomSpacing(.zero, after: emptyView)
+        }
+    }
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var bankNameLabel: UILabel!
@@ -22,7 +33,10 @@ class IyzicoCardView: BaseView {
     @IBOutlet weak var cardNumberLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var bonusStackView: UIStackView!
+    @IBOutlet weak var bonusTotalView: IyzicoCardBonusView!
     @IBOutlet weak var checkBox: IyzicoCheckBox!
+    @IBOutlet weak var topEmptyView: UIView!
     
     var isChecked: Bool {
         return checkBox.isSelected
@@ -118,14 +132,13 @@ extension IyzicoCardView {
         setUpAccountLabel()
         setUpAmountLabel()
         setUpCheckBox()
+        self.bonusStackView.isHidden = true
+        self.topEmptyView.isHidden = true
     }
     
     fileprivate func setUpContentView() {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        //  contentView.layer.cornerRadius = cornerRadius
-        //  contentView.layer.masksToBounds = true
-        //contentView.addBorder(borderColor: borderColor)
     }
     
     fileprivate func setUpLeftImageView() {
@@ -143,7 +156,8 @@ extension IyzicoCardView {
     }
     
     fileprivate func setUpCardNumberLabel() {
-        cardNumberLabel.font = .markPro16
+        cardNumberLabel.font = .markProMedium16
+        cardNumberLabel.textAlignment = .right
         cardNumberLabel.textColor = .gray900
     }
     

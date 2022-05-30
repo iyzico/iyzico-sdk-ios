@@ -13,13 +13,13 @@ struct MixedPaymentWithSavedCardResponseModel: Codable {
     let systemTime: Int?
     let conversationID, token: String?
     let callbackURL: String?
-    let threeDSHTMLContent: String?
+    let threeDSHtmlContent: String?
     
     enum CodingKeys: String, CodingKey {
         case status, locale, systemTime
         case conversationID = "conversationId"
         case token
         case callbackURL = "callbackUrl"
-        case threeDSHTMLContent = "threeDSHtmlContent"
+        case threeDSHtmlContent = "threeDSHtmlContent"
     }
 }

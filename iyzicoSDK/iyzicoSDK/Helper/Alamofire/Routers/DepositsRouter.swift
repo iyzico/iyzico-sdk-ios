@@ -107,11 +107,11 @@ enum DepositsRouter: APIConfiguration {
     var accessToken: String? {
         switch self {
         case .withRegisteredCard:
-            return DefaultsManager.get(forKey: .accessToken, type: String.self)
+                return DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         case .withNewCard:
-            return DefaultsManager.get(forKey: .accessToken, type: String.self)
+                return DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         case .protectedBankAccounts:
-            return DefaultsManager.get(forKey: .accessToken, type: String.self)
+                return DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         }
     }
 }

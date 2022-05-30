@@ -40,7 +40,7 @@ class NewMemberVM: BaseVM {
         }
         let requestModel = GsmUpdateRequestModel(userUuid: userUuid,
                                                  referenceCode: referenceCode,
-                                                 gsmNumber: phone,
+                                                 gsmNumber: model?.gsmNumber,
                                                  channelType: "THIRD_PARTY_APP")
         Networking.request(router: LoginRouter.gsmUpdate(requestModel: requestModel),
                            shouldShowLoading: shouldShowLoading)

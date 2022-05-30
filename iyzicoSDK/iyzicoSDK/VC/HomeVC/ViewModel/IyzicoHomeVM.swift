@@ -14,20 +14,39 @@ class IyzicoHomeVM: BaseVM {
     var protectedBankAccountsResponse: ProtectedBankAccountsOuterResponseModel?
     var navigatedInitializeResponse: InitResponseModel?
     var navigatedPhoneNumber: String?
+    var isFirst: Bool = true
     var pwiRetrieveResponse: PWIRetieveResponseModel? {
         didSet {
-            setInitialSelectedCellsForFlow()
+            if !isFirst {
+                sortCards()
+            }
+            isFirst = false
         }
     }
     var installmentDetailResponse: InstallmentResponseModel?
     var payWithBalanceResponse: PayWithBalanceResponseModel?
     var mixedPaymentWithSavedCardResponse: MixedPaymentWithSavedCardResponseModel?
     var paymentBankTransferResponse: PaymentBankTransferResponseModel?
+    var plusInstallmentBankList: [PlusInstallmentResponseModel]?
+    var memberCards: [CardResponseModel]?
+    var isBonusEnabled: Bool = false
+    var numberOfIyzicoCards: Int = 0
+    var isIyzicoDisabled: Bool = false
+    var addCardSelected: Bool = false
+    var bonusUsageAmount: Double = 0.0
+    var newCardSelected: Bool = true
+    var count: Int = 0
+    var selectedCell: UITableViewCell? = nil
+    var isAddCardBonusAvailable: Bool = false
+    var isCreditCardListCellOpened: Bool = false
+    var makePaymentTapped: Bool = false
     
     //MARK: - Regular Properties
     var paymentType: IyzicoHomePaymentTypes = .myAccount {
         didSet {
+#if DEBUG
             debugPrint("Payment Type Changed To \(paymentType)")
+#endif
         }
     }
     var newCardInputsArray: [IyzicoTextInputModel]?
@@ -41,6 +60,8 @@ class IyzicoHomeVM: BaseVM {
             setInitialSelectedCellsForFlow()
         }
     }
+    var getBonusResponse: CardBonusResponseModel?
+    
     var selectedCardForPayment: CardResponseModel?
     
     var installmentCount: Int? = 1
@@ -60,6 +81,7 @@ class IyzicoHomeVM: BaseVM {
     
     //MARK: - Installment Properties
     var showInfoView: Bool = false
+    var useBalance: Bool = false
     //MARK: - Navigated Properties
     var priceForLoad: String? //For Top Up Flow
     var navigatedInitResponse: InitResponseModel?
@@ -76,6 +98,44 @@ class IyzicoHomeVM: BaseVM {
         { [weak self] (response: BaseResponse<CardItemsResponseModel>?) in
             self?.getCardsResponse = response?.data
             onSuccess(response?.data)
+        } failure: { (error, errorCode, _) in
+            onFailure(error, errorCode)
+        }
+    }
+    
+    func getBonus(onSuccess: @escaping (CardBonusResponseModel?) -> Void,
+                  onFailure: @escaping (String?,String?) -> Void) {
+        let requestModel = CardBonusRequestModel(conversationId: self.mixedPaymentWithSavedCardResponse?.conversationID ?? "",
+                                                 currency: "TRY",
+                                                 locale: Language.TURKISH.rawValue,
+                                                 paidPrice: installmentPrice,
+                                                 paymentCard: PaymentCard(cardToken: selectedCardForPayment?.cardToken ?? ""),
+                                                 paymentChannel: "THIRD_PARTY_APP")
+        Networking.request(router: CardRouter.cardBonus(requestModel: requestModel), shouldShowLoading: false)
+        { [weak self] (response: CardBonusResponseModel) in
+            self?.getBonusResponse = response
+            onSuccess(response)
+        } failure: { (error, errorCode, _) in
+            onFailure(error, errorCode)
+        }
+    }
+    
+    func getNewCardBonus(onSuccess: @escaping (CardBonusResponseModel?) -> Void,
+                         onFailure: @escaping (String?,String?) -> Void) {
+        let requestModel = NewCardBonusRequestModel(conversationId: self.mixedPaymentWithSavedCardResponse?.conversationID ?? "",
+                                                    currency: "TRY",
+                                                    locale: Language.TURKISH.rawValue,
+                                                    paidPrice: installmentPrice,
+                                                    paymentCard: PaymentCard(cardNumber: getCardNumber(),
+                                                                             cardHolderName: getCardHolderName(),
+                                                                             expireYear: getExpireYear(),
+                                                                             expireMonth: getExpireMonth(),
+                                                                             cvc: getCvcCode()),
+                                                    paymentChannel: "THIRD_PARTY_APP")
+        Networking.request(router: CardRouter.newCardBonus(requestModel: requestModel), shouldShowLoading: false)
+        { [weak self] (response: CardBonusResponseModel) in
+            self?.getBonusResponse = response
+            onSuccess(response)
         } failure: { (error, errorCode, _) in
             onFailure(error, errorCode)
         }
@@ -140,7 +200,7 @@ class IyzicoHomeVM: BaseVM {
         Networking.request(router: PWIRouter.retrievePWI(requestModel: requestModel))
         { [weak self] (response: BaseResponse<PWIRetieveResponseModel>?) in
             self?.pwiRetrieveResponse = response?.data
-            self?.pwiRetrieveResponse?.checkoutDetail?.gsmNumber = self?.navigatedPhoneNumber
+            self?.pwiRetrieveResponse?.checkoutDetail?.gsmNumber = self?.navigatedPhoneNumber ?? response?.data?.checkoutDetail?.gsmNumber
             onSuccess(response?.data)
         } failure: { (error, _, _) in
             onFailure(error)
@@ -162,6 +222,14 @@ class IyzicoHomeVM: BaseVM {
             onFailure(error)
         }
     }
+    
+    
+//    {"conversationId":"","currency":"TRY","locale":"tr","paidPrice":50.19,"paymentCard":{"cardToken":"Q3SLzBl++tLZ9e7OfLkQK9Uq3DY="},"paymentChannel":"THIRD_PARTY_APP"}
+
+//    func getPoint() {
+//        let requestModel =
+//
+//    }
     
     //MARK: - Helper Methods
     private func setInitialSelectedCellsForFlow(){
@@ -185,7 +253,42 @@ class IyzicoHomeVM: BaseVM {
         
         //For new card cell selected status
         selectedCells.append(false)
+        sortPlusInstallmentCampaignList()
+    }
+    
+    private func sortPlusInstallmentCampaignList() {
+        let campaignList = pwiRetrieveResponse?.checkoutDetail?.plusInstallmentResponseList
+        plusInstallmentBankList = campaignList?.sorted(by: { $0.startDate ?? 0 < $1.startDate ?? 0 })
+    }
+    
+    private func sortCards() {
+        guard let cardList = pwiRetrieveResponse?.memberCards else {
+            return
+        }
+        var newCardList = cardList
+        var iyzicoCardIndex = -1
+        var iyzicoVirtualCardIndex = -1
         
+        for card in cardList {
+            if card.iyzicoCard == true && card.iyzicoVirtualCard == false {
+                iyzicoCardIndex = cardList.firstIndex(where: { $0 == card }) ?? 0
+                numberOfIyzicoCards += 1
+            }
+            if card.iyzicoVirtualCard == true {
+                iyzicoVirtualCardIndex = cardList.firstIndex(where: { $0 == card }) ?? 0
+                numberOfIyzicoCards += 1
+            }
+            if iyzicoCardIndex != -1 {
+                newCardList.move(from: iyzicoCardIndex, to: 1)
+            }
+            if iyzicoVirtualCardIndex != -1 {
+                newCardList.move(from: iyzicoVirtualCardIndex, to: 0)
+            }
+        }
+//        print(memberCards as Any)
+//        print(newCardList)
+        memberCards = newCardList
+        setInitialSelectedCellsForFlow()
     }
     
     func setSelectedCellsForFlow(indexPath: IndexPath, sectionType: IyzicoMenuSectionType) {
@@ -197,9 +300,9 @@ class IyzicoHomeVM: BaseVM {
                 changeAllElementsInSelectedCells(status: false, exceptForIndexs: [indexPath.row])
                 selectedCells[0] = true
             case .creditCardList:
-                let exceptForIndex = indexPath.row + 1
+                let exceptForIndex = indexPath.row
                 changeAllElementsInSelectedCells(status: false, exceptForIndexs: [exceptForIndex])
-                selectedCells[indexPath.row + 1] = true
+                selectedCells[indexPath.row] = true
                 selectedCardType = getCard(indexPath)?.cardType // getCardsResponse?.items?[indexPath.row].cardType
             case .addNewCreditCard:
                 changeAllElementsInSelectedCells(status: false, exceptForIndexs: [selectedCells.endIndex - 1])
@@ -259,7 +362,6 @@ class IyzicoHomeVM: BaseVM {
         else {
             let basketPriceAsDouble = basketPrice?.asDouble ?? 0.00
             let myAccountBalanceAsDouble = myAccountBalance?.asDouble ?? 0.00
-            //ikisinden biri true olursa gizlenecek
             return (myAccountBalanceAsDouble > 0.00) && (basketPriceAsDouble > myAccountBalanceAsDouble)
         }
     }
@@ -346,19 +448,23 @@ class IyzicoHomeVM: BaseVM {
 extension IyzicoHomeVM {
     
     func getCardsCount() -> Int? {
-        let count = SDKManager.flow == .payWithIyzico ? pwiRetrieveResponse?.memberCards?.count : getCardsResponse?.items?.count
+        let count = SDKManager.flow == .payWithIyzico ? memberCards?.count : getCardsResponse?.items?.count
         return count
     }
     
     func getCard(_ indexPath: IndexPath) -> CardResponseModel? {
-        let card = SDKManager.flow == .payWithIyzico ? pwiRetrieveResponse?.memberCards?[indexPath.row] : getCardsResponse?.items?[indexPath.row]
+        let card = SDKManager.flow == .payWithIyzico ? memberCards?[indexPath.row] : getCardsResponse?.items?[indexPath.row]
         return card
     }
     
     func getCards() -> [CardResponseModel]? {
-        let cards = SDKManager.flow == .payWithIyzico ? pwiRetrieveResponse?.memberCards : getCardsResponse?.items
+        let cards = SDKManager.flow == .payWithIyzico ? memberCards : getCardsResponse?.items
         
         return cards
+    }
+    
+    func getBonus() -> CardBonusResponseModel? {
+        return getBonusResponse
     }
     
     func getBanks() -> [ProtectedBankAccountsResponseModel]? {
@@ -377,7 +483,7 @@ extension IyzicoHomeVM {
     }
     
     func userHasCreditCard() -> Bool {
-        let cards = SDKManager.flow == .payWithIyzico ? pwiRetrieveResponse?.memberCards?.count ?? .zero > 0 : getCardsResponse?.items?.count ?? .zero > 0
+        let cards = SDKManager.flow == .payWithIyzico ? memberCards?.count ?? .zero > 0 : getCardsResponse?.items?.count ?? .zero > 0
         return cards //getCardsResponse?.items?.count != 0
     }
     
@@ -409,10 +515,13 @@ extension IyzicoHomeVM {
     func payWithMixedPaymentWithSavedCard(onSuccess: @escaping (MixedPaymentWithSavedCardResponseModel?) -> Void,
                                           onFailure: @escaping (String?) -> Void) {
         
+        let rewardAmount = bonusUsageAmount
+        let rewardUsage = isBonusEnabled ? 1 : 0
         let balanceAmount = pwiRetrieveResponse?.memberBalance?.amount
         let memberToken = pwiRetrieveResponse?.memberToken
         let cardToken = selectedCardForPayment != nil ? selectedCardForPayment?.cardToken : getCard(IndexPath(row: .zero, section: .zero))?.cardToken
-        let requestModel = MixedPaymentCardRequestModel(paymentChannel: "THIRD_PARTY", memberBalanceAmount: balanceAmount?.asDouble, memberToken: memberToken, paymentCard: PaymentCard(cardToken: cardToken))
+        let consumerToken: String? = DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
+        let requestModel = MixedPaymentCardRequestModel(paymentChannel: "THIRD_PARTY", memberBalanceAmount: balanceAmount?.asDouble, memberToken: memberToken, paymentCard: PaymentCard(cardToken: cardToken, consumerToken: consumerToken), reward: Reward(rewardAmount: rewardAmount, rewardUsage: rewardUsage))
         
         Networking.request(router: PWIRouter.mixedPaymentWithSavedCard(requestModel: requestModel))
         { [weak self] (response: MixedPaymentWithSavedCardResponseModel) in
@@ -433,9 +542,11 @@ extension IyzicoHomeVM {
         let expireMonth =  newCardInputsArray?[2].input?.textField.text?.seperate(by: "/").first
         let expireYear =  newCardInputsArray?[2].input?.textField.text?.seperate(by: "/").last
         let cvc = newCardInputsArray?[3].input?.textField.text
+        let rewardAmount = bonusUsageAmount
+        let rewardUsage = isBonusEnabled ? 1 : 0
         
         let requestModel = MixedPaymentCardRequestModel(paymentChannel: "THIRD_PARTY", memberBalanceAmount: balanceAmount?.asDouble,
-                                                        paymentCard: PaymentCard(cardNumber: cardNumber, cardHolderName: cardHolderName, expireYear: expireYear, expireMonth: expireMonth, cvc: cvc, registerConsumerCard: true, registerCard: 0))
+                                                        paymentCard: PaymentCard(cardNumber: cardNumber, cardHolderName: cardHolderName, expireYear: expireYear, expireMonth: expireMonth, cvc: cvc, registerConsumerCard: true, registerCard: 0), reward: Reward(rewardAmount: rewardAmount, rewardUsage: rewardUsage))
         
         Networking.request(router: PWIRouter.mixedPaymentWithNewCard(requestModel: requestModel))
         { [weak self] (response: MixedPaymentWithSavedCardResponseModel) in
@@ -461,6 +572,9 @@ extension IyzicoHomeVM {
         let expireMonth =  newCardInputsArray?[2].input?.textField.text?.seperate(by: "/").first
         let expireYear =  newCardInputsArray?[2].input?.textField.text?.seperate(by: "/").last
         let cvc = newCardInputsArray?[3].input?.textField.text
+        let rewardAmount = bonusUsageAmount
+        let rewardUsage = isBonusEnabled ? 1 : 0
+        let consumerToken: String? = DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         var cardToken: String?
         if !isNewCard {
             cardToken = selectedCardForPayment != nil ? selectedCardForPayment?.cardToken : getCard(IndexPath(row: .zero, section: .zero))?.cardToken
@@ -471,11 +585,11 @@ extension IyzicoHomeVM {
         if isNewCard {
             paymentCard = PaymentCard(cardNumber: cardNumber, cardHolderName: cardHolderName, expireYear: expireYear, expireMonth: expireMonth, cvc: cvc, registerConsumerCard: true, registerCard: 0)
         } else {
-            paymentCard = PaymentCard(cardToken: cardToken)
+            paymentCard = PaymentCard(cardToken: cardToken, consumerToken: consumerToken)
         }
         
         let requestModel = PaymentCardRequestModel(paymentChannel: "THIRD_PARTY", paidPrice: price, memberID: memberID, installment: installment, gsmNumber: gsmNumber, buyerProtected: buyerProtected, memberToken: memberToken,
-                                                   paymentCard: paymentCard)
+                                                   paymentCard: paymentCard, reward: Reward(rewardAmount: rewardAmount, rewardUsage: rewardUsage))
         
         Networking.request(router: PWIRouter.paymentWithNewCard(requestModel: requestModel))
         { [weak self] (response: MixedPaymentWithSavedCardResponseModel) in
@@ -500,7 +614,10 @@ extension IyzicoHomeVM {
         let expireMonth =  newCardInputsArray?[2].input?.textField.text?.seperate(by: "/").first
         let expireYear =  newCardInputsArray?[2].input?.textField.text?.seperate(by: "/").last
         let cvc = newCardInputsArray?[3].input?.textField.text
+        let rewardAmount = bonusUsageAmount
+        let rewardUsage = isBonusEnabled ? 1 : 0
         var cardToken: String?
+        let consumerToken: String? = DefaultsManager.get(forKey: DefaultsManager.DefaultKeys.accessToken.rawValue)
         if !isNewCard {
             cardToken = selectedCardForPayment != nil ? selectedCardForPayment?.cardToken : getCard(IndexPath(row: .zero, section: .zero))?.cardToken
         }
@@ -509,11 +626,11 @@ extension IyzicoHomeVM {
         if isNewCard {
             paymentCard = PaymentCard(cardNumber: cardNumber, cardHolderName: cardHolderName, expireYear: expireYear, expireMonth: expireMonth, cvc: cvc, registerConsumerCard: true, registerCard: 0)
         } else {
-            paymentCard = PaymentCard(cardToken: cardToken)
+            paymentCard = PaymentCard(cardToken: cardToken, consumerToken: consumerToken)
         }
         
         let requestModel = PaymentCardRequestModel(paymentChannel: "THIRD_PARTY", paidPrice: price, memberID: memberID, installment: installment, gsmNumber: gsmNumber, buyerProtected: buyerProtected, memberToken: memberToken,
-                                                   paymentCard: paymentCard)
+                                                   paymentCard: paymentCard, reward: Reward(rewardAmount: rewardAmount, rewardUsage: rewardUsage))
         
         Networking.request(router: PWIRouter.paymentWithNewCard3ds(requestModel: requestModel))
         { [weak self] (response: MixedPaymentWithSavedCardResponseModel) in

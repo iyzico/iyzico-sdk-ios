@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="112" id="KGk-i7-Jjw" customClass="CreditCardCell" customModule="iyzi_co_test_framework" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="KGk-i7-Jjw" customClass="CreditCardCell" customModule="iyzicoSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bvF-PZ-EJk">
-                        <rect key="frame" x="16" y="0.0" width="288" height="104"/>
+                        <rect key="frame" x="16" y="0.0" width="288" height="87"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="154-Ho-H8j">
                                 <rect key="frame" x="0.0" y="-16" width="288" height="16"/>
@@ -28,17 +28,85 @@
                                     <constraint firstAttribute="height" constant="16" id="xYG-aN-zk4"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfX-dB-0Ny" customClass="IyzicoCardView" customModule="iyzi_co_test_framework" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="288" height="104"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puU-E7-m0Z" userLabel="Installment Offer View">
+                                <rect key="frame" x="0.0" y="-16" width="288" height="16"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akX-fc-6zQ">
+                                        <rect key="frame" x="8" y="8" width="272" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="akX-fc-6zQ" secondAttribute="trailing" constant="8" id="3zC-I2-H2F"/>
+                                    <constraint firstAttribute="bottom" secondItem="akX-fc-6zQ" secondAttribute="bottom" constant="8" id="UTt-Ge-icX"/>
+                                    <constraint firstItem="akX-fc-6zQ" firstAttribute="top" secondItem="puU-E7-m0Z" secondAttribute="top" constant="8" id="gnp-so-pIL"/>
+                                    <constraint firstItem="akX-fc-6zQ" firstAttribute="leading" secondItem="puU-E7-m0Z" secondAttribute="leading" constant="8" id="gwy-36-HS4"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVH-d2-UpJ" userLabel="Bottom Seperator View">
+                                <rect key="frame" x="0.0" y="-16" width="288" height="16"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="wIa-9Y-N8Z"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfX-dB-0Ny" customClass="IyzicoCardView" customModule="iyzicoSDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="87"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="xtW-Po-bWF"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9F-qp-aMw" userLabel="CardInfo Top Seperator View">
+                                <rect key="frame" x="0.0" y="87" width="288" height="8"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="g7X-lw-TxY"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDi-v3-XSm" userLabel="CardInfo View">
+                                <rect key="frame" x="0.0" y="87" width="288" height="0.0"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8E0-1j-Tdq" userLabel="CardInfo Image View">
+                                        <rect key="frame" x="16" y="0.5" width="16" height="15"/>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="92m-5U-bUS"/>
+                                            <constraint firstAttribute="width" constant="16" id="k3f-lZ-6Kc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9c-mc-9hg" userLabel="CardInfo Label">
+                                        <rect key="frame" x="36" y="0.0" width="236" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="i9c-mc-9hg" secondAttribute="bottom" id="Qc4-eF-eU5"/>
+                                    <constraint firstItem="8E0-1j-Tdq" firstAttribute="leading" secondItem="uDi-v3-XSm" secondAttribute="leading" constant="16" id="WUF-1s-rxV"/>
+                                    <constraint firstItem="i9c-mc-9hg" firstAttribute="top" secondItem="uDi-v3-XSm" secondAttribute="top" id="fud-Hv-Od7"/>
+                                    <constraint firstAttribute="trailing" secondItem="i9c-mc-9hg" secondAttribute="trailing" constant="16" id="uVR-3Y-ArU"/>
+                                    <constraint firstItem="i9c-mc-9hg" firstAttribute="centerX" secondItem="uDi-v3-XSm" secondAttribute="centerX" constant="10" id="uty-BB-y64"/>
+                                    <constraint firstItem="8E0-1j-Tdq" firstAttribute="top" secondItem="uDi-v3-XSm" secondAttribute="top" id="vN0-f8-qYf"/>
+                                    <constraint firstItem="i9c-mc-9hg" firstAttribute="leading" secondItem="8E0-1j-Tdq" secondAttribute="trailing" constant="4" id="xKD-9C-vrA"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jj7-U7-Mzq" userLabel="CardInfo Bottom Seperator View">
+                                <rect key="frame" x="0.0" y="87" width="288" height="8"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="nTc-il-yTC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                     </stackView>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyY-NA-8La">
-                        <rect key="frame" x="16" y="4.5" width="288" height="95"/>
+                        <rect key="frame" x="16" y="4" width="288" height="79"/>
                         <connections>
                             <action selector="didTappedCreditButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MOX-lG-YRb"/>
                         </connections>
@@ -58,13 +126,21 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bottomSeperatorView" destination="uVH-d2-UpJ" id="ZI9-Vt-1sa"/>
+                <outlet property="cardInfoBottomSeperatorView" destination="jj7-U7-Mzq" id="kQ9-hd-JqX"/>
+                <outlet property="cardInfoLabel" destination="i9c-mc-9hg" id="2qz-32-m8E"/>
+                <outlet property="cardInfoTopSeperatorView" destination="S9F-qp-aMw" id="Q7Y-z9-siE"/>
+                <outlet property="cardInfoView" destination="uDi-v3-XSm" id="c8w-U6-QtW"/>
+                <outlet property="installmentOfferLabel" destination="akX-fc-6zQ" id="0Xk-mg-lRW"/>
+                <outlet property="installmentOfferView" destination="puU-E7-m0Z" id="jZs-aB-ttM"/>
                 <outlet property="iyzicoCardView" destination="rfX-dB-0Ny" id="ZXh-cq-7qs"/>
                 <outlet property="topSeperatorView" destination="154-Ho-H8j" id="p44-8X-F53"/>
             </connections>
-            <point key="canvasLocation" x="21.739130434782609" y="100.44642857142857"/>
+            <point key="canvasLocation" x="21.739130434782609" y="106.13839285714285"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

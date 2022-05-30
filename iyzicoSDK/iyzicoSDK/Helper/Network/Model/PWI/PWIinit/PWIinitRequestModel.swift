@@ -32,7 +32,7 @@ import Foundation
 // MARK: - BasketItem
  struct BasketItemRequest: Codable {
    var id, price, name, category1: String?
-   var itemType: String?
+   var itemType, subMerchantKey, subMerchantPrice: String?
 }
 
 // MARK: - IngAddress

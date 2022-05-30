@@ -157,6 +157,7 @@ enum ResultVCTypes: Int, CaseIterable {
     case transferDetailSuccess
     case successWithProducts
     case threeDSecure
+    case threeDSecureWithURL
     case success
     case error
     case topUpWaiting
@@ -370,6 +371,7 @@ enum WebVCTypes {
     case boundsAgreement
     case kvkkAgreement
     case html
+    case htmlWithUrl
     case contact
     case kvkk
     case agreement
@@ -378,7 +380,7 @@ enum WebVCTypes {
         switch self {
             case .boundsAgreement: return "https://www.iyzico.com/kendim-icin/kullanici-sozlesmesi#ereve-e-para-hracat-ve-deme-hizmeti-szlemesi"
             case .kvkkAgreement: return "https://www.iyzico.com/gizlilik-politikasi/kisisel-verilerin-islenmesine-iliskin-aydinlatma-metni"
-            case .html:
+            case .html, .htmlWithUrl:
                 return ""
             case .contact:
                 return "https://www.iyzico.com/gizlilik-politikasi/ticari-iletisim-riza-metni"

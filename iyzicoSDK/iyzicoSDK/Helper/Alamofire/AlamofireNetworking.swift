@@ -12,7 +12,7 @@ import CryptoKit
 
 class Networking {
     static let loadingVC = AlertManager()
-  
+    
     static let session = Session(delegate:CustomSessionDelegate())
     
     static func request<T: Decodable>(router: URLRequestConvertible,
@@ -22,7 +22,7 @@ class Networking {
                                       failure: @escaping (String?, String?, NetworkStatusTypes) -> Void) {
         if shouldShowLoading {
             showLoading() {
-               
+                
                 
                 session.request(router).responseDecodable { (response: AFDataResponse<T>) in
                     printLog(response: response)
@@ -34,73 +34,73 @@ class Networking {
                     let errorCode = dict?["errorCode"] as? String
                     let error = consumerErrorMessage != nil ? consumerErrorMessage : errorMessage
                     switch response.response?.statusCode ?? 204 { //204-> No Content
-                    case 200..<300:
-                        switch response.result {
-                        case .success(let data):
-                            if shouldHideLoading {
-                                hideLoading()
+                        case 200..<300:
+                            switch response.result {
+                                case .success(let data):
+                                    if shouldHideLoading {
+                                        hideLoading()
+                                    }
+                                    
+                                    if statusMessage == NetworkStatusTypes.success.rawValue {
+                                        success(data)
+                                    }
+                                    else {
+                                        failure(error, errorCode, .responseFailure)
+                                    }
+                                case .failure( _):
+                                    hideLoading()
+                                    let validatedError = error != nil ? error : "Hata"
+                                    failure(validatedError,errorCode, .failure)
                             }
-                         
-                            if statusMessage == NetworkStatusTypes.success.rawValue {
-                                success(data)
-                            }
-                            else {
-                                failure(error, errorCode, .responseFailure)
-                            }
-                        case .failure( _):
+                            
+                        default:
                             hideLoading()
-                            let validatedError = error != nil ? error : "Hata"
-                            failure(validatedError,errorCode, .failure)
-                        }
-                        
-                    default:
-                        hideLoading()
-                        failure(error, errorCode, .failure)
+                            failure(error, errorCode, .failure)
                     }
                 }
             }
         }
         else {
             session.request(router).responseDecodable { (response: AFDataResponse<T>) in
-                #if DEBUG
-                    printLog(response: response)
-                #endif
+#if DEBUG
+                printLog(response: response)
+#endif
                 let jsonString = String(bytes: response.data ?? Data(), encoding: .utf8) ?? ""
                 let dict = jsonString.convertToDictionary()
                 let statusMessage = dict?["status"] as? String
                 let consumerErrorMessage = dict?["consumerErrorMessage"] as? String
-//                let errorCode = dict?["errorCode"] as? String
-//                let fullErrorMessage = (consumerErrorMessage ?? "") + (errorCode ?? "")
+                //                let errorCode = dict?["errorCode"] as? String
+                //                let fullErrorMessage = (consumerErrorMessage ?? "") + (errorCode ?? "")
                 let errorMessage = dict?["errorMessage"] as? String
                 let errorCode = dict?["errorCode"] as? String
                 let error = consumerErrorMessage != nil ? consumerErrorMessage : errorMessage
                 switch response.response?.statusCode ?? 204 { //204-> No Content
-                case 200..<300:
-                    switch response.result {
-                    case .success(let data):
+                    case 200..<300:
+                        switch response.result {
+                            case .success(let data):
+                                if shouldHideLoading {
+                                    hideLoading()
+                                }
+                                if statusMessage == NetworkStatusTypes.success.rawValue {
+                                    success(data)
+                                }
+                                else {
+                                    failure(error, errorCode, .responseFailure)
+                                }
+                            case .failure:
+                                if shouldHideLoading {
+                                    hideLoading()
+                                }
+                                
+                                let validatedError = error != nil ? error : "Hata"
+                                failure(validatedError, errorCode, .failure)
+                        }
+                    default:
                         if shouldHideLoading {
                             hideLoading()
                         }
-                        if statusMessage == NetworkStatusTypes.success.rawValue {
-                            success(data)
-                        }
-                        else {
-                            failure(error, errorCode, .responseFailure)
-                        }
-                    case .failure:
-                        if shouldHideLoading {
-                            hideLoading()
-                        }
-
-                        let validatedError = error != nil ? error : "Hata"
-                        failure(validatedError, errorCode, .failure)
-                    }
-                default:
-                    if shouldHideLoading {
-                        hideLoading()
-                    }
-
-                    failure(error, errorCode, .failure)
+                        
+                        failure(error, errorCode, .failure)
                 }
             }
         }
@@ -110,7 +110,7 @@ class Networking {
         print("\n\n\n")
         print("🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐")
         debugPrint(response)
-//        debugPrint(response.result)
+        //        debugPrint(response.result)
         print("🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐")
         print("\n\n\n")
     }
@@ -131,9 +131,9 @@ class Networking {
 
 extension Networking {
     static func requestWithNoBaseResponse<T: Decodable>(router: URLRequestConvertible,
-                                      shouldShowLoading: Bool = true,
-                                      success: @escaping (T) -> Void,
-                                      failure: @escaping (String?, NetworkStatusTypes) -> Void) {
+                                                        shouldShowLoading: Bool = true,
+                                                        success: @escaping (T) -> Void,
+                                                        failure: @escaping (String?, NetworkStatusTypes) -> Void) {
         if shouldShowLoading {
             showLoading() {
                 session.request(router).responseDecodable { (response: (AFDataResponse<T>)) in
@@ -168,9 +168,9 @@ extension Networking {
         }
         else {
             session.request(router).responseDecodable { (response: AFDataResponse<T>) in
-                #if DEBUG
+#if DEBUG
                 printLog(response: response)
-                #endif
+#endif
                 let jsonString = String(bytes: response.data ?? Data(), encoding: .utf8) ?? ""
                 let dict = jsonString.convertToDictionary()
                 let statusMessage = dict?["status"] as? String
@@ -198,7 +198,7 @@ extension Networking {
             }
         }
     }
-
+    
 }
 
 //MARK:- SSL PINNING
@@ -219,7 +219,7 @@ class CustomSessionDelegate: SessionDelegate {
         }
         if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {
             // Server public key
-            guard let serverPublicKey = SecCertificateCopyKey(serverCertificate) else {
+            guard let serverPublicKey =  getSeckey(serverCertificate: serverCertificate) else {
                 completionHandler(.cancelAuthenticationChallenge, nil)
                 return
             }
@@ -234,7 +234,7 @@ class CustomSessionDelegate: SessionDelegate {
             let publickKeyLocal = type(of: self).publicKeyHash
             if (serverHashKey == publickKeyLocal) {
                 // Success! This is our server
-                print("Public key pinning is successfully completed")
+                print("PUBLIC KEY PINNING IS SUCCESSFULLY COMPLETED")
                 completionHandler(.useCredential, URLCredential(trust:serverTrust))
                 return
             } else {
@@ -254,5 +254,18 @@ class CustomSessionDelegate: SessionDelegate {
         
         
         return Data(hash).base64EncodedString()
+    }
+    
+    private func getSeckey(serverCertificate: SecCertificate) -> SecKey? {
+        if #available(iOS 12.0, *) {
+            if let serverPublicKey = SecCertificateCopyKey(serverCertificate) {
+                return serverPublicKey
+            }
+        } else {
+            if let serverPublicKey = SecCertificateCopyPublicKey(serverCertificate) {
+                return serverPublicKey
+            }
+        }
+        return nil
     }
 }

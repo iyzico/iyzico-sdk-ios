@@ -106,7 +106,7 @@ class IyzicoTextInput: BaseView {
     //MARK: - Callbacks
     var textFieldDidEndEditing : ((_ text : String) -> ())?
     var textFieldDidBeginEditing : ((_ text : String) -> ())?
-    var shouldChangeCharactersIn : ((_ text : String) -> ())?
+    var shouldChangeCharactersIn : ((_ text : String, _ replacementString: String) -> ())?
     var textFieldDidChange: ((_ text: String?) -> Void)?
     var rightButtonTapped : (() -> ())?
     var deleteBackward : (() -> ())?
@@ -115,11 +115,11 @@ class IyzicoTextInput: BaseView {
     var cvvCount: Int = 3
     
     init(textInputType: IyzicoTextInputType,
-                title: String? = nil,
-                leftImage: String? = nil,
-                rightImage: String? = nil,
-                placeholder: String? = nil,
-                cornerRadius: CGFloat = Constant.shared.textInputCornerRadius) {
+         title: String? = nil,
+         leftImage: String? = nil,
+         rightImage: String? = nil,
+         placeholder: String? = nil,
+         cornerRadius: CGFloat = Constant.shared.textInputCornerRadius) {
         super.init(frame: CGRect(origin: .zero, size:.zero))
         loadViewFromNib()
         self.textInputType = textInputType
@@ -160,13 +160,13 @@ class IyzicoTextInput: BaseView {
     }
     
     //MARK: - Setup
-     fileprivate func loadViewFromNib() {
+    fileprivate func loadViewFromNib() {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: NibName.shared.IyzicoTextInput, bundle: bundle)
         self.contentView = nib.instantiate(withOwner: self, options: nil).first as? UIView
         addSubview(contentView)
         self.addBorder(borderColor: UIColor.gray400.cgColor)
-       
+        
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         leftView.backgroundColor = .gray200
@@ -185,7 +185,7 @@ class IyzicoTextInput: BaseView {
                                                name: .keyboardButton, object: nil)
         initializeEvents()
     }
-  
+    
 }
 
 //MARK:- ACTION
@@ -248,7 +248,11 @@ extension IyzicoTextInput {
         textField.font = .markProMedium20
         textField.textColor = .darkGrey
         textField.textAlignment = .center
-        textField.textContentType = .oneTimeCode
+        if #available(iOS 12.0, *) {
+            textField.textContentType = .oneTimeCode
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func amountViewSetup(textInputType: IyzicoTextInputType? = nil) {
@@ -286,10 +290,10 @@ extension IyzicoTextInput {
     }
     
     func eftViewSetup(textInputType: IyzicoTextInputType? = nil,
-                             title: String,
-                             keyboardType: UIKeyboardType,
-                             placeholder: String,
-                             showBorder: Bool = false) {
+                      title: String,
+                      keyboardType: UIKeyboardType,
+                      placeholder: String,
+                      showBorder: Bool = false) {
         textField.keyboardType = keyboardType
         leftView.isHidden = true
         rightView.isHidden = true
@@ -309,20 +313,20 @@ extension IyzicoTextInput {
     }
     
     func commonViewSetup(textInputType: IyzicoTextInputType? = nil,
-                                title: String,
-                                keyboardType: UIKeyboardType,
-                                placeholder: String,
-                                showBorder: Bool = false,
-                                isLeftViewHidden: Bool = true,
-                                isRightViewHidden: Bool = true,
-                                rightImage: String? = nil,
-                                leftImage: String? = nil,
-                                stackViewSpace: CGFloat = 24) {
+                         title: String,
+                         keyboardType: UIKeyboardType,
+                         placeholder: String,
+                         showBorder: Bool = false,
+                         isLeftViewHidden: Bool = true,
+                         isRightViewHidden: Bool = true,
+                         rightImage: String? = nil,
+                         leftImage: String? = nil,
+                         stackViewSpace: CGFloat = 24) {
         textField.keyboardType = keyboardType
         leftView.isHidden = isLeftViewHidden
         rightView.isHidden = isRightViewHidden
         stackViewLeftConst.constant = Constant.shared.textInputstackViewLeftConst
-    
+        
         self.textInputType = textInputType ?? .text
         if rightImage != nil {
             rightImageView.isHidden = false
@@ -358,7 +362,7 @@ extension IyzicoTextInput {
 }
 
 //MARK: - TextField Delegate Methods
-extension IyzicoTextInput: UITextFieldDelegate, CustomTextFieldDelegate {    
+extension IyzicoTextInput: UITextFieldDelegate, CustomTextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textFieldDidBeginEditing?(textField.text ?? "")
         clickedTextField = textField
@@ -384,7 +388,7 @@ extension IyzicoTextInput: UITextFieldDelegate, CustomTextFieldDelegate {
         }
         
         textFieldDidEndEditing?(textField.text!)
-     
+        
         switch textInputType {
             case .amountPrice:
                 self.fontsForAmountPlaceHolder()
@@ -407,51 +411,51 @@ extension IyzicoTextInput: UITextFieldDelegate, CustomTextFieldDelegate {
         else {
             //Checking other updated texts.
             switch textInputType {
-            case .date:
-                shouldChangeCharactersIn?(updatedText)
-                return dateMask(textField: textField, range: range, string: string)
-            case .phone:
-                shouldChangeCharactersIn?(updatedText)
-                return textField.lockPhoneCode(textField: textField, string: string, updatedText: updatedText)
-            case .number:
-                shouldChangeCharactersIn?(updatedText.firstLetter)
-                return textField.textCount(lessThan: 1, string: string)
-            case .amount:
-                shouldChangeCharactersIn?(updatedText)
-                return textField.lockTL(string: string, updatedText: updatedText,textField: textField)
-            case .iban:
-                shouldChangeCharactersIn?(updatedText)
-                return textField.ibanMask(textField: textField, string: string, updatedText: updatedText)
-            case .shortDate:
-                shouldChangeCharactersIn?(updatedText)
-//                return dateMaskShort(textField: textField, range: range, string: string)
-//                return true
-                return sktDateMask(text: updatedText, replacementString: string)
-            case .securityCode:
-                shouldChangeCharactersIn?(updatedText)
-                return textField.textCount(lessThan: cvvCount, string: string)
-            case .cardNumber:
-                shouldChangeCharactersIn?(updatedText)
-               // return textField.cardNumberMask(textField: textField, string: string, updatedText: updatedText)
-                let text = "\(updatedText.prefix(2))"
-                if ValidationManager.guest(text: text, cardBrand: .AMEX) {
-                    textField.generalFormat(with: "XXXX XXXXXX XXXXX", text: updatedText)
-                    return false
-                } else {
-                    textField.generalFormat(with: "XXXX XXXX XXXX XXXX", text: updatedText)
-                    return false
-                }
-                
-            case .amountPrice:
-                shouldChangeCharactersIn?(updatedText)
-                return amountPriceMask(string: string)
-            case .text:
-                textField.convertLowercasedWithDelay(delay: Constant.shared.textInputLowercasedDelay)
-                shouldChangeCharactersIn?(updatedText)
-                return ValidationManager.checkForValidCharacters(text: updatedText, regexType: .email)
-            case .cardOwnerName:
-                shouldChangeCharactersIn?(updatedText)
-                return !ValidationManager.validate(text: updatedText.last?.description, regexType: .cardOwnerName)
+                case .date:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return dateMask(textField: textField, range: range, string: string)
+                case .phone:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return textField.lockPhoneCode(textField: textField, string: string, updatedText: updatedText)
+                case .number:
+                    shouldChangeCharactersIn?(updatedText.firstLetter, string)
+                    return textField.textCount(lessThan: 1, string: string)
+                case .amount:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return textField.lockTL(string: string, updatedText: updatedText,textField: textField)
+                case .iban:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return textField.ibanMask(textField: textField, string: string, updatedText: updatedText)
+                case .shortDate:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    //                return dateMaskShort(textField: textField, range: range, string: string)
+                    //                return true
+                    return sktDateMask(text: updatedText, replacementString: string)
+                case .securityCode:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return textField.textCount(lessThan: cvvCount, string: string)
+                case .cardNumber:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    // return textField.cardNumberMask(textField: textField, string: string, updatedText: updatedText)
+                    let text = "\(updatedText.prefix(2))"
+                    if ValidationManager.guest(text: text, cardBrand: .AMEX) {
+                        textField.generalFormat(with: "XXXX XXXXXX XXXXX", text: updatedText)
+                        return false
+                    } else {
+                        textField.generalFormat(with: "XXXX XXXX XXXX XXXX", text: updatedText)
+                        return false
+                    }
+                    
+                case .amountPrice:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return amountPriceMask(string: string)
+                case .text:
+                    textField.convertLowercasedWithDelay(delay: Constant.shared.textInputLowercasedDelay)
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return ValidationManager.checkForValidCharacters(text: updatedText, regexType: .email)
+                case .cardOwnerName:
+                    shouldChangeCharactersIn?(updatedText, string)
+                    return !ValidationManager.validate(text: updatedText.last?.description, regexType: .cardOwnerName)
             }
         }
     }
@@ -486,7 +490,7 @@ extension IyzicoTextInput {
         return result
     }
     
-   func makeDisable() {
+    func makeDisable() {
         titleLabel.textColor = .gray500
         rightImageView.tintColor = .gray500
         contentView.backgroundColor = .paleGray3
@@ -522,7 +526,7 @@ extension IyzicoTextInput {
         titleLabel.text = self.title
         titleLabel.textColor = .gunmetal
     }
-  
+    
     fileprivate func dateMask(textField: UITextField, range: NSRange, string: String) -> Bool {
         let min = self.textField.text?.count == Constant.shared.textInputDateMaskMinCount
         let max = self.textField.text?.count == Constant.shared.textInputDateMaskMaxCount
@@ -535,14 +539,14 @@ extension IyzicoTextInput {
     }
     
     
-//    fileprivate func dateMaskShort(textField: UITextField, range: NSRange, string: String) -> Bool {
-//        if self.textField.text?.count == Constant.shared.textInputDateMaskMinCount {
-//            if !(string == "") {
-//                self.textField.text = self.textField.text! + StringConstant.shared.textInputDateSeperator
-//            }
-//        }
-//        return !(textField.text!.count == Constant.shared.textInputDateMaskMaxCount && (string.count ) > range.length)
-//    }
+    //    fileprivate func dateMaskShort(textField: UITextField, range: NSRange, string: String) -> Bool {
+    //        if self.textField.text?.count == Constant.shared.textInputDateMaskMinCount {
+    //            if !(string == "") {
+    //                self.textField.text = self.textField.text! + StringConstant.shared.textInputDateSeperator
+    //            }
+    //        }
+    //        return !(textField.text!.count == Constant.shared.textInputDateMaskMaxCount && (string.count ) > range.length)
+    //    }
     
     private func cardOwnerNameMask(text: String) -> Bool {
         let nameRules: [String] = Array(0..<10).map{ $0.description }
@@ -565,14 +569,14 @@ extension IyzicoTextInput {
     
     func amountPriceMask(string: String) -> Bool {
         switch string {
-        case "0","1","2","3","4","5","6","7","8","9":
-            currentString += string
-            formatCurrency(string: currentString)
-        default:
-            if string.count == 0 && currentString.count != 0 {
-                currentString = String(currentString.dropLast())
+            case "0","1","2","3","4","5","6","7","8","9":
+                currentString += string
                 formatCurrency(string: currentString)
-            }
+            default:
+                if string.count == 0 && currentString.count != 0 {
+                    currentString = String(currentString.dropLast())
+                    formatCurrency(string: currentString)
+                }
         }
         return false
     }
@@ -599,7 +603,7 @@ extension IyzicoTextInput {
         let rangeLeft = NSRange(location: (self.textField.text?.count ?? 3) - 3, length: 3)
         attrStri.addAttributes([NSAttributedString.Key.font: UIFont.markProBold28],
                                range: rangeLeft)
-      
+        
         self.textField.attributedText = attrStri
     }
     
@@ -619,15 +623,19 @@ extension IyzicoTextInput {
         self.textField.attributedPlaceholder = attrStri
     }
     
-    func configureTextInputLayout(shouldTitleStackViewVisible: Bool, placeholder: String) {
+    func configureTextInputLayout(shouldTitleStackViewVisible: Bool, placeholder: String, cardCodeErrorStatus: Bool = false) {
         tempPlaceHolder = placeholder
         if shouldTitleStackViewVisible {
             titleContainerStackView.isHidden = false
             textField.placeholder = placeholder
         }
         else {
-            titleContainerStackView.isHidden = true
-            textField.placeholder = titleLabel.text
+            if cardCodeErrorStatus {
+                titleContainerStackView.isHidden = false
+                textField.placeholder = placeholder
+            } else {
+                titleContainerStackView.isHidden = true
+                textField.placeholder = titleLabel.text}
         }
     }
     
@@ -661,7 +669,7 @@ extension IyzicoTextInput {
         button.didTappedButton = {
             NotificationCenter.default.post(name: .didTappedButtonAboveKeyboard, object: nil)
         }
-
+        
         button.frame = CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: 48)
         self.textField.inputAccessoryView = button
     }

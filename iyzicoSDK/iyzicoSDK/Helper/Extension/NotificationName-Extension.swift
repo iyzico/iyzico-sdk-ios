@@ -20,4 +20,5 @@ extension Notification.Name {
     static let removePwiTimerObservers = Notification.Name("removePwiTimerObservers")
     static let getBalances = Notification.Name("getBalances")
     static let updatePrice = Notification.Name("updatePrice")
+    static let setBonus = Notification.Name("setBonus")
 }

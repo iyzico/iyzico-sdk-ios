@@ -14,10 +14,11 @@ struct PaymentCardRequestModel: Codable {
     let buyerProtected: Bool?
     let memberToken: String?
     let paymentCard: PaymentCard?
+    let reward: Reward?
     
     enum CodingKeys: String, CodingKey {
         case paymentChannel, paidPrice
         case memberID = "memberId"
-        case installment, gsmNumber, buyerProtected, memberToken, paymentCard
+        case installment, gsmNumber, buyerProtected, memberToken, paymentCard, reward
     }
 }

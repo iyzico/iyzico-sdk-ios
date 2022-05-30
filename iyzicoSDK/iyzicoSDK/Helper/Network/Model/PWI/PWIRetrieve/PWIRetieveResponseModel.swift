@@ -36,6 +36,7 @@ struct CheckoutDetail: Codable {
     let baseURL: String?
     let registerCardEnabled, buyerProtectionEnabled, payWithIyzicoEnabled: Bool?
     let bankTransferAccounts: [ProtectedBankAccountsResponseModel]?
+    let plusInstallmentResponseList: [PlusInstallmentResponseModel]?
     
     enum CodingKeys: String, CodingKey {
         case bkmEnabled, bankTransferEnabled, subscriptionPaymentEnabled, locale, price, currency
@@ -45,7 +46,19 @@ struct CheckoutDetail: Codable {
         case ucsEnabled, buyerName, merchantInfo, token, enabledApmTypes, paymentWithNewCardEnabled
         case baseURL = "baseUrl"
         case registerCardEnabled, buyerProtectionEnabled, payWithIyzicoEnabled, bankTransferAccounts
+        case plusInstallmentResponseList
     }
+}
+
+struct PlusInstallmentResponseModel: Codable {
+    let campaignId, startDate, endDate: Int?
+    let campaignType, plusInstallment: String?
+    let cardBankDtoList: [CardBankModel]?
+}
+
+struct CardBankModel: Codable {
+    let cardBankId: Int?
+    let cardBankName: String?
 }
 
 // MARK: - BankTransferAccount

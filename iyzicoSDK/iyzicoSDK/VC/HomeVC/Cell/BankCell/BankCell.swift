@@ -40,7 +40,7 @@ class BankCell: BaseTableViewCell {
     func setCell(bankName: String, bankLogoUrl: String?, placeholderBankLogo: UIImage) {
         self.bankNameLabel.text = bankName
 //        self.bankImageView.setImage(named: bankImage, typeof: self)
-        self.bankImageView.setImageWithCaching(urlString: bankLogoUrl, placeholderImage: placeholderBankLogo)
+        self.bankImageView.setImageWithCaching(urlString: bankLogoUrl, placeholderImage: placeholderBankLogo) {_ in }
     }
     
 }

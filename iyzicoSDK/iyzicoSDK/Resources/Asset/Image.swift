@@ -84,6 +84,7 @@ internal enum Asset {
   internal static let resultSuccess = ImageAsset(name: "resultSuccess")
   internal static let resultSuccessWithBackground = ImageAsset(name: "resultSuccessWithBackground")
   internal static let resultWaiting = ImageAsset(name: "resultWaiting")
+  internal static let passiveCard = ImageAsset(name: "passiveCard")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

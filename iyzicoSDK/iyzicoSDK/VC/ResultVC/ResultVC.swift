@@ -12,6 +12,8 @@ class ResultVC: BaseVC, ResultCellDelegate {
     @IBOutlet weak var seeBankInformationButton: IyzicoButton!
     @IBOutlet weak var returnToAppButton: IyzicoButton!
     
+    var amount: String? = nil
+    var message: String? = nil
     var vcType: ResultVCTypes = .success
     lazy var constants = ResultCellConstants.shared.getType(vcType: vcType)
     var resultVM = ResultVM()
@@ -61,7 +63,7 @@ class ResultVC: BaseVC, ResultCellDelegate {
                 vc.modalPresentationStyle = .overFullScreen
                 self.present(vc, animated: true, completion: nil)
             }
-        
+            
         }
         
         returnToAppButton.didTappedButton = {
@@ -100,6 +102,11 @@ class ResultVC: BaseVC, ResultCellDelegate {
                                 nameLabelTitle: SDKManager.brand ?? "",
                                 closeButtonType: .close)
                 pushTo3DS()
+            case .threeDSecureWithURL:
+                configureNavBar(navBarBottomViewVisibility: true,
+                                nameLabelTitle: SDKManager.brand ?? "",
+                                closeButtonType: .close)
+                pushTo3DS(withURL: true)
             case .successWithProducts:
                 //Discarded feature
                 break
@@ -109,11 +116,11 @@ class ResultVC: BaseVC, ResultCellDelegate {
     private func setupReturnToAppButton() {
         if vcType == .error {
             returnToAppButton.setUp(buttonType: .primaryLvl1(state: .normal),
-                                           title: constants.tryAgain)
+                                    title: constants.tryAgain)
         } else {
             returnToAppButton.setUp(buttonType: .primaryLvl1(state: .normal), title: constants.returnToAppButton)
         }
-       
+        
     }
     
     private func setupSeeBankInformationButton() {
@@ -141,26 +148,33 @@ class ResultVC: BaseVC, ResultCellDelegate {
     
     private func logMessageToDeveloper() {
         switch vcType {
-        case .cashoutSuccess,
-             .refundSuccess,
-             .topUpSuccess,
-             .settlementSuccess,
-             .transferDetailSuccess,
-             .threeDSecure,
-             .success:
-            Iyzico.delegate?.didOperationSuccess(message: ResultCode.success.message)
-        case .error:
-            Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
-        default:
-            break
+            case .cashoutSuccess:
+                Iyzico.delegate?.didCashoutOperationSuccess(message: message ?? "", amount: amount ?? "")
+            case .refundSuccess,
+                    .topUpSuccess,
+                    .settlementSuccess,
+                    .transferDetailSuccess,
+                    .threeDSecure,
+                    .success:
+                Iyzico.delegate?.didOperationSuccess(message: ResultCode.success.message)
+            case .error:
+                Iyzico.delegate?.didOperationFailed(state: .error, message: ResultCode.error.message)
+            default:
+                break
         }
     }
     
-    func pushTo3DS() {
+    func pushTo3DS(withURL: Bool = false) {
         DispatchQueue.main.asyncAfter(deadline: .now()+2) { [unowned self] in
-            let vc = WebVC(vcType: .html)
-            vc.html = self.resultVM.html
-            self.navigationController?.pushViewController(vc, animated: true)
+            if withURL {
+                let vc = WebVC(vcType: .htmlWithUrl)
+                vc.html = self.resultVM.html
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = WebVC(vcType: .html)
+                vc.html = self.resultVM.html
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
@@ -181,10 +195,10 @@ extension ResultVC: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         let constants = ResultCellConstants.shared.getType(vcType: vcType)
         switch vcType {
-        case .topUpSuccess:
-            constants.titleLabel = resultVM.topUpPriceForLoad ?? ""
-        default:
-            break
+            case .topUpSuccess:
+                constants.titleLabel = resultVM.topUpPriceForLoad ?? ""
+            default:
+                break
         }
         cell.constants = constants
         return cell

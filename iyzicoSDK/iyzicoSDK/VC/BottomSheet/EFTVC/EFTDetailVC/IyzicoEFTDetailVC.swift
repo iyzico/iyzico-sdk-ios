@@ -21,7 +21,7 @@ class IyzicoEFTDetailVC: BaseVC {
     @IBOutlet weak var bankImageView: UIImageView!{
         didSet {
             let image = viewModel.protectedBankAccount?.bankLogoUrl
-            bankImageView.setImageWithCaching(urlString: image, placeholderImage:  Asset.calendar.image)
+            bankImageView.setImageWithCaching(urlString: image, placeholderImage:  Asset.calendar.image) {_ in }
         }
     }
     @IBOutlet weak var bankNameLabel: UILabel!{

@@ -279,7 +279,7 @@ extension NotaMemberVC {
     
     private func chooseAuthenticationService() {
         if viewModel.isUserNavigatedFromOTP {
-            getGmsUpdate(
+            getGsmUpdate(
                 onSuccess: { [weak self] (response: GsmUpdateResponseModel?) in
                     self?.navigateToOtpVC(isGsmVerified: response?.gsmVerified)
                 })
@@ -328,7 +328,7 @@ extension NotaMemberVC {
                                         })
     }
     
-    private func getGmsUpdate(onSuccess: @escaping (GsmUpdateResponseModel?) -> Void) {
+    private func getGsmUpdate(onSuccess: @escaping (GsmUpdateResponseModel?) -> Void) {
         viewModel.getGsmUpdate(phone: phoneTextField.textField.text,
                                shouldShowLoading: false,
                                onSuccess: { (response: GsmUpdateResponseModel?) in

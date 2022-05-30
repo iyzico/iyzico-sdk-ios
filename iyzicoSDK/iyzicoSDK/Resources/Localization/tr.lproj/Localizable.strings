@@ -41,7 +41,7 @@
 "iyzico_fragment_login_title" = "iyzico Güvencesiyle Kolayca Öde!";
 
 /*tamam*/
-"iyzico_fragment_login_second_title" = "iyzico ile öde; alışverişlerini kartınla veya bakiyenle kolayca yapabildiğin ücretsiz ve güvenli bir ödeme yöntemidir.";
+"iyzico_fragment_login_second_title" = "E-posta adresinle hesabına giriş yapabilir ya da kaydolabilir, ödemeni kolayca tamamlayabilirsin.";
 
 /*tamam*/
 "iyzico_fragment_login_change_acount" = "Farklı Bir E-posta ile Devam Et";
@@ -63,10 +63,10 @@
 
 /*tamm
  SMS*/
-"iyzico_fragment_sms_control" = "Mesajlarını kontrol et! 💬";
+"iyzico_fragment_sms_control" = "İşlemi senin yaptığını doğrulayabilmemiz için cep telefonuna gelen kodu girmelisin.";
 
 /*tamam*/
-"iyzico_fragment_sms_verificate_phone" = "Onay Kodunu Gir";
+"iyzico_fragment_sms_verificate_phone" = "Cep Telefonu Numaranı Doğrula";
 
 /*tamam
  Common*/
@@ -92,12 +92,12 @@
 
 /*tamam
  Acccount*/
-"iyzico_account_fragment_wallet_description" = "iyzico hesabında bulunan bakiyenle ödemeni tek tıkla ve anında iade ayrıcalığıyla yapabilirsin.";
+"iyzico_account_fragment_wallet_description" = "iyzico hesabında bulunan bakiyenle, ödemeni tek tıkla ve anında iade ayrıcalığıyla yapabilirsin.";
 "iyzico_my_current_balance" = "Güncel Bakiyem";
 
 /*tamam*/
 "iyzico_pay_with_new_card" = "Yeni kart ile öde";
-"iyzico_use_my_balance" = "Bakiye Kullan";
+"iyzico_use_my_balance" = "Bakiyemi Kullan";
 
 /*tamam*/
 "iyzico_my_credit_cards" = "Kartlarım";
@@ -271,7 +271,7 @@
 "iyzico_get_support_title" = "İletişim";
 "iyzico_error_callback" = "Hatalı İşlem";
 "iyzico_topup_balance_loaded" = "Bakiyene yüklendi.";
-"iyzico_account_fragment_button" = "iyzico ile Öde";
+"iyzico_account_fragment_button" = "Devam Et";
 
 /*sayfa kapanma durumunda çıkacak textler"*/
 "iyzico_close_widget_pop_up_top_up" = "Sayfayı kapatırsan satın alma işlemi iptal edilecek.";
